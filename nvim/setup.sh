@@ -11,6 +11,10 @@ sudo make install && cd ../..
 cargo install tree-sitter-cli
 # beautysh
 pip install beautysh
+# stylua
+cargo install stylua
+# ripgrep
+cargo install ripgrep
 
 ### Configurations
 mkdir -p ~/.config/nvim
