@@ -103,14 +103,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-source ~/.config/zsh/config/p10k.zsh
 ZLE_RPROMPT_INDENT=0
 
 setopt no_nomatch
 
-export LD_LIBRARY_PATH=/usr/local/lib
-
-export GOPATH=$HOME/go
-export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
-
-export PATH="/home/tom1484/.oh-my-zsh/plugins/git-fuzzy/bin:$PATH"

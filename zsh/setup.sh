@@ -16,6 +16,9 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/
 # autojump
 git clone https://github.com/wting/autojump.git tmp/autojump
 cd tmp/autojump && ./install.py && cd ../..
+# git-fuzzy
+git clone https://github.com/bigH/git-fuzzy.git ~/.oh-my-zsh/plugins/git-fuzzy
+sudo apt install bc
 
 ### Configurations
 cp .zshrc ~/

@@ -6,6 +6,7 @@ return {
         lsp.preset("recommended")
 
         lsp.ensure_installed({
+            -- "bashls",
             "clangd",
             "eslint",
             "gopls",

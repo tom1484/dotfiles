@@ -21,7 +21,7 @@ null_ls.setup({
             filetypes = { "html", "css", "json" },
         }),
         formatting.rustfmt,
-        formatting.shfmt,
+        -- formatting.shfmt,
 		formatting.stylua,
 
 		-- diagnostics.eslint_d.with({
