@@ -103,8 +103,5 @@ return {
 			end
 			notify(msg, ...)
 		end
-
-		-- Load null-ls
-		require("lazy_plugin.null-ls")
 	end,
 }

@@ -69,7 +69,19 @@ return {
         },
     },
     -- null-ls
-    "jose-elias-alvarez/null-ls.nvim",
+    {
+        "jose-elias-alvarez/null-ls.nvim",
+        lazy = true,
+        event = "UIEnter",
+        init = require("lazy_plugin.null-ls").init,
+        config = function()
+            local timer = vim.loop.new_timer()
+            timer:start(100, 0, vim.schedule_wrap(require("lazy_plugin.null-ls").setup))
+        end,
+        dependencies = {
+            "jay-babu/mason-null-ls.nvim"
+        }
+    },
     -- nvim-tmux-navigation
     "alexghergh/nvim-tmux-navigation",
     -- JABS

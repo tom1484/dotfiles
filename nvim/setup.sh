@@ -9,10 +9,6 @@ cd tmp/neovim && make -j4 CMAKE_BUILD_TYPE=Release
 sudo make install && cd ../..
 # tree-sitter
 cargo install tree-sitter-cli
-# beautysh
-pip install beautysh
-# stylua
-cargo install stylua
 # ripgrep
 cargo install ripgrep
 
