@@ -9,10 +9,6 @@ local has_words_before = function()
 end
 
 local lsp_mappings = {
-	-- ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-	-- ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-	-- ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-	-- ["<C-Space>"] = cmp.mapping.complete(),
 	["<Tab>"] = cmp.mapping(function(fallback)
 		if cmp.visible() then
 			cmp.select_next_item()
@@ -54,7 +50,16 @@ local lsp_mappings = {
 			fallback()
 		end
 	end, { "i" }),
-	["<C-Space>"] = cmp.mapping.complete(),
+	-- ["<C-Space>"] = cmp.mapping.complete(),
+	-- ["<C-Space>"] = cmp.mapping(function(fallback)
+        -- vim.fn["copilot#Accept"]("")
+		-- if vim.b._copilot_suggestion ~= nil then
+		-- 	vim.fn.feedkeys(vim.api.nvim_replace_termcodes(vim.fn["copilot#Accept"](), true, true, true), "")
+  --           vim.cmd("q")
+  --       else
+  --           vim.cmd("w")
+		-- end
+	-- end, { "i" }),
 }
 
 cmp.setup({
@@ -80,11 +85,11 @@ cmp.setup({
 		documentation = {
 			zindex = 1,
 			border = "rounded",
-            scrollbar = false,
+			scrollbar = false,
 		},
 		completion = {
 			zindex = 2,
-            scrollbar = false,
+			scrollbar = false,
 		},
 	},
 	formatting = {
@@ -131,7 +136,7 @@ local cmd_mappings = {
 			end
 		end,
 	},
-	["<C-Space>"] = cmp.mapping.complete(),
+	-- ["<C-Space>"] = cmp.mapping.complete(),
 }
 
 cmp.setup.cmdline("/", {

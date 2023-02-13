@@ -1,4 +1,7 @@
 return function()
+    -- backward kill word
+    vim.keymap.set("i", "<C-^>", "<C-w>")
+
 	-- netrw
 	vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 

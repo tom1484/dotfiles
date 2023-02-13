@@ -28,7 +28,8 @@ curl https://sh.rustup.rs -sSf | sh
 wget https://go.dev/dl/go1.20.linux-amd64.tar.gz -O tmp/go.tar.gz
 sudo tar -C /usr/local -xzf tmp/go.tar.gz
 # javascript
-sudo apt install -y npm
+curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash -
+sudo apt-get install -y nodejs
 sudo npm install --global yarn
 # julia
 wget https://julialang-s3.julialang.org/bin/linux/x64/1.8/julia-1.8.5-linux-x86_64.tar.gz -O tmp/julia.tar.gz

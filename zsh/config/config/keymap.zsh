@@ -1,4 +1,4 @@
-bindkey '^H' backward-kill-word
+bindkey '^^' backward-kill-word
 
 # delay of escape
 # 10ms for key sequences
