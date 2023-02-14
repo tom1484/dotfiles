@@ -5,6 +5,7 @@ return {
 		tag = "0.1.0",
 		dependencies = { { "nvim-lua/plenary.nvim" } },
 	},
+    -- "nvim-pack/nvim-spectre",
 	-- vscode colorscheme
 	{
 		"Mofiqul/vscode.nvim",

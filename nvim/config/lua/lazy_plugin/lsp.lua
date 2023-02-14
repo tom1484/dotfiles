@@ -7,14 +7,14 @@ return {
 
 		-- lsp.preset("recommended")
 		lsp.ensure_installed({
-			-- "bashls",
 			"clangd",
 			"eslint",
 			"gopls",
 			"html",
 			"jsonls",
 			"julials",
-			"sumneko_lua",
+            -- "lua-language-server",
+			"lua_ls",
 			"pylsp",
 			"rust_analyzer",
 			"taplo",
@@ -22,7 +22,7 @@ return {
 		})
 
 		-- Fix Undefined global 'vim'
-		lsp.configure("sumneko_lua", {
+		lsp.configure("lua_ls", {
 			settings = {
 				Lua = {
 					diagnostics = {
@@ -60,6 +60,9 @@ return {
 			vim.keymap.set("n", "<leader>vh", function()
 				vim.lsp.buf.hover()
 				-- vim.lsp.buf.signature_help()
+			end, opts)
+			vim.keymap.set("n", "<leader>vw", function()
+				vim.diagnostic.open_float()
 			end, opts)
 			-- vim.keymap.set("n", "L", function()
 			--     vim.diagnostic.open_float(0, { scope = "line", border = "rounded" })

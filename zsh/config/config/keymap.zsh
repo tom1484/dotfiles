@@ -1,4 +1,4 @@
-bindkey '^^' backward-kill-word
+bindkey '^H' backward-kill-word
 bindkey '^ ' autosuggest-accept
 
 # delay of escape
