@@ -13,7 +13,7 @@ alias jupyter-lab="~/.local/bin/jupyter-lab --no-browser"
 
 # git alias
 alias ga="git add"
-alias gc="git commit -m"
+alias gc="git commit"
 alias gp="git push"
 alias gf="git fetch"
 alias gr="git rebase"

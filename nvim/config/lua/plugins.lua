@@ -81,10 +81,10 @@ return {
 		},
 	},
 	-- copilot
-	{
-		"github/copilot.vim",
-		lazy = false,
-	},
+	-- {
+	-- 	"github/copilot.vim",
+	-- 	lazy = false,
+	-- },
 	-- nvim-tmux-navigation
 	"alexghergh/nvim-tmux-navigation",
 	-- JABS

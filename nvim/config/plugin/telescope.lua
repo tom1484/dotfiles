@@ -15,14 +15,23 @@ require("telescope").setup({
                 ["<S-Tab>"] = "move_selection_previous",
             },
             n = {
-                ["<C-s>"] = "send_selected_to_qflist",
-                -- ["<C-s>"] = "add_to_qflist",
+                -- ["<C-s>"] = "send_selected_to_qflist",
+                ["<C-s>"] = "smart_send_to_qflist",
             },
         },
         sorting_strategy = "ascending",
         layout_strategy = "flex",
         layout_config = {
             prompt_position = "top",
+        },
+        vimgrep_arguments = {
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
         },
     },
     pickers = {
@@ -50,12 +59,21 @@ vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
 vim.keymap.set("n", "<leader>pb", builtin.buffers, {})
 vim.keymap.set("n", "<leader>pg", builtin.git_files, {})
 
--- vim.keymap.set("n", "<leader>ps", function()
--- 	builtin.grep_string({ search = vim.fn.input("Grep > ") })
--- end)
--- vim.keymap.set("n", "<leader>ps", builtin.grep_string, {})
-vim.keymap.set("n", "<leader>ps", builtin.live_grep, {})
+vim.keymap.set("n", "<leader>ps", function()
+    builtin.live_grep({
+    -- builtin.grep_string({
+        -- search = vim.fn.input("Grep > "),
+        use_regex = true,
+    })
+end)
+-- vim.keymap.set("n", "<leader>ps", builtin.live_grep, {})
 
 vim.keymap.set("n", "<leader>fs", function()
-    builtin.live_grep({ search_dirs = { "%:p" } })
+    -- builtin.grep_string({
+    builtin.live_grep({
+        -- search = vim.fn.input("Grep > "),
+        search_dirs = { "%:p" },
+        path_display = "hidden",
+        use_regex = true,
+    })
 end, {})
