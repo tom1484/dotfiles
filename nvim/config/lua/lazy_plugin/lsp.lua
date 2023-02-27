@@ -6,6 +6,7 @@ return {
 		})
 
 		-- lsp.preset("recommended")
+		--
 		lsp.ensure_installed({
 			"clangd",
 			"eslint",
@@ -13,12 +14,10 @@ return {
 			"html",
 			"jsonls",
 			"julials",
-			-- "lua-language-server",
 			"lua_ls",
 			"pylsp",
 			"rust_analyzer",
 			"taplo",
-			"tsserver",
 		})
 
 		-- Fix Undefined global 'vim'

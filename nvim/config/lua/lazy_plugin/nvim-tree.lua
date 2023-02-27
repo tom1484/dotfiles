@@ -2,9 +2,8 @@ return {
     init = function()
         -- set termguicolors to enable highlight groups
         vim.opt.termguicolors = true
-
         vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeToggle)
-    end, 
+    end,
     setup = function()
         require("nvim-tree").setup({
             sort_by = "case_sensitive",
@@ -13,8 +12,8 @@ return {
                 mappings = {
                     list = {
                         { key = "u", action = "dir_up" },
-                        { key = "<C-h>", action = "vsplit" },
-                        { key = "<C-v>", action = "split" },
+                        { key = "h", action = "vsplit" },
+                        { key = "v", action = "split" },
                     },
                 },
             },
@@ -25,6 +24,5 @@ return {
                 dotfiles = true,
             },
         })
-    end, 
+    end,
 }
-

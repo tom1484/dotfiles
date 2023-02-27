@@ -37,7 +37,7 @@ return {
 	{
 		"VonHeikemen/lsp-zero.nvim",
 		lazy = true,
-		event = "UIEnter",
+		event = "VimEnter",
 		init = require("lazy_plugin.lsp").init,
 		config = function()
 			local timer = vim.loop.new_timer()
@@ -70,7 +70,7 @@ return {
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		lazy = true,
-		event = "UIEnter",
+		event = "VimEnter",
 		init = require("lazy_plugin.null-ls").init,
 		config = function()
 			local timer = vim.loop.new_timer()
@@ -110,7 +110,7 @@ return {
 		"nvim-tree/nvim-tree.lua",
 		lazy = true,
 		-- cmd = "NvimTreeToggle",
-		event = "UIEnter",
+		event = "VimEnter",
 		init = require("lazy_plugin.nvim-tree").init,
 		config = function()
 			if vim.o.filetype == "" then
@@ -120,7 +120,6 @@ return {
 				timer:start(100, 0, vim.schedule_wrap(require("lazy_plugin.nvim-tree").setup))
 			end
 		end,
-		-- config = require("lazy_plugin.nvim-tree").setup,
 	},
 	-- TODO highlight
 	{

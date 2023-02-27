@@ -8,14 +8,13 @@ require("telescope").setup({
                 -- actions.which_key shows the mappings for your picker,
                 -- e.g. git_{create, delete, ...}_branch for the git_branches picker
                 -- ["<Esc>"] = "close",
-                ["<C-h>"] = "select_vertical",
-                ["<C-v>"] = "select_horizontal",
-                ["<C-t>"] = "select_tab",
                 ["<Tab>"] = "move_selection_next",
                 ["<S-Tab>"] = "move_selection_previous",
             },
             n = {
-                -- ["<C-s>"] = "send_selected_to_qflist",
+                ["h"] = "select_vertical",
+                ["v"] = "select_horizontal",
+                ["t"] = "select_tab",
                 ["<C-s>"] = "smart_send_to_qflist",
             },
         },

@@ -56,9 +56,9 @@ require("jabs").setup({
 	keymap = {
 		-- close = "d", -- Close buffer. Default D
 		jump = "<cr>", -- Jump to buffer. Default <cr>
-		h_split = "<C-h>", -- Horizontally split buffer. Default s
-		v_split = "<C-v>", -- Vertically split buffer. Default v
-		preview = "<C-p>", -- Open buffer preview. Default P
+		h_split = "v", -- Horizontally split buffer. Default s
+		v_split = "h", -- Vertically split buffer. Default v
+		preview = "p", -- Open buffer preview. Default P
 	},
 
 	-- Whether to use nvim-web-devicons next to filenames

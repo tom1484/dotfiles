@@ -1,11 +1,12 @@
 return function()
     -- backward kill word
     vim.keymap.set("i", "<C-H>", "<C-w>")
+    -- vim.keymap.set("i", "<C-H>", "<C-w>")
     -- vim.keymap.set("i", "<C-^>", "<C-O>b", { silent = true })
     -- vim.keymap.set("i", "<C-L>", "<C-O>w", { silent = true })
 
 	-- netrw
-	vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+	-- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 	-- panes manipulation
 	vim.keymap.set("n", "<leader>wt", ":tabe ")
