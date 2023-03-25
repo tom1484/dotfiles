@@ -1,11 +1,14 @@
 require("transparent").setup({
-	enable = true, -- boolean: enable transparent
+	-- enable = true, -- boolean: enable transparent
 	extra_groups = { -- table/string: additional groups that should be cleared
 		"NormalFloat",
 		"FloatBorder",
 		"TelescopeNormal",
 		"TelescopeBorder",
+        "NvimTreeNormal",
+        "VertSplit",
 	},
-	exclude = {}, -- table: groups you don't want to clear
+	exclude_groups = {}, -- table: groups you don't want to clear
 })
 
+vim.g.transparent_enabled = true

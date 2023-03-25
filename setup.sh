@@ -40,6 +40,8 @@ sudo mv tmp/julia-1.8.5 /usr/local/julia
 # fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
+# fd
+sudo apt install -y fd-find
 # bat
 sudo apt install bat
 sudo ln -s /usr/bin/batcat /usr/bin/bat

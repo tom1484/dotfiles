@@ -1,6 +1,5 @@
 return {
-    init = function()
-    end,
+    init = function() end,
     setup = function()
         local null_ls = require("null-ls")
 
@@ -12,16 +11,31 @@ return {
             sources = {
                 formatting.autopep8,
                 formatting.beautysh,
-                formatting.cbfmt,
+                -- formatting.cbfmt,
                 formatting.clang_format.with({
                     extra_args = {
                         "--style",
                         "{BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 100}",
                     },
                 }),
+                formatting.eslint_d,
                 formatting.gofumpt,
                 formatting.goimports,
-                formatting.prettierd,
+                formatting.prettierd.with({
+                    filetypes = {
+                        "css",
+                        "scss",
+                        "less",
+                        "html",
+                        "json",
+                        "jsonc",
+                        "yaml",
+                        "markdown",
+                        "markdown.mdx",
+                        "graphql",
+                        "handlebars",
+                    },
+                }),
                 formatting.rustfmt,
                 formatting.stylua.with({
                     extra_args = {
@@ -29,9 +43,10 @@ return {
                         "Spaces",
                     },
                 }),
-                formatting.jq,
+                -- formatting.jq,
 
                 diagnostics.commitlint,
+                diagnostics.eslint_d,
                 diagnostics.jsonlint,
                 diagnostics.staticcheck,
             },
