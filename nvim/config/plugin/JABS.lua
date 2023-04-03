@@ -54,11 +54,11 @@ require("jabs").setup({
 
 	-- Keymaps
 	keymap = {
-		-- close = "d", -- Close buffer. Default D
+		close = "D", -- Close buffer. Default D
 		jump = "<cr>", -- Jump to buffer. Default <cr>
 		h_split = "v", -- Horizontally split buffer. Default s
 		v_split = "h", -- Vertically split buffer. Default v
-		preview = "p", -- Open buffer preview. Default P
+		-- preview = "P", -- Open buffer preview. Default P
 	},
 
 	-- Whether to use nvim-web-devicons next to filenames
