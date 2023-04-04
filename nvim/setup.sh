@@ -11,6 +11,8 @@ sudo make install && cd ../..
 cargo install tree-sitter-cli
 # ripgrep
 cargo install ripgrep
+# pylsp
+pip3 install python-lsp-server
 
 ### Configurations
 mkdir -p ~/.config/nvim
