@@ -11,14 +11,13 @@ return {
             sources = {
                 formatting.autopep8,
                 formatting.beautysh,
-                -- formatting.cbfmt,
                 formatting.clang_format.with({
                     extra_args = {
                         "--style",
                         "{BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 100}",
                     },
                 }),
-                formatting.eslint_d,
+                formatting.eslint,
                 formatting.gofumpt,
                 formatting.goimports,
                 formatting.prettierd.with({
@@ -43,10 +42,9 @@ return {
                         "Spaces",
                     },
                 }),
-                -- formatting.jq,
 
                 diagnostics.commitlint,
-                diagnostics.eslint_d,
+                diagnostics.eslint,
                 diagnostics.jsonlint,
                 diagnostics.staticcheck,
             },
@@ -58,7 +56,7 @@ return {
                     end)
                 end
 
-                require("lazy_plugin.mason-null-ls")
+                -- require("lazy_plugin.mason-null-ls")
             end,
         })
     end,

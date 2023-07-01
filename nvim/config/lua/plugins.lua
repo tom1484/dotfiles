@@ -41,7 +41,7 @@ return {
             "onsails/lspkind.nvim",
             -- Snippets
             "L3MON4D3/LuaSnip",
-            "rafamadriz/friendly-snippets",
+            -- "rafamadriz/friendly-snippets",
         },
     },
     -- null-ls
@@ -65,6 +65,24 @@ return {
         init = require("lazy_plugin.nvim-tree").init,
         config = require("lazy_plugin.nvim-tree").setup,
     },
+    -- chatgpt
+    -- {
+    --     "jackMort/ChatGPT.nvim",
+    --     event = "VimEnter",
+    --     config = function()
+    --         require("chatgpt").setup({
+    --             keymaps = {
+    --                 submit = "<C-s>",
+    --             },
+    --         })
+    --     end,
+    --     dependencies = {
+    --         "MunifTanjim/nui.nvim",
+    --         "nvim-lua/plenary.nvim",
+    --         "nvim-telescope/telescope.nvim",
+    --     },
+    -- },
+    -- leap
     {
         "ggandor/leap.nvim",
         dependencies = { "tpope/vim-repeat" },
@@ -78,16 +96,6 @@ return {
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
     },
-    -- undotree
-    {
-        "mbbill/undotree",
-        lazy = false,
-    },
-    -- vim-fugitive
-    {
-        "tpope/vim-fugitive",
-        lazy = false,
-    },
     -- Comment
     {
         "numToStr/Comment.nvim",
@@ -97,10 +105,10 @@ return {
         "nvim-lualine/lualine.nvim",
     },
     -- copilot
-    -- {
-    -- 	"github/copilot.vim",
-    -- 	lazy = false,
-    -- },
+    {
+        "github/copilot.vim",
+        event = "UIEnter",
+    },
     -- nvim-tmux-navigation
     {
         "alexghergh/nvim-tmux-navigation",
@@ -125,5 +133,34 @@ return {
     -- Trouble
     {
         "folke/trouble.nvim",
+    },
+    -- notify
+    -- {
+    --     "rcarriga/nvim-notify",
+    -- },
+    -- fine-cmdline
+    -- {
+    --     "VonHeikemen/fine-cmdline.nvim",
+    --     dependencies = { "MunifTanjim/nui.nvim" },
+    -- },
+    -- tabline
+    {
+        "alvarosevilla95/luatab.nvim",
+        requires = "nvim-tree/nvim-web-devicons",
+    },
+    -- expand region
+    {
+        "terryma/vim-expand-region",
+        lazy = false,
+    },
+    -- undotree
+    {
+        "mbbill/undotree",
+        lazy = false,
+    },
+    -- vim-fugitive
+    {
+        "tpope/vim-fugitive",
+        lazy = false,
     },
 }

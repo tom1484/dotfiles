@@ -8,7 +8,7 @@ return {
         -- lsp.preset("recommended")
         lsp.ensure_installed({
             "clangd",
-            "eslint",
+            -- "eslint",
             "gopls",
             "html",
             "jsonls",
@@ -17,6 +17,7 @@ return {
             "pylsp",
             "rust_analyzer",
             "taplo",
+            "tsserver",
         })
 
         -- Fix Undefined global 'vim'
@@ -40,22 +41,12 @@ return {
             },
         })
 
-        lsp.configure("eslint", {
-            on_attach = function(client, bufnr)
-                print("hello tsserver")
-            end,
-            settings = {
-                completions = {
-                    completeFunctionCalls = true,
-                },
-            },
-        })
-
         lsp.on_attach(function(client, bufnr)
             local lsp_signature = require("lsp_signature")
             lsp_signature.on_attach({
                 bind = true,
                 floating_window = false,
+                -- floating_window = true,
                 handler_opts = {
                     border = "rounded",
                 },

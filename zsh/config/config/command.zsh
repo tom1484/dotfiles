@@ -19,3 +19,8 @@ alias gf="git fetch"
 alias gr="git rebase"
 
 alias gfz="git fuzzy"
+
+# vim
+alias vim="nvim"
+
+alias ls="exa"

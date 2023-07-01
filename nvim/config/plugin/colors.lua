@@ -1,6 +1,7 @@
 -- vim.cmd.colorscheme("tokyonight-night")
 vim.cmd.colorscheme("vscode")
 
+-- vim.cmd([[highlight FloatBorder guifg=#585858 guibg=None]])
 -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "none" })
@@ -9,3 +10,4 @@ vim.cmd.colorscheme("vscode")
 -- vim.api.nvim_set_hl(0, "VertSplit", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "VertSplit", { fg = "none" })
 -- vim.api.nvim_set_hl(0, "FloatBorder", { fg = "white" })
+-- vim.api.nvim_set_hl(0, "FloatBorder", { fg = "white", bg = "none" })

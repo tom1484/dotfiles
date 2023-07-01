@@ -1,0 +1,9 @@
+-- vim.opt.termguicolors = true
+-- vim.notify = require("notify")
+-- vim.notify_once = require("notify")
+--
+-- require("notify").setup({
+--     background_colour = "#000000",
+--     stages = "static",
+--     render = "minimal",
+-- })

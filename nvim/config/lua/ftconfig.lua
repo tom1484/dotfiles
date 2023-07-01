@@ -5,7 +5,7 @@ return function()
     vim.opt.shiftwidth = 4
 
     local tab_ft = { "go", "make" }
-    local two_space_ft = { "javascript", "typescript", "javascriptreact", "typescriptreact", "html" }
+    local two_space_ft = { "jsonc", "json", "yaml", "javascript", "typescript", "javascriptreact", "typescriptreact", "html" }
 
     local find_in_list = function(list, ft)
         for _, v in pairs(list) do

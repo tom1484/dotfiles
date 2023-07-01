@@ -3,12 +3,6 @@ return {
         -- set termguicolors to enable highlight groups
         vim.opt.termguicolors = true
         vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeToggle)
-        vim.api.nvim_create_autocmd({ "BufEnter" }, {
-            pattern = { "NvimTree_*" },
-            callback = function()
-                vim.cmd([[setlocal nonumber norelativenumber]])
-            end,
-        })
     end,
     setup = function()
         require("nvim-tree").setup({
