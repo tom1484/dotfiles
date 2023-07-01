@@ -9,7 +9,8 @@ sudo apt upgrade
 # basic utilities
 sudo apt install -y \
 	tree \
-	net-tools
+	net-tools \
+	curl
 # compilation relevant
 sudo apt install -y \
 	build-essential \
@@ -20,17 +21,17 @@ sudo apt install -y \
 # python
 sudo apt install -y \
 	python3-pip \
-	python3.10-venv
+	python3-venv
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 # rust
 curl https://sh.rustup.rs -sSf | sh
 # golang
 wget https://go.dev/dl/go1.20.linux-amd64.tar.gz -O tmp/go.tar.gz
 sudo tar -C /usr/local -xzf tmp/go.tar.gz
-# javascript
-curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash -
-sudo apt-get install -y nodejs
-sudo npm install --global yarn
+# node
+curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+nvm install 18.14.2 --default
+npm install --global yarn pnpm
 # julia
 wget https://julialang-s3.julialang.org/bin/linux/x64/1.8/julia-1.8.5-linux-x86_64.tar.gz -O tmp/julia.tar.gz
 tar -C tmp/ -xzf tmp/julia.tar.gz
@@ -50,9 +51,9 @@ cargo install --locked broot
 broot
 
 ### Configurations
-sh zsh/setup.sh
-sh tmux/setup.sh
-sh nvim/setup.sh
+cd ./zsh && sh ./setup.sh && cd ../
+cd ./zsh && sh ./setup.sh && cd ../
+cd ./zsh && sh ./setup.sh && cd ../
 
 ### Clean
 rm -rf tmp
