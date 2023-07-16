@@ -1,3 +1,3 @@
 return function()
-    vim.opt.formatoptions:remove({ "c", "r", "o" })
+  vim.opt.formatoptions:remove({ "c", "r", "o" })
 end
