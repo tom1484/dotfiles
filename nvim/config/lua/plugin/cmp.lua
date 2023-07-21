@@ -86,13 +86,14 @@ cmp.setup({
     documentation = {
       zindex = 98,
       border = "rounded",
-      scrollbar = false,
+      winhighlight = "FloatBorder:LspInfoBorder,CursorLine:PmenuSel",
+      scrollbar = true,
     },
     completion = {
       zindex = 99,
-      -- border = "rounded",
-      -- winhighlight = "Normal:None,FloatBorder:None,CursorLine:PmenuSel,Search:None",
-      scrollbar = false,
+      border = "rounded",
+      winhighlight = "FloatBorder:LspInfoBorder,CursorLine:PmenuSel",
+      scrollbar = true,
     },
   },
   formatting = {

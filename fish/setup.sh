@@ -15,9 +15,16 @@ fisher install PatrickF1/fzf.fish
 # z
 fisher install jethrokuan/z
 # sponge
-# fisher install andreiborisov/sponge
+fisher install andreiborisov/sponge
 # auto-pair
-# fisher install jorgebucaran/autopair.fish
+fisher install jorgebucaran/autopair.fish
+# nvm
+fisher install jorgebucaran/nvm.fish
+nvm install v18.14.2
+# mamba
+wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh -O tmp/mamba.sh
+sh tmp/mamba.sh
+mamba init fish
 
 ### Configurations
 cp -r config/* ~/.config/fish/

@@ -1,4 +1,28 @@
-require("telescope").setup({
+local telescope = require("telescope")
+
+local actions = require("telescope.actions")
+
+local hidden_folder_pattern = function(pattern)
+  -- "^%.[^/]*/",
+  return {
+    "^([^/]+/)" .. pattern .. "/",
+    "^" .. pattern .. "/",
+  }
+end
+
+local hidden_folder = {
+  "%.[^/]*",
+  "node_modules",
+}
+local hidden_folder_patterns = {}
+
+for _, folder in ipairs(hidden_folder) do
+  local pattern = hidden_folder_pattern(folder)
+  table.insert(hidden_folder_patterns, pattern[1])
+  table.insert(hidden_folder_patterns, pattern[2])
+end
+
+telescope.setup({
   extensions = {
     ["ui-select"] = {
       require("telescope.themes").get_dropdown({
@@ -21,23 +45,31 @@ require("telescope").setup({
     },
   },
   defaults = {
-    -- Default configuration for telescope goes here:
-    -- config_key = value,
     mappings = {
       i = {
-        -- map actions.which_key to <C-h> (default: <C-/>)
-        -- actions.which_key shows the mappings for your picker,
-        -- e.g. git_{create, delete, ...}_branch for the git_branches picker
-        -- ["<Esc>"] = "close",
-        ["<Tab>"] = "move_selection_next",
-        ["<S-Tab>"] = "move_selection_previous",
+        ["<Tab>"] = actions.move_selection_next,
+        ["<S-Tab>"] = actions.move_selection_previous,
       },
       n = {
-        ["h"] = "select_vertical",
-        ["v"] = "select_horizontal",
-        ["t"] = "select_tab",
-        ["<C-s>"] = "smart_send_to_qflist",
-        ["q"] = "close",
+        ["<Tab>"] = actions.move_selection_next,
+        ["<S-Tab>"] = actions.move_selection_previous,
+
+        ["<C-y>"] = function(prompt_bufnr)
+          actions.toggle_selection(prompt_bufnr)
+          actions.move_selection_next(prompt_bufnr)
+        end,
+        ["<C-n>"] = function(prompt_bufnr)
+          actions.toggle_selection(prompt_bufnr)
+          actions.move_selection_previous(prompt_bufnr)
+        end,
+        ["<C-x>"] = actions.drop_all,
+
+        ["t"] = actions.select_tab,
+        ["h"] = actions.select_vertical,
+        ["v"] = actions.select_horizontal,
+
+        ["<C-s>"] = actions.smart_send_to_qflist,
+        ["q"] = actions.close,
       },
     },
     sorting_strategy = "ascending",
@@ -54,33 +86,26 @@ require("telescope").setup({
       "--column",
       "--smart-case",
     },
-  },
-  pickers = {
-    -- Default configuration for builtin pickers goes here:
-    -- picker_name = {
-    --   picker_config_key = value,
-    --   ...
-    -- }
-    -- Now the picker_config_key will be applied every time you call this
-    -- builtin picker
-  },
-  extensions = {
-    -- Your extension configuration goes here:
-    -- extension_name = {
-    --   extension_config_key = value,
-    -- }
-    -- please take a look at the readme of the extension you want to configure
+    file_ignore_patterns = hidden_folder_patterns,
   },
 })
 
 require("telescope").load_extension("ui-select")
 
 local builtin = require("telescope.builtin")
--- local themes = require("telescope.themes")
 
-vim.keymap.set("n", "<leader>pf", function()
-  builtin.find_files({ hidden = true })
-end, {})
+local find_files = function()
+  builtin.find_files({
+    hidden = true,
+    no_ignore = true,
+  })
+end
+
+vim.custom.fn = vim.tbl_extend("force", vim.custom.fn, {
+  find_files = find_files,
+})
+
+vim.keymap.set("n", "<leader>pf", find_files, {})
 vim.keymap.set("n", "<leader>pb", builtin.buffers, {})
 vim.keymap.set("n", "<leader>pg", builtin.git_files, {})
 

@@ -42,6 +42,10 @@ end
 
 vim.opt.runtimepath:prepend(lazypath)
 
+vim.custom = {
+  fn = {},
+}
+
 require("lazy").setup("plugins", require("configurations"))
 
 vim.api.nvim_create_autocmd("User", {

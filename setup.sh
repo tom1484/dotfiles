@@ -28,10 +28,6 @@ curl https://sh.rustup.rs -sSf | sh
 # golang
 wget https://go.dev/dl/go1.20.linux-amd64.tar.gz -O tmp/go.tar.gz
 sudo tar -C /usr/local -xzf tmp/go.tar.gz
-# node
-curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-nvm install 18.14.2 --default
-npm install --global yarn pnpm
 # julia
 wget https://julialang-s3.julialang.org/bin/linux/x64/1.8/julia-1.8.5-linux-x86_64.tar.gz -O tmp/julia.tar.gz
 tar -C tmp/ -xzf tmp/julia.tar.gz
@@ -50,10 +46,10 @@ sudo ln -s /usr/bin/batcat /usr/bin/bat
 cargo install --locked broot
 broot
 
-### Configurations
-cd ./zsh && sh ./setup.sh && cd ../
-cd ./zsh && sh ./setup.sh && cd ../
-cd ./zsh && sh ./setup.sh && cd ../
+### Configuration
+cd ./fish && sh ./setup.sh && cd ../
+cd ./nvim && sh ./setup.sh && cd ../
+cd ./kitty && sh ./setup.sh && cd ../
 
 ### Clean
 rm -rf tmp

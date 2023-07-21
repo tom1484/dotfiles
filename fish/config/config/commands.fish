@@ -26,7 +26,7 @@ end
 if type -q nvim
     alias vim="nvim"
 end
-if type -q rip
-    alias rm="rip"
-end
+# if type -q rip
+#     alias rm="rip"
+# end
 

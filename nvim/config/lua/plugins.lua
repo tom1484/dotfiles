@@ -2,7 +2,11 @@ return {
   -- Alpha
   {
     "goolord/alpha-nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      "nvim-telescope/telescope.nvim",
+      "rmagatti/auto-session",
+    },
     lazy = false,
     config = function()
       require("plugin.alpha")
@@ -25,7 +29,6 @@ return {
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
-      -- Autocompletion
       "hrsh7th/nvim-cmp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
@@ -40,27 +43,7 @@ return {
       require("plugin.cmp")
     end,
   },
-  -- lsp-zero
-  -- {
-  --     "VonHeikemen/lsp-zero.nvim",
-  --     dependencies = {
-  --         -- LSP Support
-  --         "neovim/nvim-lspconfig",
-  --         "williamboman/mason.nvim",
-  --         "williamboman/mason-lspconfig.nvim",
-  --         -- "hrsh7th/cmp-nvim-lsp-signature-help",
-  --         "ray-x/lsp_signature.nvim",
-  --         "onsails/lspkind.nvim",
-  --         -- Snippets
-  --         "L3MON4D3/LuaSnip",
-  --         -- Support
-  --         "nvim-telescope/telescope.nvim",
-  --     },
-  --     event = { "BufReadPost", "VeryLazy" },
-  --     config = function()
-  --         require("plugin.lsp")
-  --     end,
-  -- },
+  -- lspconfig
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -130,16 +113,17 @@ return {
       require("plugin.nvim-tree")
     end,
   },
-  {
-    "Shatur/neovim-session-manager",
-    event = "VeryLazy",
-    config = function()
-      -- require("plugin.")
-    end,
-    dependencies = {
-      "plenary.nvim",
-    },
-  },
+  -- {
+  --   "Shatur/neovim-session-manager",
+  --   -- event = "VeryLazy",
+  --   lazy = false,
+  --   config = function()
+  --     -- require("plugin.")
+  --   end,
+  --   dependencies = {
+  --     "plenary.nvim",
+  --   },
+  -- },
   -- chatgpt
   {
     "jackMort/ChatGPT.nvim",
@@ -165,10 +149,17 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
-    lazy = true,
     event = "VeryLazy",
     config = function()
       require("plugin.treesitter")
+    end,
+  },
+  -- Treesitter-ontext
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    event = "VeryLazy",
+    config = function()
+      require("plugin.treesitter-context")
     end,
   },
   -- Comment
@@ -197,13 +188,13 @@ return {
     end,
   },
   -- nvim-tmux-navigation
-  {
-    "alexghergh/nvim-tmux-navigation",
-    event = "VeryLazy",
-    config = function()
-      require("plugin.tmux-navigation")
-    end,
-  },
+  -- {
+  --   "alexghergh/nvim-tmux-navigation",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require("plugin.tmux-navigation")
+  --   end,
+  -- },
   -- JABS
   {
     "matbme/JABS.nvim",
@@ -249,20 +240,6 @@ return {
   -- {
   --     "rcarriga/nvim-notify",
   -- },
-  -- fine-cmdline
-  -- {
-  --     "VonHeikemen/fine-cmdline.nvim",
-  --     dependencies = { "MunifTanjim/nui.nvim" },
-  -- },
-  -- tabline
-  {
-    "alvarosevilla95/luatab.nvim",
-    requires = "nvim-tree/nvim-web-devicons",
-    event = "VeryLazy",
-    config = function()
-      require("plugin.luatab")
-    end,
-  },
   -- expand region
   {
     "terryma/vim-expand-region",
@@ -289,11 +266,11 @@ return {
   },
   -- nvterm
   {
-      "NvChad/nvterm",
-      event = "VeryLazy",
-      config = function()
-          require("plugin.nvterm")
-      end,
+    "NvChad/nvterm",
+    event = "VeryLazy",
+    config = function()
+      require("plugin.nvterm")
+    end,
   },
   -- flash.nvim
   {
@@ -303,10 +280,55 @@ return {
       require("plugin.flash")
     end,
   },
-  -- -- FineCmdline
+  -- Kitty navigation
+  {
+    "knubie/vim-kitty-navigator",
+    run = "cp ./*.py ~/.config/kitty/",
+    event = "VeryLazy",
+    config = function()
+      require("plugin.kitty-navigator")
+    end,
+  },
+  -- auto-session
+  {
+    "rmagatti/auto-session",
+    lazy = false,
+    config = function()
+      require("plugin.auto-session")
+    end,
+  },
+  -- luatab
+  {
+    "alvarosevilla95/luatab.nvim",
+    requires = "nvim-tree/nvim-web-devicons",
+    event = "VeryLazy",
+    config = function()
+      require("plugin.luatab")
+    end,
+  },
   -- {
-  --     "VonHeikemen/fine-cmdline.nvim",
-  --     dependencies = { "MunifTanjim/nui.nvim" },
-  --     event = "VeryLazy",
+  --   "edluffy/hologram.nvim",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require("plugin.hologram")
+  --   end,
+  -- },
+  -- {
+  --   "karb94/neoscroll.nvim",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require("neoscroll").setup({
+  --       mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>", "zt", "zz", "zb" },
+  --       hide_cursor = true, -- Hide cursor while scrolling
+  --       stop_eof = true, -- Stop at <EOF> when scrolling downwards
+  --       respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+  --       cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+  --       easing_function = nil, -- Default easing function
+  --       pre_hook = nil, -- Function to run before the scrolling animation starts
+  --       post_hook = nil, -- Function to run after the scrolling animation ends
+  --       performance_mode = false, -- Disable "Performance Mode" on all buffers.
+  --     })
+  --     -- require("plugin.neoscroll")
+  --   end,
   -- },
 }

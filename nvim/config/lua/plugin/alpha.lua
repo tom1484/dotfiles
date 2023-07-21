@@ -99,7 +99,7 @@ db.section.buttons.val = {
   -- db.button("o", "  Recently opened files", ":Telescope oldfiles<CR>"),
   -- db.button("q", "  Quit NVIM", ":qa<CR>"),
   db.button("e", "-  New file", ":ene<CR>"),
-  db.button("f", "-  Find file", ":Telescope find_files hidden=true<CR>"),
+  db.button("f", "-  Find file", ":lua vim.custom.fn.find_files()<CR>"),
   db.button("s", "-  Find word", ":Telescope live_grep<CR>"),
   db.button("o", "-  Recently opened files", ":Telescope oldfiles<CR>"),
   db.button("q", "-  Quit NVIM", ":qa<CR>"),

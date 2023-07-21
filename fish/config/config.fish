@@ -1,8 +1,9 @@
 # Commands to run in interactive sessions can go here
 source ~/.config/fish/config/envs.fish
 
+
 if status is-interactive
-    set -g fish_greeting
+    set -g fish_greeting "Welcome to fish, the friendly interactive shell"
 
     source ~/.config/fish/config/commands.fish
     source ~/.config/fish/config/keymap.fish

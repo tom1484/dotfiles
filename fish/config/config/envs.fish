@@ -12,3 +12,5 @@ fish_add_path /usr/local/julia/bin
 # CharGPT key
 set -Ux OPENAI_API_KEY "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"
 
+# nvm
+set -Ux nvm_default_version v18.14.2

@@ -1,6 +1,6 @@
 return function()
   -- backward kill word
-  vim.keymap.set("i", "<C-H>", "<C-w>")
+  vim.keymap.set("i", "<C-h>", "<C-w>")
   -- vim.keymap.set("n", "<C-H>", "<cmd>")
   -- vim.keymap.set("n", "<C-^>", "<C-O>b", { silent = true })
   -- vim.keymap.set("i", "<C-L>", "<C-O>w", { silent = true })
