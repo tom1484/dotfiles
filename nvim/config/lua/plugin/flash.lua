@@ -1,5 +1,13 @@
 local flash = require("flash")
 
+flash.setup({
+  modes = {
+    char = {
+      keys = {},
+    },
+  },
+})
+
 local mappings = {
   {
     { "n", "x", "o" },

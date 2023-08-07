@@ -40,7 +40,12 @@ null_ls.setup({
         "2",
       },
     }),
-    formatting.autopep8,
+    formatting.black.with({
+      extra_args = {
+        "--line-length",
+        "88",
+      },
+    }),
     formatting.eslint_d,
 
     diagnostics.cmake_lint,
@@ -50,11 +55,18 @@ null_ls.setup({
     diagnostics.ruff,
   },
   on_attach = function(client, bufnr)
-    -- if client.supports_method("textDocument/formatting") then
-    vim.keymap.set("n", "<leader>vf", function()
-      vim.lsp.buf.format()
-      vim.cmd.w()
-    end)
-    -- end
+    if client.supports_method("textDocument/formatting") then
+      -- print(client.name .. " attached to " .. vim.api.nvim_buf_get_name(bufnr))
+      vim.keymap.set("n", "<leader>vf", function()
+        vim.lsp.buf.format({
+          -- filter = function(client)
+          --   -- print(client.name)
+          --   -- vim.notify(client.name)
+          --   return client.name ~= "tsserver"
+          -- end,
+        })
+        vim.cmd.w()
+      end)
+    end
   end,
 })

@@ -12,27 +12,27 @@ local lsp = require("lspconfig")
 -- "taplo"
 -- "pyright"
 -- "tsserver"
+-- "arduino_language_server"
 
-lsp.lua_ls.setup(require("plugin.lspconfig.nvim_workspace")({
-  library = vim.api.nvim_get_runtime_file("", true),
-}))
-lsp.pyright.setup({})
-lsp.clangd.setup({})
-lsp.cmake.setup({})
-lsp.gopls.setup({})
-lsp.html.setup({})
-lsp.jsonls.setup({})
-lsp.julials.setup({})
-lsp.rust_analyzer.setup({})
-lsp.tailwindcss.setup({})
-lsp.taplo.setup({})
-lsp.pyright.setup({})
-lsp.tsserver.setup({})
+require("plugin.lspconfig.configs.lua")
+require("plugin.lspconfig.configs.clangd")
+require("plugin.lspconfig.configs.pyright")
+require("plugin.lspconfig.configs.cmake")
+require("plugin.lspconfig.configs.gopls")
+require("plugin.lspconfig.configs.html")
+require("plugin.lspconfig.configs.jsonls")
+require("plugin.lspconfig.configs.rust_analyzer")
+require("plugin.lspconfig.configs.tailwindcss")
+require("plugin.lspconfig.configs.taplo")
+require("plugin.lspconfig.configs.tsserver")
+-- require("plugin.lspconfig.configs.arduino_language_server")
+-- vim.notify("Config LSP")
+-- require("plugin.Arduino")
 
 -- LspAttach
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-  callback = require("plugin.lspconfig.attach_callback"),
+  callback = require("plugin.lspconfig.utils.attach_callback"),
 })
 
 vim.diagnostic.config({
@@ -57,3 +57,6 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 --     border = "rounded",
 -- })
 require("lspconfig.ui.windows").default_options.border = "rounded"
+
+
+

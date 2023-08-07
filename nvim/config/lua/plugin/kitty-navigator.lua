@@ -1,6 +1,6 @@
 vim.g.kitty_navigator_no_mappings = 1
 
-local modes = { "n" }
+local modes = { "n", "c", "t" }
 local opts = { remap = false, silent = true }
 
 vim.keymap.set(modes, "<C-h>", vim.cmd.KittyNavigateLeft, opts)

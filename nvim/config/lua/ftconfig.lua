@@ -20,8 +20,10 @@ return function()
     "typescript",
     "javascriptreact",
     "typescriptreact",
+    -- "python",
     "html",
     "lua",
+    "cmake"
   }
 
   local find_in_list = function(list, ft)

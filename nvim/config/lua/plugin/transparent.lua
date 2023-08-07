@@ -7,9 +7,9 @@ require("transparent").setup({
     "TelescopeBorder",
     "NvimTreeNormal",
     "VertSplit",
+    "NoiceFormatProgressTodo",
   },
-  exclude_groups = {
-  }, -- table: groups you don't want to clear
+  exclude_groups = {}, -- table: groups you don't want to clear
 })
 
 vim.g.transparent_enabled = true

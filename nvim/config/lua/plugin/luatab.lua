@@ -6,7 +6,8 @@ local helpers = luatab.helpers
 local hls = {
   select_fg = "#ffffff",
   select_bg = "#0a7aca",
-  normal_fg = "#1a70b7",
+  -- normal_fg = "#1a70b7",
+  normal_fg = "#0a7aca",
   normal_bg = "#373737",
   bar_bg = "#252526",
 }

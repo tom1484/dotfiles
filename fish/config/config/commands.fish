@@ -12,6 +12,7 @@
 # alias jupyter-lab="~/.local/bin/jupyter-lab --no-browser"
 
 # git alias
+alias gs="git status"
 alias ga="git add"
 alias gc="git commit"
 alias gp="git push"
@@ -29,4 +30,7 @@ end
 # if type -q rip
 #     alias rm="rip"
 # end
+
+# esp-idf
+alias get_idf=". $HOME/esp/esp-idf/export.fish"
 

@@ -12,5 +12,6 @@ require("mason-lspconfig").setup({
     "taplo",
     "pyright",
     "tsserver",
+    "arduino_language_server",
   },
 })

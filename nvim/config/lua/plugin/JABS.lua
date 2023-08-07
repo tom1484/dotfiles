@@ -1,29 +1,30 @@
 require("jabs").setup({
   -- Options for the main window
-  position = { "center", "top" }, -- position = {'<position_x>', '<position_y>'} | <position_x> left, center, right,
-  --                                             <position_y> top, center, bottom
+  position = { "center", "center" }, -- position = {'<position_x>', '<position_y>'} | <position_x> left, center, right,
+  --                                                 <position_y> top, center, bottom
   -- Default {'right', 'bottom'}
 
+  -- relative = "win", -- win, editor, cursor. Default win
   relative = "editor", -- win, editor, cursor. Default win
-  clip_popup_size = false, -- clips the popup size to the win (or editor) size. Default true
+  clip_popup_size = true, -- clips the popup size to the win (or editor) size. Default true
 
   width = 80, -- default 50
   height = 20, -- default 10
   border = "rounded", -- none, single, double, rounded, solid, shadow, (or an array or chars). Default shadow
 
-  offset = { -- window position offset
-    top = 2, -- default 0
-    bottom = 2, -- default 0
-    left = 2, -- default 0
-    right = 2, -- default 0
-  },
+  -- offset = {
+  --   top = 2, -- default 0
+  --   bottom = 2, -- default 0
+  --   left = 2, -- default 0
+  --   right = 2, -- default 0
+  -- },
 
   sort_mru = true, -- Sort buffers by most recently used (true or false). Default false
   split_filename = true, -- Split filename into separate components for name and path. Default false
   split_filename_path_width = 20, -- If split_filename is true, how wide the column for the path is supposed to be, Default 0 (don't show path)
 
   -- Options for preview window
-  preview_position = "left", -- top, bottom, left, right. Default top
+  preview_position = "top", -- top, bottom, left, right. Default top
   preview = {
     width = 40, -- default 70
     height = 60, -- default 30
@@ -58,8 +59,6 @@ require("jabs").setup({
     jump = "<cr>", -- Jump to buffer. Default <cr>
     h_split = "v", -- Horizontally split buffer. Default s
     v_split = "h", -- Vertically split buffer. Default v
-    tab = "t",
-    -- preview = "P", -- Open buffer preview. Default P
   },
 
   -- Whether to use nvim-web-devicons next to filenames

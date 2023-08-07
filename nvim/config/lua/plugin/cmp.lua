@@ -12,8 +12,8 @@ local lsp_mappings = {
   ["<Tab>"] = cmp.mapping(function(fallback)
     if cmp.visible() then
       cmp.select_next_item()
-    elseif has_words_before() then
-      cmp.complete()
+    -- elseif has_words_before() then
+    --   cmp.complete()
     else
       fallback()
     end
@@ -78,7 +78,7 @@ cmp.setup({
     { name = "path" },
     { name = "nvim_lsp" },
     { name = "luasnip" }, -- For luasnip users.
-    -- { name = "dap" },
+    { name = "dap" },
   }, {
     { name = "buffer" },
   }),
@@ -140,7 +140,6 @@ local cmd_mappings = {
       end
     end,
   },
-  -- ["<C-Space>"] = cmp.mapping.complete(),
 }
 
 cmp.setup.cmdline("/", {
