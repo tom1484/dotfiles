@@ -55,6 +55,7 @@ sudo install lazygit /usr/local/bin
 cd ./fish && sh ./setup.sh && cd ../
 cd ./nvim && sh ./setup.sh && cd ../
 cd ./kitty && sh ./setup.sh && cd ../
+cd ./starship && sh ./setup.sh && cd ../
 
 ### Clean
 rm -rf tmp
