@@ -1,2 +1,1 @@
 local lazygit = require("lazygit")
-

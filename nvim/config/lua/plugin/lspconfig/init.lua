@@ -31,32 +31,29 @@ require("plugin.lspconfig.configs.tsserver")
 
 -- LspAttach
 vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-  callback = require("plugin.lspconfig.utils.attach_callback"),
+    group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+    callback = require("plugin.lspconfig.utils.attach_callback"),
 })
 
 vim.diagnostic.config({
-  virtual_text = true,
-  float = {
-    border = "rounded",
-  },
+    virtual_text = true,
+    float = {
+        border = "rounded",
+    },
 })
 
 local notify = vim.notify
 vim.notify = function(msg, ...)
-  if msg:match("warning: multiple different client offset_encodings") then
-    return
-  end
-  notify(msg, ...)
+    if msg:match("warning: multiple different client offset_encodings") then
+        return
+    end
+    notify(msg, ...)
 end
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "rounded",
+    border = "rounded",
 })
 -- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
 --     border = "rounded",
 -- })
 require("lspconfig.ui.windows").default_options.border = "rounded"
-
-
-

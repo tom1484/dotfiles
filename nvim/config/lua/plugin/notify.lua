@@ -6,6 +6,5 @@ vim.opt.termguicolors = true
 notify.setup({
     background_colour = "#000000",
     stages = "static",
-    -- render = "minimal",
+    render = "minimal",
 })
-

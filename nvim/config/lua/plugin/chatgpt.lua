@@ -1,5 +1,5 @@
 require("chatgpt").setup({
-  keymaps = {
-    submit = "<C-s>",
-  },
+    keymaps = {
+        submit = "<C-s>",
+    },
 })
