@@ -1,1 +1,0 @@
--- vim.keymap.set("n", "<leader>gs", vin.cmd.Git)

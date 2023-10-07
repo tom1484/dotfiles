@@ -14,25 +14,25 @@ local lsp = require("lspconfig")
 -- "tsserver"
 -- "arduino_language_server"
 
-require("plugin.lspconfig.configs.lua")
-require("plugin.lspconfig.configs.clangd")
-require("plugin.lspconfig.configs.pyright")
-require("plugin.lspconfig.configs.cmake")
-require("plugin.lspconfig.configs.gopls")
-require("plugin.lspconfig.configs.html")
-require("plugin.lspconfig.configs.jsonls")
-require("plugin.lspconfig.configs.rust_analyzer")
-require("plugin.lspconfig.configs.tailwindcss")
-require("plugin.lspconfig.configs.taplo")
-require("plugin.lspconfig.configs.tsserver")
--- require("plugin.lspconfig.configs.arduino_language_server")
+require("plugins.configs.lspconfig.configs.lua")
+require("plugins.configs.lspconfig.configs.clangd")
+require("plugins.configs.lspconfig.configs.pyright")
+require("plugins.configs.lspconfig.configs.cmake")
+require("plugins.configs.lspconfig.configs.gopls")
+require("plugins.configs.lspconfig.configs.html")
+require("plugins.configs.lspconfig.configs.jsonls")
+require("plugins.configs.lspconfig.configs.rust_analyzer")
+require("plugins.configs.lspconfig.configs.tailwindcss")
+require("plugins.configs.lspconfig.configs.taplo")
+require("plugins.configs.lspconfig.configs.tsserver")
+-- require("plugins.configs.lspconfig.configs.arduino_language_server")
 -- vim.notify("Config LSP")
--- require("plugin.Arduino")
+-- require("plugins.configs.Arduino")
 
 -- LspAttach
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-    callback = require("plugin.lspconfig.utils.attach_callback"),
+    callback = require("plugins.configs.lspconfig.utils.attach_callback"),
 })
 
 vim.diagnostic.config({

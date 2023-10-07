@@ -1,4 +1,4 @@
-return {
+local M = {
 
     -- #############################
     -- Theme Plugins
@@ -14,7 +14,7 @@ return {
         },
         lazy = false,
         config = function()
-            require("plugin.alpha")
+            require("plugins.configs.alpha")
         end,
     },
     -- vscode.nvim
@@ -22,7 +22,7 @@ return {
         "Mofiqul/vscode.nvim",
         lazy = false,
         config = function()
-            require("plugin.colors")
+            require("plugins.configs.colors")
         end,
     },
     -- lualine.nvim
@@ -30,7 +30,7 @@ return {
         "nvim-lualine/lualine.nvim",
         lazy = false,
         config = function()
-            require("plugin.lualine")
+            require("plugins.configs.lualine")
         end,
     },
     -- luatab.nvim
@@ -39,7 +39,7 @@ return {
         requires = "nvim-tree/nvim-web-devicons",
         lazy = false,
         config = function()
-            require("plugin.luatab")
+            require("plugins.configs.luatab")
         end,
     },
     -- nvim-transparent
@@ -47,7 +47,7 @@ return {
         "xiyaowong/nvim-transparent",
         lazy = false,
         config = function()
-            require("plugin.transparent")
+            require("plugins.configs.transparent")
         end,
     },
 
@@ -62,7 +62,7 @@ return {
         -- event = "VeryLazy",
         lazy = false,
         config = function()
-            require("plugin.treesitter")
+            require("plugins.configs.treesitter")
         end,
     },
     -- nvim-treesitter-context
@@ -70,7 +70,7 @@ return {
         "nvim-treesitter/nvim-treesitter-context",
         event = "VeryLazy",
         config = function()
-            require("plugin.treesitter-context")
+            require("plugins.configs.treesitter-context")
         end,
     },
     -- todo-comments.nvim
@@ -79,7 +79,7 @@ return {
         dependencies = { "nvim-lua/plenary.nvim" },
         event = "VeryLazy",
         config = function()
-            require("plugin.todo-comments")
+            require("plugins.configs.todo-comments")
         end,
     },
     -- trouble.nvim
@@ -87,7 +87,7 @@ return {
         "folke/trouble.nvim",
         event = "VeryLazy",
         config = function()
-            require("plugin.Trouble")
+            require("plugins.configs.Trouble")
         end,
     },
 
@@ -105,7 +105,7 @@ return {
         },
         lazy = false,
         config = function()
-            require("plugin.telescope")
+            require("plugins.configs.telescope")
         end,
     },
     -- nvim-dap-ui
@@ -116,7 +116,7 @@ return {
         },
         event = "VeryLazy",
         config = function()
-            require("plugin.dapui")
+            require("plugins.configs.dapui")
         end,
     },
     -- nvim-tree.lua
@@ -124,7 +124,7 @@ return {
         "nvim-tree/nvim-tree.lua",
         event = "VeryLazy",
         config = function()
-            require("plugin.nvim-tree")
+            require("plugins.configs.nvim-tree")
         end,
     },
     -- ChatGPT.nvim
@@ -137,7 +137,7 @@ return {
         },
         event = "VeryLazy",
         config = function()
-            require("plugin.chatgpt")
+            require("plugins.configs.chatgpt")
         end,
     },
     -- nvim-notify
@@ -145,7 +145,7 @@ return {
     --   "rcarriga/nvim-notify",
     --   lazy = false,
     --   config = function()
-    --     require("plugin.notify")
+    --     require("plugins.configs.notify")
     --   end,
     -- },
     -- noice.nvim
@@ -157,7 +157,7 @@ return {
     --   },
     --   lazy = false,
     --   config = function()
-    --     require("plugin.noice")
+    --     require("plugins.configs.noice")
     --   end,
     -- },
     -- lazygit.nvim
@@ -168,7 +168,7 @@ return {
         },
         event = "VeryLazy",
         config = function()
-            require("plugin.lazygit")
+            require("plugins.configs.lazygit")
         end,
     },
     -- JABS.nvim
@@ -176,7 +176,7 @@ return {
         "matbme/JABS.nvim",
         event = "VeryLazy",
         config = function()
-            require("plugin.JABS")
+            require("plugins.configs.JABS")
         end,
     },
     -- undoTree
@@ -184,7 +184,7 @@ return {
         "mbbill/undotree",
         event = "VeryLazy",
         config = function()
-            require("plugin.undotree")
+            require("plugins.configs.undotree")
         end,
     },
     -- nvterm
@@ -192,7 +192,7 @@ return {
         "NvChad/nvterm",
         event = "VeryLazy",
         config = function()
-            require("plugin.nvterm")
+            require("plugins.configs.nvterm")
         end,
     },
     -- auto-session
@@ -203,15 +203,16 @@ return {
         -- },
         lazy = false,
         config = function()
-            require("plugin.auto-session")
+            require("plugins.configs.auto-session")
         end,
     },
     -- indent-blakline.nvim
     {
         "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
         lazy = false,
         config = function()
-            require("plugin.indent-blankline")
+            require("plugins.configs.indent-blankline")
         end,
     },
     -- statuscol.nvim
@@ -219,7 +220,7 @@ return {
     --     "luukvbaal/statuscol.nvim",
     --     lazy = false,
     --     config = function()
-    --         require("plugin.statuscol")
+    --         require("plugins.configs.statuscol")
     --     end,
     -- },
     -- nvim-ufo
@@ -228,7 +229,7 @@ return {
         lazy = false,
         dependencies = { "kevinhwang91/promise-async" },
         config = function()
-            require("plugin.ufo")
+            require("plugins.configs.ufo")
         end,
     },
 
@@ -242,7 +243,7 @@ return {
         lazy = true,
         event = "VeryLazy",
         config = function()
-            require("plugin.Comment")
+            require("plugins.configs.Comment")
         end,
     },
     -- nvim-autopairs
@@ -250,7 +251,7 @@ return {
         "windwp/nvim-autopairs",
         event = "VeryLazy",
         config = function()
-            require("plugin.autopairs")
+            require("plugins.configs.autopairs")
         end,
     },
     -- vim-expand-region
@@ -258,7 +259,7 @@ return {
         "terryma/vim-expand-region",
         event = "VeryLazy",
         config = function()
-            require("plugin.vim-expand-region")
+            require("plugins.configs.vim-expand-region")
         end,
     },
     -- nvim-recorder
@@ -271,7 +272,7 @@ return {
         opts = {}, -- required even with default settings, since it calls `setup()`
         event = "VeryLazy",
         config = function()
-            require("plugin.nvim-recorder")
+            require("plugins.configs.nvim-recorder")
         end,
     },
 
@@ -284,7 +285,7 @@ return {
         "folke/flash.nvim",
         event = "VeryLazy",
         config = function()
-            require("plugin.flash")
+            require("plugins.configs.flash")
         end,
     },
     -- Kitty Navigation
@@ -293,7 +294,7 @@ return {
         run = "cp ./*.py ~/.config/kitty/",
         event = "VeryLazy",
         config = function()
-            require("plugin.kitty-navigator")
+            require("plugins.configs.kitty-navigator")
         end,
     },
     -- marks.nvim
@@ -301,7 +302,7 @@ return {
         "chentoast/marks.nvim",
         event = "VeryLazy",
         config = function()
-            require("plugin.marks")
+            require("plugins.configs.marks")
         end,
     },
 
@@ -323,8 +324,8 @@ return {
         },
         event = { "BufReadPost", "VeryLazy" },
         config = function()
-            require("plugin.lspconfig")
-            require("plugin.mason-lspconfig")
+            require("plugins.configs.lspconfig")
+            require("plugins.configs.mason-lspconfig")
         end,
     },
     -- mason.nvim
@@ -332,7 +333,7 @@ return {
         "williamboman/mason.nvim",
         event = "VeryLazy",
         config = function()
-            require("plugin.mason")
+            require("plugins.configs.mason")
         end,
     },
     -- nvim-dap
@@ -344,8 +345,8 @@ return {
         },
         event = "VeryLazy",
         config = function()
-            require("plugin.dap")
-            require("plugin.mason-dap")
+            require("plugins.configs.dap")
+            require("plugins.configs.mason-dap")
         end,
     },
     -- cmp
@@ -362,7 +363,7 @@ return {
         },
         event = "VeryLazy",
         config = function()
-            require("plugin.cmp")
+            require("plugins.configs.cmp")
         end,
     },
     -- null-ls.nvim
@@ -373,8 +374,8 @@ return {
         },
         event = "VeryLazy",
         config = function()
-            require("plugin.null-ls")
-            require("plugin.mason-null-ls")
+            require("plugins.configs.null-ls")
+            require("plugins.configs.mason-null-ls")
         end,
     },
     -- copilot.vim
@@ -382,7 +383,7 @@ return {
         "github/copilot.vim",
         event = "VeryLazy",
         config = function()
-            require("plugin.copilot")
+            require("plugins.configs.copilot")
         end,
     },
     -- lsp_lines.nvim
@@ -390,7 +391,7 @@ return {
         "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
         event = "LspAttach",
         config = function()
-            require("plugin.lsp_lines")
+            require("plugins.configs.lsp_lines")
         end,
     },
     -- Arduino.nvim
@@ -402,7 +403,9 @@ return {
     --   },
     --   event = "VeryLazy",
     --   config = function()
-    --     require("plugin.Arduino")
+    --     require("plugins.configs.Arduino")
     --   end,
     -- },
 }
+
+return M

@@ -23,6 +23,8 @@ vim.api.nvim_set_hl(0, "ChatGPTTotalTokensBorder", { fg = border })
 vim.api.nvim_set_hl(0, "CompeDocumentationBorder", { fg = border })
 vim.api.nvim_set_hl(0, "LspSagaSignatureHelpBorder", { fg = border })
 
+vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#757575" })
+
 -- vim.cmd([[highlight FloatBorder guifg=#585858 guibg=None]])
 -- vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })

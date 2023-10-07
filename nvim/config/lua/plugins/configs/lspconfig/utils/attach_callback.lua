@@ -1,6 +1,11 @@
 local telescope_builtin = require("telescope.builtin")
 
 return function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if client.server_capabilities.inlayHintProvider then
+        vim.lsp.inlay_hint(ev.buf, true)
+    end
+
     local lsp_signature = require("lsp_signature")
     lsp_signature.on_attach({
         bind = true,

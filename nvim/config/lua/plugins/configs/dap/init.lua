@@ -1,9 +1,9 @@
 local dap = require("dap")
 local dapui = require("dapui")
 
-require("plugin.dap.debugpy").setup(dap)
--- require("plugin.dap.cpptools").setup(dap)
-require("plugin.dap.codelldb").setup(dap)
+require("plugins.configs.dap.debugpy").setup(dap)
+-- require("plugins.configs.dap.cpptools").setup(dap)
+require("plugins.configs.dap.codelldb").setup(dap)
 
 local function cmd(name)
     return function()
