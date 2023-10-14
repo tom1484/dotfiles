@@ -65,10 +65,17 @@ require("jabs").setup({
     -- use_devicons = false -- true or false. Default true
 })
 
-vim.keymap.set("n", "<leader>b", function()
-    if vim.o.filetype == "JABSwindow" then
-        vim.cmd.q()
-        return
-    end
-    vim.cmd.JABS()
-end)
+vim.custom.fn.set_keymaps({
+    {
+        "n",
+        "<leader>b",
+        function()
+            if vim.o.filetype == "JABSwindow" then
+                vim.cmd.q()
+                return
+            end
+            vim.cmd.JABS()
+        end,
+        { desc = "JABS" },
+    },
+})

@@ -8,6 +8,11 @@ flash.setup({
     },
 })
 
+local opts = vim.custom.fn.opts_with_desc({
+    noremap = true,
+    silent = true,
+})
+
 local mappings = {
     {
         { "n", "x", "o" },
@@ -15,6 +20,7 @@ local mappings = {
         function()
             flash.jump()
         end,
+        opts("Flash jump"),
     },
     {
         { "n", "o", "x" },
@@ -22,31 +28,32 @@ local mappings = {
         function()
             flash.treesitter()
         end,
+        opts("Flash region"),
     },
+    -- {
+    --     "o",
+    --     "r",
+    --     function()
+    --         flash.remote()
+    --     end,
+    --     opts("Jump to next flash"),
+    -- },
     {
-        "o",
-        "r",
-        function()
-            flash.remote()
-        end,
-    },
-    {
-        { "o", "x" },
+        { "n", "o", "x" },
         "R",
         function()
             flash.treesitter_search()
         end,
+        opts("Flash remote region"),
     },
-    {
-        { "c" },
-        "<c-s>",
-        function()
-            flash.toggle()
-        end,
-    },
+    -- {
+    --     { "c" },
+    --     "<c-s>",
+    --     function()
+    --         flash.toggle()
+    --     end,
+    --     opts("Jump to next flash"),
+    -- },
 }
 
-local opts = { noremap = true, silent = true }
-for _, mapping in ipairs(mappings) do
-    vim.keymap.set(mapping[1], mapping[2], mapping[3], opts)
-end
+vim.custom.fn.set_keymaps(mappings)

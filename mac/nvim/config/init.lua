@@ -9,13 +9,9 @@ local ftconfigs_setup = require("ftconfigs")
 local buffer_setup = require("buffer")
 local utils_setup = require("utils")
 
-vim.api.nvim_create_autocmd("VimEnter", {
-    callback = function()
-        keymaps_setup()
-        configs_setup()
-        utils_setup()
-    end,
-})
+utils_setup()
+keymaps_setup()
+configs_setup()
 
 vim.api.nvim_create_autocmd("FileType", {
     callback = function()
@@ -41,10 +37,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 
 vim.opt.runtimepath:prepend(lazypath)
-
-vim.custom = {
-    fn = {},
-}
 
 require("lazy").setup("plugins", require("configurations"))
 

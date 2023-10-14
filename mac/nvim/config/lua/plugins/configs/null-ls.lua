@@ -56,18 +56,24 @@ null_ls.setup({
     },
     on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then
-            -- print(client.name .. " attached to " .. vim.api.nvim_buf_get_name(bufnr))
-            vim.keymap.set("n", "<leader>vf", function()
-                vim.lsp.buf.format({
-                    -- async = true,
-                    -- filter = function(client)
-                    --   -- print(client.name)
-                    --   -- vim.notify(client.name)
-                    --   return client.name ~= "tsserver"
-                    -- end,
-                })
-                vim.cmd.w()
-            end)
+            vim.custom.fn.set_keymaps({
+                {
+                    "n",
+                    "<leader>vf",
+                    function()
+                        vim.lsp.buf.format({
+                            -- async = true,
+                            -- filter = function(client)
+                            --   -- print(client.name)
+                            --   -- vim.notify(client.name)
+                            --   return client.name ~= "tsserver"
+                            -- end,
+                        })
+                        vim.cmd.w()
+                    end,
+                    { desc = "Format buffer" },
+                },
+            })
         end
     end,
 })

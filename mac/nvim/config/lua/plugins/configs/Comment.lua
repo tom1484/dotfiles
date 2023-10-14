@@ -42,5 +42,20 @@ require("Comment").setup({
     post_hook = nil,
 })
 
-vim.keymap.set("n", "<leader>c", "gcc", { remap = true })
-vim.keymap.set("v", "<leader>c", "gc", { remap = true })
+local opts = vim.custom.fn.opts_with_desc({
+    remap = true,
+})
+vim.custom.fn.set_keymaps({
+    {
+        "n",
+        "<leader>c",
+        "gcc",
+        opts("Comment line"),
+    },
+    {
+        "v",
+        "<leader>c",
+        "gc",
+        opts("Comment selection"),
+    },
+})

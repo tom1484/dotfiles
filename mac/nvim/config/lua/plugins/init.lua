@@ -108,6 +108,11 @@ local M = {
             require("plugins.configs.telescope")
         end,
     },
+    {
+        "nvim-telescope/telescope-file-browser.nvim",
+        dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+        -- event = "VeryLazy",
+    },
     -- nvim-dap-ui
     {
         "rcarriga/nvim-dap-ui",
@@ -215,14 +220,6 @@ local M = {
             require("plugins.configs.indent-blankline")
         end,
     },
-    -- statuscol.nvim
-    -- {
-    --     "luukvbaal/statuscol.nvim",
-    --     lazy = false,
-    --     config = function()
-    --         require("plugins.configs.statuscol")
-    --     end,
-    -- },
     -- nvim-ufo
     {
         "kevinhwang91/nvim-ufo",
@@ -232,7 +229,17 @@ local M = {
             require("plugins.configs.ufo")
         end,
     },
-
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+        end,
+        config = function()
+            require("plugins.configs.which-key")
+        end,
+    },
     -- #############################
     -- Editting Plugins
     -- #############################
@@ -417,6 +424,18 @@ local M = {
     --     require("plugins.configs.Arduino")
     --   end,
     -- },
+    -- Lspsaga
+    {
+        "nvimdev/lspsaga.nvim",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons",
+        },
+        event = "VeryLazy",
+        config = function()
+            require("plugins.configs.lspsaga")
+        end,
+    },
 }
 
 return M

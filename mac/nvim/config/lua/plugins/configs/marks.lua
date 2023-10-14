@@ -1,5 +1,12 @@
 require("marks").setup({})
 
-vim.keymap.set("n", "<leader>m", function()
-    vim.cmd("MarksListAll")
-end)
+vim.custom.fn.set_keymaps({
+    {
+        "n",
+        "<leader>m",
+        function()
+            vim.cmd("MarksListAll")
+        end,
+        { desc = "Marks" },
+    },
+})

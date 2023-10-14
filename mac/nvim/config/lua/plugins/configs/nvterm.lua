@@ -23,12 +23,7 @@ local mappings = {
         function()
             terminal.toggle("float")
         end,
+        { noremap = true, silent = true, desc = "Toggle terminal" },
     },
 }
-
-local opts = { noremap = true, silent = true }
-for _, mapping in ipairs(mappings) do
-    vim.keymap.set(mapping[1], mapping[2], mapping[3], opts)
-end
-
-vim.keymap.set("t", "<C-BS>", "<BS>", opts)
+vim.custom.fn.set_keymaps(mappings)

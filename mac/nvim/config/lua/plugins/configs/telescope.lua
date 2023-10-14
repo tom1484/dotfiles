@@ -1,5 +1,4 @@
 local telescope = require("telescope")
-
 local actions = require("telescope.actions")
 
 local hidden_folder_pattern = function(pattern)
@@ -24,6 +23,19 @@ end
 
 telescope.setup({
     extensions = {
+        -- file_browser = {
+        --     -- theme = "ivy",
+        --     -- disables netrw and use telescope-file-browser in its place
+        --     hijack_netrw = true,
+        --     mappings = {
+        --         ["i"] = {
+        --             -- your custom insert mode mappings
+        --         },
+        --         ["n"] = {
+        --             -- your custom normal mode mappings
+        --         },
+        --     },
+        -- },
         ["ui-select"] = {
             require("telescope.themes").get_dropdown({
                 -- even more opts
@@ -91,6 +103,7 @@ telescope.setup({
 })
 
 require("telescope").load_extension("ui-select")
+-- require("telescope").load_extension("file_browser")
 
 local builtin = require("telescope.builtin")
 
@@ -101,24 +114,45 @@ local find_files = function()
     })
 end
 
-vim.custom.fn = vim.tbl_extend("force", vim.custom.fn, {
-    find_files = find_files,
+vim.custom.fn.find_files = find_files
+
+local opts = vim.custom.fn.opts_with_desc({
+    silent = true,
 })
-
-vim.keymap.set("n", "<leader>pf", find_files, {})
-vim.keymap.set("n", "<leader>pb", builtin.buffers, {})
-vim.keymap.set("n", "<leader>pg", builtin.git_files, {})
-
-vim.keymap.set("n", "<leader>ps", function()
-    builtin.live_grep({
-        use_regex = true,
-    })
-end)
-
-vim.keymap.set("n", "<leader>fs", function()
-    builtin.live_grep({
-        search_dirs = { "%:p" },
-        path_display = "hidden",
-        use_regex = true,
-    })
-end, {})
+local mappings = {
+    {
+        "n",
+        "<leader>pf",
+        find_files,
+        opts("Find files"),
+    },
+    {
+        "n",
+        "<leader>pb",
+        builtin.buffers,
+        opts("Find buffers"),
+    },
+    {
+        "n",
+        "<leader>pg",
+        builtin.git_files,
+        opts("Find git files"),
+    },
+    {
+        "n",
+        "<leader>ps",
+        function()
+            builtin.live_grep({ use_regex = true })
+        end,
+        opts("Search in project"),
+    },
+    {
+        "n",
+        "<leader>fs",
+        function()
+            builtin.live_grep({ search_dirs = { "%:p" }, path_display = "hidden", use_regex = true })
+        end,
+        opts("Search in file"),
+    },
+}
+vim.custom.fn.set_keymaps(mappings)
