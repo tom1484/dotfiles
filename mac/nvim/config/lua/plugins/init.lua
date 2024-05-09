@@ -66,13 +66,13 @@ local M = {
         end,
     },
     -- nvim-treesitter-context
-    {
-        "nvim-treesitter/nvim-treesitter-context",
-        event = "VeryLazy",
-        config = function()
-            require("plugins.configs.treesitter-context")
-        end,
-    },
+    -- {
+    --     "nvim-treesitter/nvim-treesitter-context",
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require("plugins.configs.treesitter-context")
+    --     end,
+    -- },
     -- todo-comments.nvim
     {
         "folke/todo-comments.nvim",
@@ -118,6 +118,7 @@ local M = {
         "rcarriga/nvim-dap-ui",
         dependencies = {
             "mfussenegger/nvim-dap",
+            "nvim-neotest/nvim-nio",
         },
         event = "VeryLazy",
         config = function()
@@ -240,6 +241,14 @@ local M = {
             require("plugins.configs.which-key")
         end,
     },
+    -- {
+    --     "declancm/cinnamon.nvim",
+    --     lazy = false,
+    --     config = function()
+    --         require("plugins.configs.cinnamon")
+    --     end,
+    -- },
+
     -- #############################
     -- Editting Plugins
     -- #############################

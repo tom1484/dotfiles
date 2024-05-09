@@ -129,21 +129,22 @@ local mappings = {
     },
     {
         "n",
-        "<leader>vlsd",
+        -- "<leader>vlsd",
+        "<leader>vls",
         function()
             telescope_builtin.lsp_document_symbols()
         end,
         opts("List document symbols"),
     },
-    {
-        "n",
-        "<leader>vlsw",
-        function()
-            vim.cmd("Lspsaga peek_definition")
-            telescope_builtin.lsp_workspace_symbols()
-        end,
-        opts("List workspace symbols"),
-    },
+    -- {
+    --     "n",
+    --     "<leader>vlsw",
+    --     function()
+    --         vim.cmd("Lspsaga peek_definition")
+    --         telescope_builtin.lsp_workspace_symbols()
+    --     end,
+    --     opts("List workspace symbols"),
+    -- },
 }
 vim.custom.fn.set_keymaps(mappings)
 

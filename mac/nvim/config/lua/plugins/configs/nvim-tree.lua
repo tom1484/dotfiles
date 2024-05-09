@@ -10,7 +10,7 @@ local function on_attach(bufnr)
         nowait = true,
     })
     local opts = function(desc)
-        return opts_raw("nvimtree: " .. desc)
+        return opts_raw("NvimTree: " .. desc)
     end
 
     -- BEGIN_DEFAULT_ON_ATTACH

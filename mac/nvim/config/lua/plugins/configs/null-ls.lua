@@ -6,7 +6,16 @@ local diagnostics = null_ls.builtins.diagnostics
 null_ls.setup({
     border = "rounded",
     sources = {
+        formatting.black,
+        formatting.isort.with({
+            extra_args = {
+                "--profile",
+                "black",
+            },
+        }),
+
         formatting.beautysh,
+
         formatting.clang_format.with({
             extra_args = {
                 "--style",
@@ -14,8 +23,12 @@ null_ls.setup({
             },
         }),
         formatting.cmake_format,
+        diagnostics.cmake_lint,
+
         formatting.gofumpt,
         formatting.goimports,
+        diagnostics.revive,
+
         formatting.prettierd.with({
             filetypes = {
                 "css",
@@ -31,7 +44,9 @@ null_ls.setup({
                 "handlebars",
             },
         }),
+
         formatting.rustfmt,
+
         formatting.stylua.with({
             extra_args = {
                 "--indent-type",
@@ -40,21 +55,15 @@ null_ls.setup({
                 "4",
             },
         }),
-        formatting.black.with({
-            extra_args = {
-                "--line-length",
-                "88",
-            },
-        }),
-        formatting.eslint_d,
 
-        diagnostics.cmake_lint,
+        formatting.eslint_d,
         diagnostics.eslint_d,
+
+        formatting.xmlformat,
         diagnostics.jsonlint,
-        diagnostics.revive,
-        diagnostics.ruff,
+        -- diagnostics.ruff,
     },
-    on_attach = function(client, bufnr)
+    on_attach = function(client, _)
         if client.supports_method("textDocument/formatting") then
             vim.custom.fn.set_keymaps({
                 {

@@ -1,4 +1,8 @@
 local wk = require("which-key")
+
+vim.o.timeout = true
+vim.o.timeoutlen = 500
+
 wk.setup({
     window = {
         border = "rounded",
@@ -18,9 +22,9 @@ wk.register({
         name = "Lsp",
         l = {
             name = "Telescope lists",
-            s = {
-                name = "Symbols",
-            },
+            -- s = {
+            --     name = "Symbols",
+            -- },
         },
         n = {
             name = "Next",

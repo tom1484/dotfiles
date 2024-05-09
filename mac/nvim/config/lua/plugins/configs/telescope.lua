@@ -12,6 +12,7 @@ end
 local hidden_folder = {
     "%.[^/]*",
     "node_modules",
+    "target",
 }
 local hidden_folder_patterns = {}
 

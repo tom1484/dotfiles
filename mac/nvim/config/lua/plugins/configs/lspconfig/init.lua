@@ -1,5 +1,3 @@
-local lsp = require("lspconfig")
-
 -- "clangd"
 -- "cmake"
 -- "gopls"
@@ -13,10 +11,14 @@ local lsp = require("lspconfig")
 -- "pyright"
 -- "tsserver"
 -- "arduino_language_server"
+-- "pylyzer"
 
 require("plugins.configs.lspconfig.configs.lua")
 require("plugins.configs.lspconfig.configs.clangd")
 require("plugins.configs.lspconfig.configs.pyright")
+-- require("plugins.configs.lspconfig.configs.pylsp")
+-- require("plugins.configs.lspconfig.configs.ruff")
+-- require("plugins.configs.lspconfig.configs.pylyzer")
 require("plugins.configs.lspconfig.configs.cmake")
 require("plugins.configs.lspconfig.configs.gopls")
 require("plugins.configs.lspconfig.configs.html")

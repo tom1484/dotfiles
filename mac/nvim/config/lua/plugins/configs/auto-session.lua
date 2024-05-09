@@ -14,5 +14,5 @@ end
 vim.custom.fn.set_keymaps({
     { "n", "<leader>sr", ":SessionRestore<CR>", opts("Restore session") },
     { "n", "<leader>sd", ":SessionDelete<CR>", opts("Delete session") },
-    { "n", "<leader>ss", ":SessionSave<CR>", opts("Save  session") },
+    { "n", "<leader>ss", ":SessionSave<CR>", opts("Save session") },
 })
