@@ -98,7 +98,7 @@ local M = {
     -- telescope.nvim
     {
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.4",
+        tag = "0.1.3",
         dependencies = {
             "nvim-lua/plenary.nvim",
             "tom1484/telescope-ui-select.nvim",
@@ -321,6 +321,14 @@ local M = {
     --         require("plugins.configs.iterm2-navigator")
     --     end,
     -- },
+    -- Tmux Navigation
+    {
+        "alexghergh/nvim-tmux-navigation",
+        event = "VeryLazy",
+        config = function()
+            require("plugins.configs.tmux-navigation")
+        end,
+    },
     -- marks.nvim
     {
         "chentoast/marks.nvim",
