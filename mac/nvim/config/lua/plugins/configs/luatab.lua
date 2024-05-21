@@ -4,12 +4,12 @@ local h = require("luatab.highlight")
 local helpers = luatab.helpers
 
 local hls = {
-  select_fg = "#ffffff",
-  select_bg = "#0a7aca",
+  select_fg = "#1f2029",
+  select_bg = "#7e9cd8",
   -- normal_fg = "#1a70b7",
-  normal_fg = "#0a7aca",
+  normal_fg = "#7e9cd8",
   normal_bg = "#373737",
-  bar_bg = "#252526",
+  bar_bg = "#1f2029",
 }
 
 luatab.setup({

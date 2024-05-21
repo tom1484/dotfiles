@@ -1,7 +1,7 @@
 return function(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
     if client ~= nil and client.server_capabilities.inlayHintProvider then
-        vim.lsp.inlay_hint(ev.buf, true)
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
     end
 
     local lsp_signature = require("lsp_signature")

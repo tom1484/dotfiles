@@ -1,5 +1,5 @@
 local dap = require("dap")
-local dapui = require("dapui")
+local _, dapui = pcall(require, "dapui")
 
 require("plugins.configs.dap.debugpy").setup(dap)
 -- require("plugins.configs.dap.cpptools").setup(dap)
@@ -19,7 +19,9 @@ local actions = {
     cmd("DapStepOut"),
     function()
         vim.cmd("DapTerminate")
-        dapui.close()
+        if not dapui == nil then
+            dapui.close()
+        end
     end,
     cmd("DapToggleRepl"),
     cmd("DapSetLogLevel"),

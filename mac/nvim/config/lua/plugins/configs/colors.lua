@@ -1,5 +1,5 @@
--- vim.cmd.colorscheme("tokyonight-night")
-vim.cmd.colorscheme("vscode")
+vim.cmd.colorscheme("kanagawa")
+-- vim.cmd.colorscheme("vscode")
 
 local border = "#777777"
 

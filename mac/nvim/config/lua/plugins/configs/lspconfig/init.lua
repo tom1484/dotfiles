@@ -49,6 +49,9 @@ vim.notify = function(msg, ...)
     if msg:match("warning: multiple different client offset_encodings") then
         return
     end
+    if msg:match("deprecated") or msg:match("tbl_add_reverse") then
+        return
+    end
     notify(msg, ...)
 end
 

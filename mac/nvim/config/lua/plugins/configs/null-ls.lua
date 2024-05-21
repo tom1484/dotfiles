@@ -70,6 +70,7 @@ null_ls.setup({
                     "n",
                     "<leader>vf",
                     function()
+                        -- require("conform").format()
                         vim.lsp.buf.format({
                             -- async = true,
                             -- filter = function(client)

@@ -25,6 +25,14 @@ local M = {
             require("plugins.configs.colors")
         end,
     },
+    -- kanagawa
+    {
+        "rebelot/kanagawa.nvim",
+        lazy = false,
+        config = function()
+            require("plugins.configs.kanagawa")
+        end,
+    },
     -- lualine.nvim
     {
         "nvim-lualine/lualine.nvim",
@@ -98,7 +106,6 @@ local M = {
     -- telescope.nvim
     {
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.0",
         dependencies = {
             "nvim-lua/plenary.nvim",
             "tom1484/telescope-ui-select.nvim",
@@ -166,17 +173,6 @@ local M = {
     --     require("plugins.configs.noice")
     --   end,
     -- },
-    -- lazygit.nvim
-    {
-        "kdheepak/lazygit.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
-        event = "VeryLazy",
-        config = function()
-            require("plugins.configs.lazygit")
-        end,
-    },
     -- JABS.nvim
     {
         "matbme/JABS.nvim",
@@ -248,6 +244,15 @@ local M = {
     --         require("plugins.configs.cinnamon")
     --     end,
     -- },
+    -- Preview
+    {
+        "henriklovhaug/Preview.nvim",
+        cmd = { "Preview" },
+        event = "VeryLazy",
+        config = function()
+            require("plugins.configs.Preview")
+        end,
+    },
 
     -- #############################
     -- Editting Plugins
@@ -291,6 +296,15 @@ local M = {
             require("plugins.configs.nvim-recorder")
         end,
     },
+    -- conform
+    -- {
+    --     'stevearc/conform.nvim',
+    --     opts = {},
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require("plugins.configs.conform")
+    --     end,
+    -- },
 
     -- #############################
     -- Navigation Plugins
@@ -405,6 +419,18 @@ local M = {
             require("plugins.configs.mason-null-ls")
         end,
     },
+    -- guard
+    -- {
+    --     "nvimdev/guard.nvim",
+    --     -- Builtin configuration, optional
+    --     dependencies = {
+    --         "nvimdev/guard-collection",
+    --     },
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require("plugins.configs.guard")
+    --     end,
+    -- },
     -- copilot.vim
     {
         "github/copilot.vim",
@@ -443,6 +469,46 @@ local M = {
         event = "VeryLazy",
         config = function()
             require("plugins.configs.lspsaga")
+        end,
+    },
+
+    -- #############################
+    -- Git Plugins
+    -- #############################
+
+    -- Neogit
+    -- {
+    --     "NeogitOrg/neogit",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim", -- required
+    --         "sindrets/diffview.nvim", -- optional - Diff integration
+    --
+    --         -- Only one of these is needed, not both.
+    --         "nvim-telescope/telescope.nvim", -- optional
+    --         "ibhagwan/fzf-lua", -- optional
+    --     },
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require("plugins.configs.neogit")
+    --     end,
+    -- },
+    -- lazygit.nvim
+    {
+        "kdheepak/lazygit.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        event = "VeryLazy",
+        config = function()
+            require("plugins.configs.lazygit")
+        end,
+    },
+    -- gitsigns
+    {
+        "lewis6991/gitsigns.nvim",
+        event = "BufReadPost",
+        config = function()
+            require("plugins.configs.gitsigns")
         end,
     },
 }
