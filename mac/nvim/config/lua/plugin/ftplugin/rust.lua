@@ -8,7 +8,7 @@ return {
     --     },
     --     event = "VeryLazy",
     --     config = function()
-    --         require("plugins.ftplugins.configs.rust-tools")
+    --         require("plugin.ftplugin.config.rust-tools")
     --     end,
     -- },
 }

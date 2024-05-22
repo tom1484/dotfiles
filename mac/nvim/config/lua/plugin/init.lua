@@ -14,7 +14,7 @@ local M = {
         },
         lazy = false,
         config = function()
-            require("plugins.configs.alpha")
+            require("plugin.config.alpha")
         end,
     },
     -- vscode.nvim
@@ -22,7 +22,7 @@ local M = {
         "Mofiqul/vscode.nvim",
         lazy = false,
         config = function()
-            require("plugins.configs.colors")
+            require("plugin.config.colors")
         end,
     },
     -- kanagawa
@@ -30,7 +30,7 @@ local M = {
         "rebelot/kanagawa.nvim",
         lazy = false,
         config = function()
-            require("plugins.configs.kanagawa")
+            require("plugin.config.kanagawa")
         end,
     },
     -- lualine.nvim
@@ -38,7 +38,7 @@ local M = {
         "nvim-lualine/lualine.nvim",
         lazy = false,
         config = function()
-            require("plugins.configs.lualine")
+            require("plugin.config.lualine")
         end,
     },
     -- luatab.nvim
@@ -47,7 +47,7 @@ local M = {
         requires = "nvim-tree/nvim-web-devicons",
         lazy = false,
         config = function()
-            require("plugins.configs.luatab")
+            require("plugin.config.luatab")
         end,
     },
     -- nvim-transparent
@@ -55,7 +55,7 @@ local M = {
         "xiyaowong/nvim-transparent",
         lazy = false,
         config = function()
-            require("plugins.configs.transparent")
+            require("plugin.config.transparent")
         end,
     },
 
@@ -70,7 +70,7 @@ local M = {
         -- event = "VeryLazy",
         lazy = false,
         config = function()
-            require("plugins.configs.treesitter")
+            require("plugin.config.treesitter")
         end,
     },
     -- nvim-treesitter-context
@@ -78,7 +78,7 @@ local M = {
     --     "nvim-treesitter/nvim-treesitter-context",
     --     event = "VeryLazy",
     --     config = function()
-    --         require("plugins.configs.treesitter-context")
+    --         require("plugin.config.treesitter-context")
     --     end,
     -- },
     -- todo-comments.nvim
@@ -87,7 +87,7 @@ local M = {
         dependencies = { "nvim-lua/plenary.nvim" },
         event = "VeryLazy",
         config = function()
-            require("plugins.configs.todo-comments")
+            require("plugin.config.todo-comments")
         end,
     },
     -- trouble.nvim
@@ -95,7 +95,7 @@ local M = {
         "folke/trouble.nvim",
         event = "VeryLazy",
         config = function()
-            require("plugins.configs.Trouble")
+            require("plugin.config.Trouble")
         end,
     },
 
@@ -112,7 +112,7 @@ local M = {
         },
         lazy = false,
         config = function()
-            require("plugins.configs.telescope")
+            require("plugin.config.telescope")
         end,
     },
     {
@@ -129,7 +129,7 @@ local M = {
         },
         event = "VeryLazy",
         config = function()
-            require("plugins.configs.dapui")
+            require("plugin.config.dapui")
         end,
     },
     -- nvim-tree.lua
@@ -137,7 +137,7 @@ local M = {
         "nvim-tree/nvim-tree.lua",
         event = "VeryLazy",
         config = function()
-            require("plugins.configs.nvim-tree")
+            require("plugin.config.nvim-tree")
         end,
     },
     -- ChatGPT.nvim
@@ -150,7 +150,7 @@ local M = {
         },
         event = "VeryLazy",
         config = function()
-            require("plugins.configs.chatgpt")
+            require("plugin.config.chatgpt")
         end,
     },
     -- nvim-notify
@@ -158,7 +158,7 @@ local M = {
     --   "rcarriga/nvim-notify",
     --   lazy = false,
     --   config = function()
-    --     require("plugins.configs.notify")
+    --     require("plugin.config.notify")
     --   end,
     -- },
     -- noice.nvim
@@ -170,7 +170,7 @@ local M = {
     --   },
     --   lazy = false,
     --   config = function()
-    --     require("plugins.configs.noice")
+    --     require("plugin.config.noice")
     --   end,
     -- },
     -- JABS.nvim
@@ -178,7 +178,7 @@ local M = {
         "matbme/JABS.nvim",
         event = "VeryLazy",
         config = function()
-            require("plugins.configs.JABS")
+            require("plugin.config.JABS")
         end,
     },
     -- undoTree
@@ -186,7 +186,7 @@ local M = {
         "mbbill/undotree",
         event = "VeryLazy",
         config = function()
-            require("plugins.configs.undotree")
+            require("plugin.config.undotree")
         end,
     },
     -- nvterm
@@ -194,7 +194,7 @@ local M = {
         "NvChad/nvterm",
         event = "VeryLazy",
         config = function()
-            require("plugins.configs.nvterm")
+            require("plugin.config.nvterm")
         end,
     },
     -- auto-session
@@ -205,7 +205,7 @@ local M = {
         -- },
         lazy = false,
         config = function()
-            require("plugins.configs.auto-session")
+            require("plugin.config.auto-session")
         end,
     },
     -- indent-blakline.nvim
@@ -214,7 +214,7 @@ local M = {
         main = "ibl",
         lazy = false,
         config = function()
-            require("plugins.configs.indent-blankline")
+            require("plugin.config.indent-blankline")
         end,
     },
     -- nvim-ufo
@@ -223,7 +223,7 @@ local M = {
         lazy = false,
         dependencies = { "kevinhwang91/promise-async" },
         config = function()
-            require("plugins.configs.ufo")
+            require("plugin.config.ufo")
         end,
     },
     {
@@ -234,14 +234,14 @@ local M = {
             vim.o.timeoutlen = 300
         end,
         config = function()
-            require("plugins.configs.which-key")
+            require("plugin.config.which-key")
         end,
     },
     -- {
     --     "declancm/cinnamon.nvim",
     --     lazy = false,
     --     config = function()
-    --         require("plugins.configs.cinnamon")
+    --         require("plugin.config.cinnamon")
     --     end,
     -- },
     -- Preview
@@ -250,7 +250,7 @@ local M = {
         cmd = { "Preview" },
         event = "VeryLazy",
         config = function()
-            require("plugins.configs.Preview")
+            require("plugin.config.Preview")
         end,
     },
 
@@ -264,7 +264,7 @@ local M = {
         lazy = true,
         event = "VeryLazy",
         config = function()
-            require("plugins.configs.Comment")
+            require("plugin.config.Comment")
         end,
     },
     -- nvim-autopairs
@@ -272,7 +272,7 @@ local M = {
         "windwp/nvim-autopairs",
         event = "VeryLazy",
         config = function()
-            require("plugins.configs.autopairs")
+            require("plugin.config.autopairs")
         end,
     },
     -- vim-expand-region
@@ -280,7 +280,7 @@ local M = {
         "terryma/vim-expand-region",
         event = "VeryLazy",
         config = function()
-            require("plugins.configs.vim-expand-region")
+            require("plugin.config.vim-expand-region")
         end,
     },
     -- nvim-recorder
@@ -293,7 +293,7 @@ local M = {
         opts = {}, -- required even with default settings, since it calls `setup()`
         event = "VeryLazy",
         config = function()
-            require("plugins.configs.nvim-recorder")
+            require("plugin.config.nvim-recorder")
         end,
     },
     -- conform
@@ -302,7 +302,7 @@ local M = {
     --     opts = {},
     --     event = "VeryLazy",
     --     config = function()
-    --         require("plugins.configs.conform")
+    --         require("plugin.config.conform")
     --     end,
     -- },
 
@@ -315,7 +315,7 @@ local M = {
         "folke/flash.nvim",
         event = "VeryLazy",
         config = function()
-            require("plugins.configs.flash")
+            require("plugin.config.flash")
         end,
     },
     -- Kitty Navigation
@@ -324,7 +324,7 @@ local M = {
     --     run = "cp ./*.py ~/.config/kitty/",
     --     event = "VeryLazy",
     --     config = function()
-    --         require("plugins.configs.kitty-navigator")
+    --         require("plugin.config.kitty-navigator")
     --     end,
     -- },
     -- iTerm2 Navigation
@@ -332,7 +332,7 @@ local M = {
     --     "teajaymars/vim-iterm2-navigator",
     --     event = "VeryLazy",
     --     config = function()
-    --         require("plugins.configs.iterm2-navigator")
+    --         require("plugin.config.iterm2-navigator")
     --     end,
     -- },
     -- marks.nvim
@@ -340,7 +340,7 @@ local M = {
         "chentoast/marks.nvim",
         event = "VeryLazy",
         config = function()
-            require("plugins.configs.marks")
+            require("plugin.config.marks")
         end,
     },
 
@@ -365,8 +365,8 @@ local M = {
         },
         event = { "BufReadPost", "VeryLazy" },
         config = function()
-            require("plugins.configs.lspconfig")
-            require("plugins.configs.mason-lspconfig")
+            require("plugin.config.lspconfig")
+            require("plugin.config.mason-lspconfig")
         end,
     },
     -- mason.nvim
@@ -374,7 +374,7 @@ local M = {
         "williamboman/mason.nvim",
         event = "VeryLazy",
         config = function()
-            require("plugins.configs.mason")
+            require("plugin.config.mason")
         end,
     },
     -- nvim-dap
@@ -386,8 +386,8 @@ local M = {
         },
         event = "VeryLazy",
         config = function()
-            require("plugins.configs.dap")
-            require("plugins.configs.mason-dap")
+            require("plugin.config.dap")
+            require("plugin.config.mason-dap")
         end,
     },
     -- cmp
@@ -404,7 +404,7 @@ local M = {
         },
         event = "VeryLazy",
         config = function()
-            require("plugins.configs.cmp")
+            require("plugin.config.cmp")
         end,
     },
     -- null-ls.nvim
@@ -415,8 +415,8 @@ local M = {
         },
         event = "VeryLazy",
         config = function()
-            require("plugins.configs.null-ls")
-            require("plugins.configs.mason-null-ls")
+            require("plugin.config.null-ls")
+            require("plugin.config.mason-null-ls")
         end,
     },
     -- guard
@@ -428,7 +428,7 @@ local M = {
     --     },
     --     event = "VeryLazy",
     --     config = function()
-    --         require("plugins.configs.guard")
+    --         require("plugin.config.guard")
     --     end,
     -- },
     -- copilot.vim
@@ -436,7 +436,7 @@ local M = {
         "github/copilot.vim",
         event = "VeryLazy",
         config = function()
-            require("plugins.configs.copilot")
+            require("plugin.config.copilot")
         end,
     },
     -- lsp_lines.nvim
@@ -444,7 +444,7 @@ local M = {
         "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
         event = "LspAttach",
         config = function()
-            require("plugins.configs.lsp_lines")
+            require("plugin.config.lsp_lines")
         end,
     },
     -- Arduino.nvim
@@ -456,7 +456,7 @@ local M = {
     --   },
     --   event = "VeryLazy",
     --   config = function()
-    --     require("plugins.configs.Arduino")
+    --     require("plugin.config.Arduino")
     --   end,
     -- },
     -- Lspsaga
@@ -468,7 +468,7 @@ local M = {
         },
         event = "VeryLazy",
         config = function()
-            require("plugins.configs.lspsaga")
+            require("plugin.config.lspsaga")
         end,
     },
 
@@ -489,7 +489,7 @@ local M = {
     --     },
     --     event = "VeryLazy",
     --     config = function()
-    --         require("plugins.configs.neogit")
+    --         require("plugin.config.neogit")
     --     end,
     -- },
     -- lazygit.nvim
@@ -500,7 +500,7 @@ local M = {
         },
         event = "VeryLazy",
         config = function()
-            require("plugins.configs.lazygit")
+            require("plugin.config.lazygit")
         end,
     },
     -- gitsigns
@@ -508,7 +508,7 @@ local M = {
         "lewis6991/gitsigns.nvim",
         event = "BufReadPost",
         config = function()
-            require("plugins.configs.gitsigns")
+            require("plugin.config.gitsigns")
         end,
     },
 }
