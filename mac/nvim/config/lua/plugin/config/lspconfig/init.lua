@@ -1,32 +1,46 @@
--- "clangd"
--- "cmake"
--- "gopls"
--- "html"
--- "jsonls"
--- "julials"
--- "lua_ls"
--- "rust_analyzer"
--- "tailwindcss"
--- "taplo"
--- "pyright"
--- "tsserver"
--- "arduino_language_server"
--- "pylyzer"
+local languages = require("utils.languages")
 
-require("plugin.config.lspconfig.config.lua")
-require("plugin.config.lspconfig.config.clangd")
-require("plugin.config.lspconfig.config.pyright")
--- require("plugin.config.lspconfig.config.pylsp")
--- require("plugin.config.lspconfig.config.ruff")
--- require("plugin.config.lspconfig.config.pylyzer")
-require("plugin.config.lspconfig.config.cmake")
-require("plugin.config.lspconfig.config.gopls")
-require("plugin.config.lspconfig.config.html")
-require("plugin.config.lspconfig.config.jsonls")
-require("plugin.config.lspconfig.config.rust_analyzer")
-require("plugin.config.lspconfig.config.tailwindcss")
-require("plugin.config.lspconfig.config.taplo")
-require("plugin.config.lspconfig.config.tsserver")
+local lsp_configs = languages.filter_languages({
+    lua = {
+        "lua",
+    },
+    c = {
+        "clangd",
+        "cmake",
+    },
+    python = {
+        "pyright",
+        -- "pylsp",
+        -- "ruff",
+        -- "pylyzer",
+    },
+    -- dart = {
+    --     "dartls",
+    -- },
+    go = {
+        "gopls",
+    },
+    rust = {
+        "rust_analyzer",
+    },
+    web = {
+        "ts_ls",
+        "tailwindcss",
+        "html",
+    },
+    -- julia = {
+    --     "julials",
+    -- },
+    misc = {
+        "taplo",
+        "jsonls",
+    },
+})
+
+for _, lsp_config in ipairs(lsp_configs) do
+    require("plugin.config.lspconfig.config." .. lsp_config)
+end
+
 -- require("plugin.config.lspconfig.config.arduino_language_server")
 -- vim.notify("Config LSP")
 -- require("plugin.config.Arduino")

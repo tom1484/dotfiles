@@ -6,9 +6,9 @@ return {
         })
         local mappings = {
             -- panes manipulation
-            { "n", "<leader>wt", ":tabe ",   opts("New tab") },
+            { "n", "<leader>wt", ":tabe ", opts("New tab") },
             { "n", "<leader>wh", ":vsplit ", opts("New vertical split") },
-            { "n", "<leader>wv", ":split ",  opts("New horizontal split") },
+            { "n", "<leader>wv", ":split ", opts("New horizontal split") },
             -- line manipulation
             {
                 "v",
@@ -16,10 +16,10 @@ return {
                 ":m '>+1<CR>gv=gv",
                 silent_opts("Move lines down"),
             },
-            { "v", "K",     ":m '<-2<CR>gv=gv", silent_opts("Move lines up") },
+            { "v", "K", ":m '<-2<CR>gv=gv", silent_opts("Move lines up") },
             -- scroll
-            { "n", "<C-d>", "<C-d>zz",          silent_opts("Scroll down") },
-            { "n", "<C-u>", "<C-u>zz",          silent_opts("Scroll up") },
+            { "n", "<C-d>", "<C-d>zz", silent_opts("Scroll down") },
+            { "n", "<C-u>", "<C-u>zz", silent_opts("Scroll up") },
             -- register
             {
                 "v",
@@ -29,21 +29,21 @@ return {
             },
             -- replace and search
             { "n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts("Replace word") },
-            { "n", "<leader>h", [[/\<<C-r><C-w>\>]],                                    opts("Search word") },
+            { "n", "<leader>h", [[/\<<C-r><C-w>\>]], opts("Search word") },
             -- tab navigation
-            { "n", "<leader>1", "1gt",                                                  silent_opts("Tab 1") },
-            { "n", "<leader>2", "2gt",                                                  silent_opts("Tab 2") },
-            { "n", "<leader>3", "3gt",                                                  silent_opts("Tab 3") },
-            { "n", "<leader>4", "4gt",                                                  silent_opts("Tab 4") },
-            { "n", "<leader>5", "5gt",                                                  silent_opts("Tab 5") },
-            { "n", "<leader>6", "6gt",                                                  silent_opts("Tab 6") },
-            { "n", "<leader>7", "7gt",                                                  silent_opts("Tab 7") },
-            { "n", "<leader>8", "8gt",                                                  silent_opts("Tab 8") },
-            { "n", "<leader>9", "9gt",                                                  silent_opts("Tab 9") },
-            { "n", "<leader>0", "10gt",                                                 silent_opts("Tab 10") },
+            { "n", "<leader>1", "1gt", silent_opts("Tab 1") },
+            { "n", "<leader>2", "2gt", silent_opts("Tab 2") },
+            { "n", "<leader>3", "3gt", silent_opts("Tab 3") },
+            { "n", "<leader>4", "4gt", silent_opts("Tab 4") },
+            { "n", "<leader>5", "5gt", silent_opts("Tab 5") },
+            { "n", "<leader>6", "6gt", silent_opts("Tab 6") },
+            { "n", "<leader>7", "7gt", silent_opts("Tab 7") },
+            { "n", "<leader>8", "8gt", silent_opts("Tab 8") },
+            { "n", "<leader>9", "9gt", silent_opts("Tab 9") },
+            { "n", "<leader>0", "10gt", silent_opts("Tab 10") },
             -- save and quit
-            { "n", "W",         ":w<CR>",                                               silent_opts("Save") },
-            { "n", "Q",         ":q<CR>",                                               silent_opts("Quit") },
+            { "n", "W", ":w<CR>", silent_opts("Save") },
+            { "n", "Q", ":q<CR>", silent_opts("Quit") },
             -- window navigation
             {
                 "n",

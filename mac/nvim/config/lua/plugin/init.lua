@@ -44,6 +44,7 @@ local M = {
     -- luatab.nvim
     {
         "alvarosevilla95/luatab.nvim",
+        enabled = false,
         requires = "nvim-tree/nvim-web-devicons",
         lazy = false,
         config = function()
@@ -58,6 +59,30 @@ local M = {
             require("plugin.config.transparent")
         end,
     },
+    -- {
+    --     "echasnovski/mini.icons",
+    --     enabled = false,
+    --     opts = {},
+    --     lazy = true,
+    --     specs = {
+    --         { "nvim-tree/nvim-web-devicons", enabled = false, optional = true },
+    --     },
+    --     init = function()
+    --         package.preload["nvim-web-devicons"] = function()
+    --             require("mini.icons").mock_nvim_web_devicons()
+    --             return package.loaded["nvim-web-devicons"]
+    --         end
+    --     end,
+    -- },
+    -- satellite
+    {
+        "lewis6991/satellite.nvim",
+        enabled = false,
+        event = "VeryLazy",
+        config = function()
+            require("plugin.config.satellite")
+        end,
+    },
 
     -- #############################
     -- Highlights Plugins
@@ -66,21 +91,23 @@ local M = {
     -- nvim-treesitter
     {
         "nvim-treesitter/nvim-treesitter",
+        -- enabled = false,
         run = ":TSUpdate",
-        -- event = "VeryLazy",
+        event = "VeryLazy",
         lazy = false,
         config = function()
             require("plugin.config.treesitter")
         end,
     },
     -- nvim-treesitter-context
-    -- {
-    --     "nvim-treesitter/nvim-treesitter-context",
-    --     event = "VeryLazy",
-    --     config = function()
-    --         require("plugin.config.treesitter-context")
-    --     end,
-    -- },
+    {
+        "nvim-treesitter/nvim-treesitter-context",
+        -- enabled = false,
+        event = "VeryLazy",
+        config = function()
+            require("plugin.config.treesitter-context")
+        end,
+    },
     -- todo-comments.nvim
     {
         "folke/todo-comments.nvim",
@@ -108,7 +135,7 @@ local M = {
         "nvim-telescope/telescope.nvim",
         dependencies = {
             "nvim-lua/plenary.nvim",
-            "tom1484/telescope-ui-select.nvim",
+            "nvim-telescope/telescope-ui-select.nvim",
         },
         lazy = false,
         config = function()
@@ -120,9 +147,19 @@ local M = {
         dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
         -- event = "VeryLazy",
     },
+    -- telescope-tabs
+    {
+        "LukasPietzschmann/telescope-tabs",
+        lazy = false,
+        dependencies = { "nvim-telescope/telescope.nvim" },
+        config = function()
+            require("plugin.config.telescope-tabs")
+        end,
+    },
     -- nvim-dap-ui
     {
         "rcarriga/nvim-dap-ui",
+        -- enabled = false,
         dependencies = {
             "mfussenegger/nvim-dap",
             "nvim-neotest/nvim-nio",
@@ -135,6 +172,7 @@ local M = {
     -- nvim-tree.lua
     {
         "nvim-tree/nvim-tree.lua",
+        -- enabled = false,
         event = "VeryLazy",
         config = function()
             require("plugin.config.nvim-tree")
@@ -143,6 +181,7 @@ local M = {
     -- ChatGPT.nvim
     {
         "jackMort/ChatGPT.nvim",
+        -- enabled = false,
         dependencies = {
             "MunifTanjim/nui.nvim",
             "nvim-lua/plenary.nvim",
@@ -154,28 +193,33 @@ local M = {
         end,
     },
     -- nvim-notify
-    -- {
-    --   "rcarriga/nvim-notify",
-    --   lazy = false,
-    --   config = function()
-    --     require("plugin.config.notify")
-    --   end,
-    -- },
+    {
+        "rcarriga/nvim-notify",
+        -- enabled = false,
+        lazy = false,
+        event = "VeryLazy",
+        config = function()
+            require("plugin.config.notify")
+        end,
+    },
     -- noice.nvim
-    -- {
-    --   "folke/noice.nvim",
-    --   dependencies = {
-    --     "MunifTanjim/nui.nvim",
-    --     "rcarriga/nvim-notify",
-    --   },
-    --   lazy = false,
-    --   config = function()
-    --     require("plugin.config.noice")
-    --   end,
-    -- },
+    {
+        "folke/noice.nvim",
+        -- enabled = false,
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        },
+        lazy = false,
+        event = "VeryLazy",
+        config = function()
+            require("plugin.config.noice")
+        end,
+    },
     -- JABS.nvim
     {
         "matbme/JABS.nvim",
+        -- enabled = false,
         event = "VeryLazy",
         config = function()
             require("plugin.config.JABS")
@@ -200,6 +244,7 @@ local M = {
     -- auto-session
     {
         "rmagatti/auto-session",
+        -- enabled = false,
         -- dependencies = {
         --   "folke/noice.nvim",
         -- },
@@ -211,6 +256,7 @@ local M = {
     -- indent-blakline.nvim
     {
         "lukas-reineke/indent-blankline.nvim",
+        -- enabled = false,
         main = "ibl",
         lazy = false,
         config = function()
@@ -237,20 +283,45 @@ local M = {
             require("plugin.config.which-key")
         end,
     },
-    -- {
-    --     "declancm/cinnamon.nvim",
-    --     lazy = false,
-    --     config = function()
-    --         require("plugin.config.cinnamon")
-    --     end,
-    -- },
+    {
+        "declancm/cinnamon.nvim",
+        enabled = false,
+        lazy = false,
+        event = "VeryLazy",
+        config = function()
+            require("plugin.config.cinnamon")
+        end,
+    },
     -- Preview
     {
         "henriklovhaug/Preview.nvim",
+        enabled = false,
         cmd = { "Preview" },
         event = "VeryLazy",
         config = function()
             require("plugin.config.Preview")
+        end,
+    },
+    -- Outline
+    {
+        "hedyhli/outline.nvim",
+        -- enabled = false,
+        event = "VeryLazy",
+        config = function()
+            require("plugin.config.outline")
+        end,
+    },
+    -- Aerial
+    {
+        "stevearc/aerial.nvim",
+        enabled = false,
+        event = "VeryLazy",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons",
+        },
+        config = function()
+            require("plugin.config.aerial")
         end,
     },
 
@@ -297,14 +368,15 @@ local M = {
         end,
     },
     -- conform
-    -- {
-    --     'stevearc/conform.nvim',
-    --     opts = {},
-    --     event = "VeryLazy",
-    --     config = function()
-    --         require("plugin.config.conform")
-    --     end,
-    -- },
+    {
+        "stevearc/conform.nvim",
+        enabled = false,
+        opts = {},
+        event = "VeryLazy",
+        config = function()
+            require("plugin.config.conform")
+        end,
+    },
 
     -- #############################
     -- Navigation Plugins
@@ -390,6 +462,14 @@ local M = {
             require("plugin.config.mason-dap")
         end,
     },
+    {
+        "Weissle/persistent-breakpoints.nvim",
+        event = "VeryLazy",
+        lazy = false,
+        config = function()
+            require("plugin.config.persistent-breakpoints")
+        end,
+    },
     -- cmp
     {
         "hrsh7th/nvim-cmp",
@@ -410,6 +490,7 @@ local M = {
     -- null-ls.nvim
     {
         "jose-elias-alvarez/null-ls.nvim",
+        -- "nvimtools/none-ls.nvim",
         dependencies = {
             "jay-babu/mason-null-ls.nvim",
         },
@@ -420,21 +501,23 @@ local M = {
         end,
     },
     -- guard
-    -- {
-    --     "nvimdev/guard.nvim",
-    --     -- Builtin configuration, optional
-    --     dependencies = {
-    --         "nvimdev/guard-collection",
-    --     },
-    --     event = "VeryLazy",
-    --     config = function()
-    --         require("plugin.config.guard")
-    --     end,
-    -- },
+    {
+        "nvimdev/guard.nvim",
+        enabled = false,
+        -- Builtin configuration, optional
+        dependencies = {
+            "nvimdev/guard-collection",
+        },
+        event = "VeryLazy",
+        config = function()
+            require("plugin.config.guard")
+        end,
+    },
     -- copilot.vim
     {
         "github/copilot.vim",
         event = "VeryLazy",
+        lazy = false,
         config = function()
             require("plugin.config.copilot")
         end,
@@ -443,6 +526,7 @@ local M = {
     {
         "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
         event = "LspAttach",
+        lazy = false,
         config = function()
             require("plugin.config.lsp_lines")
         end,
@@ -473,26 +557,79 @@ local M = {
     },
 
     -- #############################
+    -- Core Plugins
+    -- #############################
+    -- {
+    --     "Joakker/lua-json5",
+    --     lazy = false,
+    -- },
+    {
+        "amitds1997/remote-nvim.nvim",
+        enabled = false,
+        event = "VeryLazy",
+        version = "*", -- Pin to GitHub releases
+        dependencies = {
+            "nvim-lua/plenary.nvim", -- For standard functions
+            "MunifTanjim/nui.nvim", -- To build the plugin UI
+            "nvim-telescope/telescope.nvim", -- For picking b/w different remote methods
+        },
+        config = function()
+            require("plugin.config.remote-nvim")
+        end,
+    },
+    {
+        "yetone/avante.nvim",
+        event = "VeryLazy",
+        lazy = false,
+        version = false, -- set this if you want to always pull the latest change
+        opts = {
+            -- add any opts here
+        },
+        -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+        build = "make",
+        -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1" -- for windows
+        dependencies = {
+            "stevearc/dressing.nvim",
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            --- The below dependencies are optional,
+            "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+            "zbirenbaum/copilot.lua", -- for providers='copilot'
+            {
+                -- support for image pasting
+                "HakonHarnes/img-clip.nvim",
+                event = "VeryLazy",
+                opts = {
+                    -- recommended settings
+                    default = {
+                        embed_image_as_base64 = false,
+                        prompt_for_file_name = false,
+                        drag_and_drop = {
+                            insert_mode = true,
+                        },
+                        -- required for Windows users
+                        use_absolute_path = true,
+                    },
+                },
+            },
+            {
+                -- Make sure to set this up properly if you have lazy=true
+                "MeanderingProgrammer/render-markdown.nvim",
+                opts = {
+                    file_types = { "markdown", "Avante" },
+                },
+                ft = { "markdown", "Avante" },
+            },
+        },
+        config = function()
+            require("plugin.config.avante")
+        end,
+    },
+
+    -- #############################
     -- Git Plugins
     -- #############################
 
-    -- Neogit
-    -- {
-    --     "NeogitOrg/neogit",
-    --     dependencies = {
-    --         "nvim-lua/plenary.nvim", -- required
-    --         "sindrets/diffview.nvim", -- optional - Diff integration
-    --
-    --         -- Only one of these is needed, not both.
-    --         "nvim-telescope/telescope.nvim", -- optional
-    --         "ibhagwan/fzf-lua", -- optional
-    --     },
-    --     event = "VeryLazy",
-    --     config = function()
-    --         require("plugin.config.neogit")
-    --     end,
-    -- },
-    -- lazygit.nvim
     {
         "kdheepak/lazygit.nvim",
         dependencies = {
@@ -509,6 +646,15 @@ local M = {
         event = "BufReadPost",
         config = function()
             require("plugin.config.gitsigns")
+        end,
+    },
+    -- diffview
+    {
+        "sindrets/diffview.nvim",
+        lazy = false,
+        event = "VeryLazy",
+        config = function()
+            require("plugin.config.diffview")
         end,
     },
 }

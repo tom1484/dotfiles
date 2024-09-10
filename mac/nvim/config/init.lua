@@ -1,48 +1,52 @@
-vim.g.mapleader = " "
+if vim.g.vscode then
+    -- VSCode extension
+    require("vscode-config")
+else
+    -- ordinary Neovim
+    vim.g.mapleader = " "
 
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
 
-local keymaps_setup = require("keymaps")
-local configs_setup = require("configs")
-local ftconfigs_setup = require("ftconfigs")
-local buffer_setup = require("buffer")
-local utils_setup = require("utils")
+    local config = require("config")
+    config.setup()
 
-utils_setup()
-keymaps_setup()
-configs_setup()
+    -- Bootstrap lazy.nvim
+    local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+    if not (vim.uv or vim.loop).fs_stat(lazypath) then
+        local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+        vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+    end
+    vim.opt.rtp:prepend(lazypath)
 
-vim.api.nvim_create_autocmd("FileType", {
-    callback = function()
-        ftconfigs_setup()
-    end,
-})
-vim.api.nvim_create_autocmd("BufEnter", {
-    callback = function()
-        buffer_setup()
-    end,
-})
-
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "--single-branch",
-        "https://github.com/folke/lazy.nvim.git",
-        lazypath,
+    require("lazy").setup("plugin", {
+        ui = { border = "rounded" },
+        defaults = { lazy = true },
+        -- install = { colorscheme = { "vscode" } },
+        checker = { enabled = false },
+        change_detection = { enabled = true },
+        performance = {
+            rtp = {
+                disabled_plugins = {
+                    "netrw",
+                    -- "gzip",
+                    -- "matchit",
+                    -- "matchparen",
+                    -- "netrwPlugin",
+                    -- "tarPlugin",
+                    -- "tohtml",
+                    -- "tutor",
+                    -- "zipPlugin",
+                },
+            },
+        },
+        -- debug = true,
     })
+
+    -- vim.api.nvim_create_autocmd("User", {
+    --     pattern = "VeryLazy",
+    --     callback = function()
+    --         -- require("commands")
+    --     end,
+    -- })
 end
-
-vim.opt.runtimepath:prepend(lazypath)
-
-require("lazy").setup("plugins", require("configurations"))
-
-vim.api.nvim_create_autocmd("User", {
-    pattern = "VeryLazy",
-    callback = function()
-        -- require("commands")
-    end,
-})

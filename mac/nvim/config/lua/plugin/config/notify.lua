@@ -8,3 +8,20 @@ notify.setup({
     stages = "static",
     render = "minimal",
 })
+
+-- Ignore some messages
+local ignored_message = {
+    "deprecated",
+    "tbl_add_reverse",
+    "tbl_add_reverse_lookup",
+    "warning: multiple different client offset_encodings",
+}
+
+vim.notify = function(msg, ...)
+    for _, pattern in ipairs(ignored_message) do
+        if msg:match(pattern) then
+            return
+        end
+    end
+    notify(msg, ...)
+end

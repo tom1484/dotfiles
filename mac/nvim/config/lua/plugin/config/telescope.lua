@@ -62,6 +62,23 @@ telescope.setup({
             i = {
                 ["<Tab>"] = actions.move_selection_next,
                 ["<S-Tab>"] = actions.move_selection_previous,
+
+                ["<C-y>"] = function(prompt_bufnr)
+                    actions.toggle_selection(prompt_bufnr)
+                    actions.move_selection_next(prompt_bufnr)
+                end,
+                ["<C-n>"] = function(prompt_bufnr)
+                    actions.toggle_selection(prompt_bufnr)
+                    actions.move_selection_previous(prompt_bufnr)
+                end,
+                ["<C-x>"] = actions.drop_all,
+
+                ["<C-t>"] = actions.select_tab,
+                ["<C-h>"] = actions.select_vertical,
+                ["<C-v>"] = actions.select_horizontal,
+
+                ["<C-s>"] = actions.smart_send_to_qflist,
+                ["<C-q>"] = actions.close,
             },
             n = {
                 ["<Tab>"] = actions.move_selection_next,

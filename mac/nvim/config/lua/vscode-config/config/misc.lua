@@ -1,13 +1,15 @@
+local vscode = require("vscode")
+
 return {
     setup = function()
-        vim.opt.guicursor = ""
+        vim.opt.guicursor = "n-v-c:block,i:ver25"
 
         vim.opt.nu = true
         vim.opt.relativenumber = true
 
         vim.opt.smartindent = true
 
-        vim.opt.wrap = true
+        vim.opt.wrap = false
 
         vim.opt.swapfile = false
         vim.opt.backup = false
@@ -32,6 +34,6 @@ return {
 
         vim.opt.tagbsearch = false
 
-        vim.opt.showtabline = 0
+        vim.notify = vscode.notify
     end,
 }

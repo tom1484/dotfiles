@@ -8,5 +8,5 @@ local function opts(desc)
     }
 end
 vim.custom.fn.set_keymaps({
-    { "n", "<leader>g", ":LazyGit<CR>", opts("Git") },
+    { "n", "<leader>gl", ":LazyGit<CR>", opts("Open lazygit") },
 })

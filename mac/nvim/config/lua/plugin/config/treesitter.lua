@@ -10,6 +10,7 @@ require("nvim-treesitter.configs").setup({
         "rust",
         "go",
         "vimdoc",
+        "query",
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -27,8 +28,14 @@ require("nvim-treesitter.configs").setup({
         -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
         -- Using this option may slow down your editor, and you may see some duplicate highlights.
         -- Instead of true it can also be a list of languages
-        -- additional_vim_regex_highlighting = false,
-        additional_vim_regex_highlighting = true,
+        additional_vim_regex_highlighting = false,
+        use_languagetree = false,
+        disable = function(_, bufnr)
+            local buf_name = vim.api.nvim_buf_get_name(bufnr)
+            local file_size = vim.api.nvim_call_function("getfsize", { buf_name })
+            return file_size > 80 * 1024
+        end,
+        -- additional_vim_regex_highlighting = true,
     },
 
     -- incremental_selection = {

@@ -6,6 +6,7 @@ local diagnostics = null_ls.builtins.diagnostics
 null_ls.setup({
     border = "rounded",
     sources = {
+        -- Python
         formatting.black,
         formatting.isort.with({
             extra_args = {
@@ -13,22 +14,25 @@ null_ls.setup({
                 "black",
             },
         }),
-
-        formatting.beautysh,
-
+        -- Shell
+        formatting.shfmt,
+        -- C/C++
         formatting.clang_format.with({
             extra_args = {
                 "--style",
-                "{BasedOnStyle: Google}",
+                "{BasedOnStyle: Google, IndentWidth: 4}",
             },
         }),
+        -- Lua
         formatting.cmake_format,
         diagnostics.cmake_lint,
-
+        -- Dart
+        null_ls.builtins.formatting.dart_format,
+        -- Go
         formatting.gofumpt,
         formatting.goimports,
         diagnostics.revive,
-
+        -- JavaScript/TypeScript
         formatting.prettierd.with({
             filetypes = {
                 "css",
@@ -44,9 +48,11 @@ null_ls.setup({
                 "handlebars",
             },
         }),
-
+        formatting.eslint_d,
+        diagnostics.eslint_d,
+        -- Rust
         formatting.rustfmt,
-
+        -- Lua
         formatting.stylua.with({
             extra_args = {
                 "--indent-type",
@@ -55,14 +61,13 @@ null_ls.setup({
                 "4",
             },
         }),
-
-        formatting.eslint_d,
-        diagnostics.eslint_d,
-
+        -- XML
         formatting.xmlformat,
+        -- JSON
         diagnostics.jsonlint,
         -- diagnostics.ruff,
     },
+
     on_attach = function(client, _)
         if client.supports_method("textDocument/formatting") then
             vim.custom.fn.set_keymaps({

@@ -1,17 +1,34 @@
+local languages = require("utils.languages")
+
 require("mason-lspconfig").setup({
-    ensure_installed = {
-        "clangd",
-        "cmake",
-        "gopls",
-        "html",
-        "jsonls",
-        "julials",
-        "lua_ls",
-        "rust_analyzer",
-        "tailwindcss",
-        "taplo",
-        "pyright",
-        "tsserver",
-        "arduino_language_server",
-    },
+    ensure_installed = languages.filter_languages({
+        lua = {
+            "lua_ls",
+        },
+        c = {
+            "clangd",
+            "cmake",
+        },
+        python = {
+            "pyright",
+        },
+        go = {
+            "gopls",
+        },
+        rust = {
+            "rust_analyzer",
+        },
+        web = {
+            "ts_ls",
+            "tailwindcss",
+            "html",
+        },
+        julia = {
+            -- "julials",
+        },
+        misc = {
+            "taplo",
+            "jsonls",
+        },
+    }),
 })

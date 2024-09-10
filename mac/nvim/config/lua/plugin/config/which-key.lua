@@ -4,42 +4,21 @@ vim.o.timeout = true
 vim.o.timeoutlen = 500
 
 wk.setup({
-    window = {
+    win = {
         border = "rounded",
     },
 })
-wk.register({
-    p = {
-        name = "Project",
-    },
-    f = {
-        name = "File",
-    },
-    k = {
-        name = "Dap",
-    },
-    v = {
-        name = "Lsp",
-        l = {
-            name = "Telescope lists",
-            -- s = {
-            --     name = "Symbols",
-            -- },
-        },
-        n = {
-            name = "Next",
-        },
-        p = {
-            name = "Previous",
-        },
-    },
-    s = {
-        name = "Session",
-    },
-    w = {
-        name = "Window",
-    },
-}, { prefix = "<leader>" })
+wk.add({
+    { "<leader>f", group = "File" },
+    { "<leader>k", group = "Dap" },
+    { "<leader>p", group = "Project" },
+    { "<leader>s", group = "Session" },
+    { "<leader>v", group = "Lsp" },
+    { "<leader>vl", group = "Telescope lists" },
+    { "<leader>vn", group = "Next" },
+    { "<leader>vp", group = "Previous" },
+    { "<leader>w", group = "Window" },
+})
 
 vim.custom.fn.set_keymaps({
     {

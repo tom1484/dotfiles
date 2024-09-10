@@ -10,8 +10,8 @@ return {
             "make",
         }
         local two_space_ft = {
-            -- "c",
-            -- "cpp",
+            "c",
+            "cpp",
             "css",
             "scss",
             "jsonc",
