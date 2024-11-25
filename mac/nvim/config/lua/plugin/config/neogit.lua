@@ -7,6 +7,6 @@ local neogit = require("neogit")
 --         desc = desc,
 --     }
 -- end
--- vim.custom.fn.set_keymaps({
+-- utils.set_keymaps({
 --     { "n", "<leader>g", ":Neogit<CR>", opts("Git") },
 -- })

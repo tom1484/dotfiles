@@ -1,3 +1,7 @@
+local style = require("def.style")
+
+local utils = require("utils")
+
 require("nvterm").setup({
     terminals = {
         type_opts = {
@@ -7,7 +11,7 @@ require("nvterm").setup({
                 col = 0.1,
                 width = 0.8,
                 height = 0.8,
-                border = "rounded",
+                border = style.border,
             },
         },
     },
@@ -26,4 +30,4 @@ local mappings = {
         { noremap = true, silent = true, desc = "Toggle terminal" },
     },
 }
-vim.custom.fn.set_keymaps(mappings)
+utils.set_keymaps(mappings)

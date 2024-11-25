@@ -1,6 +1,8 @@
+local utils = require("utils")
+
 require("marks").setup({})
 
-vim.custom.fn.set_keymaps({
+utils.set_keymaps({
     {
         "n",
         "<leader>m",

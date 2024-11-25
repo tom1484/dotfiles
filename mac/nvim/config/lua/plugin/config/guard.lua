@@ -1,3 +1,4 @@
+local utils = require("utils")
 local ft = require("guard.filetype")
 
 -- Assuming you have guard-collection
@@ -43,7 +44,7 @@ require("guard").setup({
     -- save_on_fmt = false,
 })
 
-vim.custom.fn.set_keymaps({
+utils.set_keymaps({
     {
         "n",
         "<leader>vf",

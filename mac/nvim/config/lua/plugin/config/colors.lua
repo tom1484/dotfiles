@@ -1,5 +1,4 @@
 vim.cmd.colorscheme("kanagawa")
--- vim.cmd.colorscheme("vscode")
 
 local border = "#777777"
 
@@ -26,13 +25,3 @@ vim.api.nvim_set_hl(0, "LspSagaSignatureHelpBorder", { fg = border })
 vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#757575" })
 
 vim.api.nvim_set_hl(0, "Visual", { bg = "#30496e" })
--- vim.api.nvim_set_hl(0, "Visual", { bg = "#6c3300" })
-
--- vim.cmd([[highlight FloatBorder guifg=#585858 guibg=None]])
--- vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
--- vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
--- vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "none" })
--- vim.api.nvim_set_hl(0, "VertSplit", { bg = "none" })
--- vim.api.nvim_set_hl(0, "VertSplit", { fg = "none" })
--- vim.api.nvim_set_hl(0, "FloatBorder", { fg = "white" })
--- vim.api.nvim_set_hl(0, "FloatBorder", { fg = "white", bg = "none" })

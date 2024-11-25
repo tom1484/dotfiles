@@ -1,3 +1,5 @@
+local style = require("def.style")
+
 local languages = require("utils.languages")
 
 local lsp_configs = languages.filter_languages({
@@ -54,14 +56,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
 vim.diagnostic.config({
     virtual_text = true,
     float = {
-        border = "rounded",
+        border = style.border,
     },
 })
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded",
+    border = style.border,
 })
 -- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
---     border = "rounded",
+--     border = style.border,
 -- })
-require("lspconfig.ui.windows").default_options.border = "rounded"
+require("lspconfig.ui.windows").default_options.border = style.border

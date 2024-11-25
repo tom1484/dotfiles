@@ -1,3 +1,7 @@
+local style = require("def.style")
+
+local utils = require("utils")
+
 require("jabs").setup({
     -- Options for the main window
     position = { "center", "center" }, -- position = {'<position_x>', '<position_y>'} | <position_x> left, center, right,
@@ -10,7 +14,7 @@ require("jabs").setup({
 
     width = 80,             -- default 50
     height = 20,            -- default 10
-    border = "rounded",     -- none, single, double, rounded, solid, shadow, (or an array or chars). Default shadow
+    border = style.border,     -- none, single, double, rounded, solid, shadow, (or an array or chars). Default shadow
 
     -- offset = {
     --   top = 2, -- default 0
@@ -28,7 +32,7 @@ require("jabs").setup({
     preview = {
         width = 40,           -- default 70
         height = 60,          -- default 30
-        border = "rounded",   -- none, single, double, rounded, solid, shadow, (or an array or chars). Default double
+        border = style.border,   -- none, single, double, rounded, solid, shadow, (or an array or chars). Default double
     },
 
     -- Default highlights (must be a valid :highlight)
@@ -65,7 +69,7 @@ require("jabs").setup({
     -- use_devicons = false -- true or false. Default true
 })
 
-vim.custom.fn.set_keymaps({
+utils.set_keymaps({
     {
         "n",
         "<leader>b",

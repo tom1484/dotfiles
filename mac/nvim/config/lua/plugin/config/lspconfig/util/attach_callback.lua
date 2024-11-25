@@ -1,3 +1,5 @@
+local style = require("def.style")
+
 return function(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
     if client ~= nil and client.server_capabilities.inlayHintProvider then
@@ -10,7 +12,7 @@ return function(ev)
         floating_window = false,
         -- floating_window = true,
         handler_opts = {
-            border = "rounded",
+            border = style.border,
         },
     }, ev.buf)
 

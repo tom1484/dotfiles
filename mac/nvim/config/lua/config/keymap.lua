@@ -1,7 +1,9 @@
+local utils = require("utils")
+
 return {
     setup = function()
-        local opts = vim.custom.fn.opts_with_desc({})
-        local silent_opts = vim.custom.fn.opts_with_desc({
+        local opts = utils.opts_with_desc({})
+        local silent_opts = utils.opts_with_desc({
             silent = true,
         })
         local mappings = {
@@ -84,6 +86,6 @@ return {
             -- {{ "i", "c" }, "<A-k>", "<UP>"},
             -- {{ "i", "c" }, "<A-l>", "<RIGHT>"},
         }
-        vim.custom.fn.set_keymaps(mappings)
+        utils.set_keymaps(mappings)
     end,
 }

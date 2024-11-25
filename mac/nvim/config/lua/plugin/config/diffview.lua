@@ -1,5 +1,14 @@
-local opts = vim.custom.fn.opts_with_desc({})
-local silent_opts = vim.custom.fn.opts_with_desc({
+local utils = require("utils")
+local diffview = require("diffview")
+
+diffview.setup({
+    keymaps = {
+        disable_defaults = true,
+    },
+})
+
+local opts = utils.opts_with_desc({})
+local silent_opts = utils.opts_with_desc({
     silent = true,
 })
 local mappings = {
@@ -34,4 +43,4 @@ local mappings = {
         silent_opts("Toggle file panel"),
     },
 }
-vim.custom.fn.set_keymaps(mappings)
+utils.set_keymaps(mappings)

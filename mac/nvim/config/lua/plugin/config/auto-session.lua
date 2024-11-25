@@ -1,3 +1,5 @@
+local utils = require("utils")
+
 require("auto-session").setup({
     log_level = "error",
     auto_restore_enabled = true,
@@ -11,7 +13,7 @@ local function opts(desc)
         desc = desc,
     }
 end
-vim.custom.fn.set_keymaps({
+utils.set_keymaps({
     { "n", "<leader>sr", ":SessionRestore<CR>", opts("Restore session") },
     { "n", "<leader>sd", ":SessionDelete<CR>", opts("Delete session") },
     { "n", "<leader>ss", ":SessionSave<CR>", opts("Save session") },

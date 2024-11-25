@@ -1,3 +1,5 @@
+local style = require("def.style")
+
 -- ordinary Neovim
 vim.g.mapleader = " "
 
@@ -28,7 +30,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("vscode-config.plugin", {
-    ui = { border = "rounded" },
+    ui = { border = style.border },
     defaults = { lazy = true },
     -- install = { colorscheme = { "vscode" } },
     checker = { enabled = false },

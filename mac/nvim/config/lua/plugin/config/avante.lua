@@ -1,3 +1,6 @@
+local style = require("def.style")
+
+local utils = require("utils")
 local avante = require("avante")
 
 avante.setup({
@@ -68,7 +71,7 @@ avante.setup({
     },
 })
 
--- local silent_opts = vim.custom.fn.opts_with_desc({
+-- local silent_opts = utils.opts_with_desc({
 --     silent = true,
 -- })
 -- local mappings = {
@@ -79,4 +82,4 @@ avante.setup({
 --         silent_opts("Toggle Avante"),
 --     },
 -- }
--- vim.custom.fn.set_keymaps(mappings)
+-- utils.set_keymaps(mappings)

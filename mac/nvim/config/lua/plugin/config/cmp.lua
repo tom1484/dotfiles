@@ -1,3 +1,5 @@
+local style = require("def.style")
+
 local lspkind = require("lspkind")
 local luasnip = require("luasnip")
 local cmp = require("cmp")
@@ -85,13 +87,13 @@ cmp.setup({
     window = {
         documentation = {
             zindex = 98,
-            border = "rounded",
+            border = style.border,
             winhighlight = "FloatBorder:LspInfoBorder,CursorLine:PmenuSel",
             scrollbar = true,
         },
         completion = {
             zindex = 99,
-            border = "rounded",
+            border = style.border,
             winhighlight = "FloatBorder:LspInfoBorder,CursorLine:PmenuSel",
             scrollbar = true,
         },

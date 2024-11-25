@@ -1,3 +1,4 @@
+local utils = require("utils")
 local dap = require("dap")
 local dapui = require("dapui")
 local languages = require("utils.languages")
@@ -48,7 +49,7 @@ local actions = {
     cmd("PBClearAllBreakpoints"),
 }
 
-local opts = vim.custom.fn.opts_with_desc({
+local opts = utils.opts_with_desc({
     silent = true,
 })
 local mappings = {
@@ -84,4 +85,4 @@ local mappings = {
         opts("Actions"),
     },
 }
-vim.custom.fn.set_keymaps(mappings)
+utils.set_keymaps(mappings)

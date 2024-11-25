@@ -1,258 +1,81 @@
+-- local alpha_config = require("plugin.config.alpha")
+-- local kanagawa_config = require("plugin.config.kanagawa")
+
 local M = {
-
-    -- #############################
-    -- Theme Plugins
-    -- #############################
-
-    -- alpha-nvim
-    {
-        "goolord/alpha-nvim",
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-            "nvim-telescope/telescope.nvim",
-            "rmagatti/auto-session",
-        },
-        lazy = false,
-        config = function()
-            require("plugin.config.alpha")
-        end,
-    },
-    -- vscode.nvim
-    {
-        "Mofiqul/vscode.nvim",
-        lazy = false,
-        config = function()
-            require("plugin.config.colors")
-        end,
-    },
-    -- kanagawa
-    {
-        "rebelot/kanagawa.nvim",
-        lazy = false,
-        config = function()
-            require("plugin.config.kanagawa")
-        end,
-    },
-    -- lualine.nvim
-    {
-        "nvim-lualine/lualine.nvim",
-        lazy = false,
-        config = function()
-            require("plugin.config.lualine")
-        end,
-    },
-    -- luatab.nvim
-    {
-        "alvarosevilla95/luatab.nvim",
-        enabled = false,
-        requires = "nvim-tree/nvim-web-devicons",
-        lazy = false,
-        config = function()
-            require("plugin.config.luatab")
-        end,
-    },
-    -- nvim-transparent
-    {
-        "xiyaowong/nvim-transparent",
-        lazy = false,
-        config = function()
-            require("plugin.config.transparent")
-        end,
-    },
-    -- {
-    --     "echasnovski/mini.icons",
-    --     enabled = false,
-    --     opts = {},
-    --     lazy = true,
-    --     specs = {
-    --         { "nvim-tree/nvim-web-devicons", enabled = false, optional = true },
-    --     },
-    --     init = function()
-    --         package.preload["nvim-web-devicons"] = function()
-    --             require("mini.icons").mock_nvim_web_devicons()
-    --             return package.loaded["nvim-web-devicons"]
-    --         end
-    --     end,
-    -- },
-    -- satellite
-    {
-        "lewis6991/satellite.nvim",
-        enabled = false,
-        event = "VeryLazy",
-        config = function()
-            require("plugin.config.satellite")
-        end,
-    },
-
-    -- #############################
-    -- Highlights Plugins
-    -- #############################
-
-    -- nvim-treesitter
-    {
-        "nvim-treesitter/nvim-treesitter",
-        -- enabled = false,
-        run = ":TSUpdate",
-        event = "VeryLazy",
-        lazy = false,
-        config = function()
-            require("plugin.config.treesitter")
-        end,
-    },
-    -- nvim-treesitter-context
-    {
-        "nvim-treesitter/nvim-treesitter-context",
-        -- enabled = false,
-        event = "VeryLazy",
-        config = function()
-            require("plugin.config.treesitter-context")
-        end,
-    },
-    -- todo-comments.nvim
-    {
-        "folke/todo-comments.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        event = "VeryLazy",
-        config = function()
-            require("plugin.config.todo-comments")
-        end,
-    },
-    -- trouble.nvim
-    {
-        "folke/trouble.nvim",
-        event = "VeryLazy",
-        config = function()
-            require("plugin.config.Trouble")
-        end,
-    },
-
     -- #############################
     -- UI Plugins
     -- #############################
 
-    -- telescope.nvim
-    {
-        "nvim-telescope/telescope.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope-ui-select.nvim",
-        },
-        lazy = false,
-        config = function()
-            require("plugin.config.telescope")
-        end,
-    },
-    {
-        "nvim-telescope/telescope-file-browser.nvim",
-        dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-        -- event = "VeryLazy",
-    },
-    -- telescope-tabs
-    {
-        "LukasPietzschmann/telescope-tabs",
-        lazy = false,
-        dependencies = { "nvim-telescope/telescope.nvim" },
-        config = function()
-            require("plugin.config.telescope-tabs")
-        end,
-    },
-    -- nvim-dap-ui
-    {
-        "rcarriga/nvim-dap-ui",
-        -- enabled = false,
-        dependencies = {
-            "mfussenegger/nvim-dap",
-            "nvim-neotest/nvim-nio",
-        },
-        event = "VeryLazy",
-        config = function()
-            require("plugin.config.dapui")
-        end,
-    },
-    -- nvim-tree.lua
-    {
-        "nvim-tree/nvim-tree.lua",
-        -- enabled = false,
-        event = "VeryLazy",
-        config = function()
-            require("plugin.config.nvim-tree")
-        end,
-    },
     -- ChatGPT.nvim
-    {
-        "jackMort/ChatGPT.nvim",
-        -- enabled = false,
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim",
-        },
-        event = "VeryLazy",
-        config = function()
-            require("plugin.config.chatgpt")
-        end,
-    },
+    -- {
+    --     "jackMort/ChatGPT.nvim",
+    --     -- enabled = false,
+    --     dependencies = {
+    --         "MunifTanjim/nui.nvim",
+    --         "nvim-lua/plenary.nvim",
+    --         "nvim-telescope/telescope.nvim",
+    --     },
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require("plugin.config.chatgpt")
+    --     end,
+    -- },
     -- nvim-notify
-    {
-        "rcarriga/nvim-notify",
-        -- enabled = false,
-        lazy = false,
-        event = "VeryLazy",
-        config = function()
-            require("plugin.config.notify")
-        end,
-    },
+    -- {
+    --     "rcarriga/nvim-notify",
+    --     -- enabled = false,
+    --     lazy = false,
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require("plugin.config.notify")
+    --     end,
+    -- },
     -- noice.nvim
-    {
-        "folke/noice.nvim",
-        -- enabled = false,
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-            "rcarriga/nvim-notify",
-        },
-        lazy = false,
-        event = "VeryLazy",
-        config = function()
-            require("plugin.config.noice")
-        end,
-    },
+    -- {
+    --     "folke/noice.nvim",
+    --     lazy = false,
+    --     event = "VeryLazy",
+    --     dependencies = {
+    --         "MunifTanjim/nui.nvim",
+    --         "rcarriga/nvim-notify",
+    --     },
+    --     config = function()
+    --         require("plugin.config.noice")
+    --     end,
+    -- },
     -- JABS.nvim
-    {
-        "matbme/JABS.nvim",
-        -- enabled = false,
-        event = "VeryLazy",
-        config = function()
-            require("plugin.config.JABS")
-        end,
-    },
+    -- {
+    --     "matbme/JABS.nvim",
+    --     -- enabled = false,
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require("plugin.config.JABS")
+    --     end,
+    -- },
     -- undoTree
-    {
-        "mbbill/undotree",
-        event = "VeryLazy",
-        config = function()
-            require("plugin.config.undotree")
-        end,
-    },
+    -- {
+    --     "mbbill/undotree",
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require("plugin.config.undotree")
+    --     end,
+    -- },
     -- nvterm
-    {
-        "NvChad/nvterm",
-        event = "VeryLazy",
-        config = function()
-            require("plugin.config.nvterm")
-        end,
-    },
+    -- {
+    --     "NvChad/nvterm",
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require("plugin.config.nvterm")
+    --     end,
+    -- },
     -- auto-session
-    {
-        "rmagatti/auto-session",
-        -- enabled = false,
-        -- dependencies = {
-        --   "folke/noice.nvim",
-        -- },
-        lazy = false,
-        config = function()
-            require("plugin.config.auto-session")
-        end,
-    },
+    -- {
+    --     "rmagatti/auto-session",
+    --     lazy = false,
+    --     config = function()
+    --         require("plugin.config.auto-session")
+    --     end,
+    -- },
     -- indent-blakline.nvim
     {
         "lukas-reineke/indent-blankline.nvim",
@@ -305,23 +128,57 @@ local M = {
     -- Outline
     {
         "hedyhli/outline.nvim",
-        -- enabled = false,
+        enabled = false,
         event = "VeryLazy",
         config = function()
             require("plugin.config.outline")
         end,
     },
-    -- Aerial
+    -- vim-illuminate
     {
-        "stevearc/aerial.nvim",
+        "RRethy/vim-illuminate",
         enabled = false,
         event = "VeryLazy",
+        config = function()
+            require("plugin.config.illuminate")
+        end,
+    },
+    -- dropbar
+    {
+        "Bekaboo/dropbar.nvim",
+        -- enabled = false,
+        -- optional, but required for fuzzy finder support
+        event = "VeryLazy",
         dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-            "nvim-tree/nvim-web-devicons",
+            "nvim-telescope/telescope-fzf-native.nvim",
         },
         config = function()
-            require("plugin.config.aerial")
+            require("plugin.config.dropbar")
+        end,
+    },
+    {
+        "j-hui/fidget.nvim",
+        enabled = false,
+        opts = {
+            -- options
+        },
+        config = function()
+            require("fidget").setup()
+        end,
+    },
+    {
+        "rasulomaroff/reactive.nvim",
+        enabled = false,
+        event = "VeryLazy",
+        lazy = false,
+        config = function()
+            require("plugin.config.reactive")
+        end,
+    },
+    {
+        "b0o/incline.nvim",
+        config = function()
+            require("plugin.config.incline")
         end,
     },
 
@@ -410,6 +267,7 @@ local M = {
     -- marks.nvim
     {
         "chentoast/marks.nvim",
+        -- enabled = false,
         event = "VeryLazy",
         config = function()
             require("plugin.config.marks")
@@ -559,10 +417,7 @@ local M = {
     -- #############################
     -- Core Plugins
     -- #############################
-    -- {
-    --     "Joakker/lua-json5",
-    --     lazy = false,
-    -- },
+
     {
         "amitds1997/remote-nvim.nvim",
         enabled = false,

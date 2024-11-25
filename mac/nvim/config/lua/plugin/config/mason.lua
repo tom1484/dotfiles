@@ -1,6 +1,8 @@
+local style = require("def.style")
+
 require("mason").setup({
     ui = {
-        border = "rounded",
+        border = style.border,
         -- height = 0.8,
         -- width = 60,
         -- icons = {

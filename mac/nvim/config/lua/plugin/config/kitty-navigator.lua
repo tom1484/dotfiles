@@ -1,7 +1,9 @@
+local utils = require("utils")
+
 vim.g.kitty_navigator_no_mappings = 1
 
 local modes = { "n", "c", "t" }
-local opts = vim.custom.fn.opts_with_desc({
+local opts = utils.opts_with_desc({
     silent = true,
 })
 local mappings = {
@@ -10,4 +12,4 @@ local mappings = {
     { modes, "<C-k>", vim.cmd.KittyNavigateUp, opts("Navigate up") },
     { modes, "<C-l>", vim.cmd.KittyNavigateRight, opts("Navigate right") },
 }
-vim.custom.fn.set_keymaps(mappings)
+utils.set_keymaps(mappings)

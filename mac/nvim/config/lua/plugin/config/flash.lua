@@ -1,3 +1,4 @@
+local utils = require("utils")
 local flash = require("flash")
 
 flash.setup({
@@ -8,7 +9,7 @@ flash.setup({
     },
 })
 
-local opts = vim.custom.fn.opts_with_desc({
+local opts = utils.opts_with_desc({
     noremap = true,
     silent = true,
 })
@@ -56,4 +57,4 @@ local mappings = {
     -- },
 }
 
-vim.custom.fn.set_keymaps(mappings)
+utils.set_keymaps(mappings)

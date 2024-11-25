@@ -1,3 +1,5 @@
+local utils = require("utils")
+
 require("Comment").setup({
     -- Add a space b/w comment and the line
     padding = true,
@@ -42,10 +44,10 @@ require("Comment").setup({
     post_hook = nil,
 })
 
-local opts = vim.custom.fn.opts_with_desc({
+local opts = utils.opts_with_desc({
     remap = true,
 })
-vim.custom.fn.set_keymaps({
+utils.set_keymaps({
     {
         "n",
         "<leader>c",

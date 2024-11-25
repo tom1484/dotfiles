@@ -1,3 +1,5 @@
+local style = require("def.style")
+
 -- Example mapping to toggle outline
 vim.keymap.set("n", "<leader>o", "<cmd>OutlineOpen<CR>", { desc = "Open Outline" })
 

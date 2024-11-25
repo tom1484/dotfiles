@@ -1,9 +1,10 @@
+local utils = require("utils")
 local vscode = require("vscode")
 
 return {
     setup = function()
-        local opts = vim.custom.fn.opts_with_desc({})
-        local silent_opts = vim.custom.fn.opts_with_desc({
+        local opts = utils.opts_with_desc({})
+        local silent_opts = utils.opts_with_desc({
             silent = true,
         })
         local mappings = {
@@ -71,6 +72,6 @@ return {
                 opts("Format document"),
             },
         }
-        vim.custom.fn.set_keymaps(mappings)
+        utils.set_keymaps(mappings)
     end,
 }

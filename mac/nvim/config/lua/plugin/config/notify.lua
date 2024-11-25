@@ -4,9 +4,11 @@ vim.opt.termguicolors = true
 -- vim.notify = require("notify")
 
 notify.setup({
-    background_colour = "#000000",
+    -- background_colour = "#000000",
     stages = "static",
     render = "minimal",
+    top_down = false,
+    timeout = 2000,
 })
 
 -- Ignore some messages

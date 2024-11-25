@@ -4,9 +4,7 @@ return {
         local misc = require("config.misc")
         local indent = require("config.indent")
         local buffer = require("config.buffer")
-        local util = require("config.util")
 
-        util.setup()
         keymap.setup()
         misc.setup()
 

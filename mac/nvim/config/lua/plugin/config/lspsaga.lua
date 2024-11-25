@@ -1,7 +1,10 @@
+local style = require("def.style")
+
+local utils = require("utils")
 local lspsaga = require("lspsaga")
 local telescope_builtin = require("telescope.builtin")
 
-local opts = vim.custom.fn.opts_with_desc({ remap = false })
+local opts = utils.opts_with_desc({ remap = false })
 
 -- peek_definition
 -- finder
@@ -146,7 +149,7 @@ local mappings = {
     --     opts("List workspace symbols"),
     -- },
 }
-vim.custom.fn.set_keymaps(mappings)
+utils.set_keymaps(mappings)
 
 lspsaga.setup({
     beacon = {
@@ -260,7 +263,7 @@ lspsaga.setup({
     },
     outline = {
         -- auto_close = true,
-        auto_preview = false,
+        auto_preview = true,
         -- close_after_jump = false,
         -- detail = true,
         keys = {
@@ -269,8 +272,8 @@ lspsaga.setup({
             toggle_or_jump = "<CR>",
         },
         layout = "float",
-        -- left_width = 0.3,
-        -- max_height = 0.5,
+        left_width = 0.4,
+        max_height = 0.8,
         -- win_position = "right",
         -- win_width = 30,
     },
@@ -293,8 +296,7 @@ lspsaga.setup({
     symbol_in_winbar = {
         --     color_mode = true,
         --     dely = 300,
-        enable = true,
-        enabled = true,
+        enable = false,
         --     folder_level = 1,
         hide_keyword = true,
         --     separator = " › ",
@@ -302,7 +304,7 @@ lspsaga.setup({
     },
     ui = {
         --     actionfix = " ",
-        border = "rounded",
+        border = style.border,
         --     code_action = "💡",
         --     collapse = "⊟",
         --     devicon = true,

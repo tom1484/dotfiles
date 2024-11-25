@@ -1,7 +1,9 @@
+local style = require("def.style")
+
 -- alternatively you can override the default configs
 require("flutter-tools").setup({
     ui = {
-        border = "rounded",
+        border = style.border,
         notification_style = "plugin",
     },
     decorations = {

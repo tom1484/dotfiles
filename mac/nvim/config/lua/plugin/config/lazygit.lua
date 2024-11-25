@@ -1,3 +1,5 @@
+local utils = require("utils")
+
 local lazygit = require("lazygit")
 
 local function opts(desc)
@@ -7,6 +9,6 @@ local function opts(desc)
         desc = desc,
     }
 end
-vim.custom.fn.set_keymaps({
+utils.set_keymaps({
     { "n", "<leader>gl", ":LazyGit<CR>", opts("Open lazygit") },
 })

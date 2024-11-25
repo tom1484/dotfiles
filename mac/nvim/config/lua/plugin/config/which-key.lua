@@ -1,11 +1,14 @@
+local style = require("def.style")
+
 local wk = require("which-key")
+local utils = require("utils")
 
 vim.o.timeout = true
 vim.o.timeoutlen = 500
 
 wk.setup({
     win = {
-        border = "rounded",
+        border = style.border,
     },
 })
 wk.add({
@@ -20,7 +23,7 @@ wk.add({
     { "<leader>w", group = "Window" },
 })
 
-vim.custom.fn.set_keymaps({
+utils.set_keymaps({
     {
         "n",
         "<leader>K",
