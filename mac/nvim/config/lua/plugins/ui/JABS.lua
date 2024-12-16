@@ -74,19 +74,19 @@ return {
         require("jabs").setup(opts)
 
         local utils = require("utils")
-        utils.set_keymaps({
-            {
-                "n",
-                "<leader>b",
-                function()
-                    if vim.o.filetype == "JABSwindow" then
-                        vim.cmd.q()
-                        return
-                    end
-                    vim.cmd.JABS()
-                end,
-                { desc = "JABS" },
-            },
-        })
+        -- utils.set_keymaps({
+        --     {
+        --         "n",
+        --         "<leader>b",
+        --         function()
+        --             if vim.o.filetype == "JABSwindow" then
+        --                 vim.cmd.q()
+        --                 return
+        --             end
+        --             vim.cmd.JABS()
+        --         end,
+        --         { desc = "JABS" },
+        --     },
+        -- })
     end,
 }

@@ -63,4 +63,21 @@ return {
 
         return matchedEntries
     end,
+    split_str = function(str, target)
+        local result = {}
+        for word in string.gmatch(str, "([^" .. target .. "]+)") do
+            table.insert(result, word)
+        end
+        return result
+    end,
+    array_last_n = function(list, n)
+        local result = {}
+        local N = #list
+        local i = N - n + 1
+        while i <= N do
+            table.insert(result, list[i])
+            i = i + 1
+        end
+        return result
+    end,
 }

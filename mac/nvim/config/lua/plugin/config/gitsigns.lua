@@ -51,7 +51,7 @@ require("gitsigns").setup({
 
 vim.api.nvim_create_autocmd("BufEnter", {
     callback = function()
-        if vim.fn.finddir(".git", vim.fn.getcwd() .. ";") ~= nil then
+        if vim.fn.finddir(".git", vim.fn.getcwd() .. ";") ~= "" then
             vim.cmd([[set signcolumn=yes:2]])
         end
     end,

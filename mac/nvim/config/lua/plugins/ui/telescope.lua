@@ -19,7 +19,7 @@ return {
         end
 
         local hidden_folder = {
-            "%.[^/]*",
+            -- "%.[^/]*",
             "node_modules",
             "target",
         }
@@ -74,28 +74,32 @@ return {
                         ["<C-v>"] = actions.select_horizontal,
 
                         ["<C-s>"] = actions.smart_send_to_qflist,
-                        ["<C-q>"] = actions.close,
+                        -- ["<C-q>"] = actions.close,
+
+                        ["<Esc>"] = actions.close,
                     },
                     n = {
-                        ["<Tab>"] = actions.move_selection_next,
-                        ["<S-Tab>"] = actions.move_selection_previous,
+                        -- ["<Tab>"] = actions.move_selection_next,
+                        -- ["<S-Tab>"] = actions.move_selection_previous,
 
-                        ["<C-y>"] = function(prompt_bufnr)
-                            actions.toggle_selection(prompt_bufnr)
-                            actions.move_selection_next(prompt_bufnr)
-                        end,
-                        ["<C-n>"] = function(prompt_bufnr)
-                            actions.toggle_selection(prompt_bufnr)
-                            actions.move_selection_previous(prompt_bufnr)
-                        end,
-                        ["<C-x>"] = actions.drop_all,
+                        -- ["<C-y>"] = function(prompt_bufnr)
+                        --     actions.toggle_selection(prompt_bufnr)
+                        --     actions.move_selection_next(prompt_bufnr)
+                        -- end,
+                        -- ["<C-n>"] = function(prompt_bufnr)
+                        --     actions.toggle_selection(prompt_bufnr)
+                        --     actions.move_selection_previous(prompt_bufnr)
+                        -- end,
+                        -- ["<C-x>"] = actions.drop_all,
 
-                        ["t"] = actions.select_tab,
-                        ["h"] = actions.select_vertical,
-                        ["v"] = actions.select_horizontal,
+                        -- ["t"] = actions.select_tab,
+                        -- ["h"] = actions.select_vertical,
+                        -- ["v"] = actions.select_horizontal,
 
-                        ["<C-s>"] = actions.smart_send_to_qflist,
+                        -- ["<C-s>"] = actions.smart_send_to_qflist,
+
                         ["q"] = actions.close,
+                        ["<Esc>"] = actions.close,
                     },
                 },
                 sorting_strategy = "ascending",
@@ -132,7 +136,8 @@ return {
             },
             {
                 "n",
-                "<leader>pb",
+                -- "<leader>pb",
+                "<leader>b",
                 builtin.buffers,
                 opts("Find buffers"),
             },
