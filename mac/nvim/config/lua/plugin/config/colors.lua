@@ -1,27 +1,82 @@
-vim.cmd.colorscheme("kanagawa")
+-- return {
+--     setup = function()
+--         local utils = require("utils")
 
-local border = "#777777"
+--         local highlight_string = vim.api.nvim_exec("highlight", true)
+--         local highlights = {}
+--         local highlight_names = {}
 
-vim.api.nvim_set_hl(0, "FloatBorder", { fg = border })
-vim.api.nvim_set_hl(0, "LspInfoBorder", { fg = border })
-vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = border })
-vim.api.nvim_set_hl(0, "DapUIFloatBorder", { fg = border })
-vim.api.nvim_set_hl(0, "NullLsInfoBorder", { fg = border })
-vim.api.nvim_set_hl(0, "LspFloatWinBorder", { fg = border })
-vim.api.nvim_set_hl(0, "LspLinesDiagBorder", { fg = border })
-vim.api.nvim_set_hl(0, "LspSagaHoverBorder", { fg = border })
-vim.api.nvim_set_hl(0, "LspSagaRenameBorder", { fg = border })
-vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = border })
-vim.api.nvim_set_hl(0, "LspSagaLspFinderBorder", { fg = border })
-vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { fg = border })
-vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { fg = border })
-vim.api.nvim_set_hl(0, "LspSagaCodeActionBorder", { fg = border })
-vim.api.nvim_set_hl(0, "LspSagaDefPreviewBorder", { fg = border })
-vim.api.nvim_set_hl(0, "LspSagaDiagnosticBorder", { fg = border })
-vim.api.nvim_set_hl(0, "ChatGPTTotalTokensBorder", { fg = border })
-vim.api.nvim_set_hl(0, "CompeDocumentationBorder", { fg = border })
-vim.api.nvim_set_hl(0, "LspSagaSignatureHelpBorder", { fg = border })
+--         -- Split the input string into lines
+--         for line in highlight_string:gmatch("[^\r\n]+") do
+--             -- Match the highlight group name and its attributes
+--             local name, attributes = line:match("^(%S+)%s+(.*)$")
 
-vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#757575" })
+--             if name and attributes then
+--                 -- Create a table for each highlight group
+--                 highlights[name] = {}
+--                 table.insert(highlight_names, name)
 
-vim.api.nvim_set_hl(0, "Visual", { bg = "#30496e" })
+--                 -- Split attributes into key-value pairs
+--                 for attr in attributes:gmatch("%S+") do
+--                     local key, value = attr:match("^(%S+)=(.*)$")
+--                     if key and value then
+--                         highlights[name][key] = value
+--                     else
+--                         -- Handle attributes without '=' (like 'cleared')
+--                         highlights[name][attr] = true
+--                     end
+--                 end
+--             end
+--         end
+
+--         local set_highlights = utils.set_highlights
+--         local update_highlights = utils.update_highlights
+--         local set_highlights_pattern = function(pattern, opts)
+--             local result = utils.match_words(highlight_names, pattern)
+--             for _, highlight_name in ipairs(result) do
+--                 set_highlights(highlight_name, opts)
+--             end
+--         end
+--         local update_highlights_pattern = function(pattern, opts)
+--             local result = utils.match_words(highlight_names, pattern)
+--             update_highlights(result, opts)
+--         end
+
+--         vim.cmd.colorscheme("kanagawa")
+
+--         update_highlights({
+--             "FloatBorder",
+--             "LspInfoBorder",
+--             "TelescopeBorder",
+--             "DapUIFloatBorder",
+--             "NullLsInfoBorder",
+--             "LspFloatWinBorder",
+--             "LspLinesDiagBorder",
+--             "LspSagaHoverBorder",
+--             "LspSagaRenameBorder",
+--             "TelescopePromptBorder",
+--             "LspSagaLspFinderBorder",
+--             "TelescopePreviewBorder",
+--             "TelescopeResultsBorder",
+--             "LspSagaCodeActionBorder",
+--             "LspSagaDefPreviewBorder",
+--             "LspSagaDiagnosticBorder",
+--             "ChatGPTTotalTokensBorder",
+--             "CompeDocumentationBorder",
+--             "LspSagaSignatureHelpBorder",
+--         }, { fg = "#777777" })
+--         update_highlights_pattern(".*Border", { bg = "none" })
+
+--         set_highlights("LspInlayHint", { fg = "#757575" })
+--         set_highlights("Visual", { bg = "#30496e" })
+
+--         set_highlights("SatelliteBar", { bg = "#888888" })
+--         set_highlights("SatelliteCursor", { bg = "#ffffff" })
+--         set_highlights("SatelliteBackground", { bg = "#2a2b38" })
+
+--         set_highlights("LineNr", { fg = "#ff980b" })
+--         set_highlights({ "LineNrAbove", "LineNrBelow" }, { fg = "#888888" })
+
+--         update_highlights_pattern("DiagnosticSign.*", { bg = "none" })
+--     end,
+-- }

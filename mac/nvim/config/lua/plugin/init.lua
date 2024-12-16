@@ -374,6 +374,7 @@ local M = {
     -- copilot.vim
     {
         "github/copilot.vim",
+        enabled = false,
         event = "VeryLazy",
         lazy = false,
         config = function()

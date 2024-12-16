@@ -1,11 +1,11 @@
 return {
     "lewis6991/satellite.nvim",
-    enabled = false,
+    enabled = true,
     event = "VeryLazy",
     opts = {
         current_only = false,
-        winblend = 50,
-        zindex = 40,
+        winblend = 20,
+        zindex = 10,
         excluded_filetypes = {},
         width = 2,
         handlers = {

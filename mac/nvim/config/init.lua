@@ -9,8 +9,6 @@ else
     vim.g.loaded_netrwPlugin = 1
 
     local style = require("def.style")
-    local config = require("config")
-    config.setup()
 
     -- Bootstrap lazy.nvim
     local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -61,4 +59,7 @@ else
         },
         -- debug = true,
     })
+
+    local config = require("config")
+    config.setup()
 end
