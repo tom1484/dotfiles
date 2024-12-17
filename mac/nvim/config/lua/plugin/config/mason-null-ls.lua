@@ -11,10 +11,12 @@ require("mason-null-ls").setup({
         c = {
             "clang-format",
             "cmakelang",
+            "codelldb",
         },
         python = {
             "autopep8",
             "ruff",
+            "debugpy",
         },
         go = {
             "gofumpt",
@@ -35,7 +37,7 @@ require("mason-null-ls").setup({
             "cmakelang",
             "jsonlint",
             "ruff",
-            "xmlformatter"
+            "xmlformatter",
         },
     }),
 })

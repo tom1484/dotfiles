@@ -1,7 +1,11 @@
 local utils = require("utils")
 local dap = require("dap")
+local dap_vscode = require("dap.ext.vscode")
 local dapui = require("dapui")
 local languages = require("utils.languages")
+
+-- Use json5
+dap_vscode.json_decode = require("json5").parse
 
 local dap_configs = languages.filter_languages({
     python = {
@@ -29,7 +33,6 @@ local function cmd(name)
 end
 
 local actions = {
-    -- cmd("DapToggleBreakpoint"),
     cmd("PBToggleBreakpoint"),
     cmd("DapContinue"),
     cmd("DapStepOver"),
@@ -42,10 +45,9 @@ local actions = {
     cmd("DapToggleRepl"),
     cmd("DapSetLogLevel"),
     cmd("DapRestartFrame"),
-    cmd("DapLoadLaunchJSON"),
-    -- function ()
-    --     dap_vscode.load_launchjs("launch.json")
-    -- end
+    function()
+        dap_vscode.load_launchjs("launch.json")
+    end,
     cmd("PBClearAllBreakpoints"),
 }
 

@@ -87,5 +87,7 @@ return {
             "GitSignsTopdelete",
             "GitSignsUntracked",
         }, { bg = "none" })
+
+        update_highlights_pattern("DapUI.*NC", { bg = "none" })
     end,
 }

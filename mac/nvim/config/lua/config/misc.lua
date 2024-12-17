@@ -33,5 +33,7 @@ return {
         vim.opt.tagbsearch = false
 
         vim.opt.showtabline = 0
+
+        vim.opt.list = true
     end,
 }

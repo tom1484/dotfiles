@@ -22,6 +22,7 @@ return {
             -- "%.[^/]*",
             "node_modules",
             "target",
+            ".git",
         }
         local hidden_folder_patterns = {}
 

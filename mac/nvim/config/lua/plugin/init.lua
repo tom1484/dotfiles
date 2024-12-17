@@ -79,9 +79,11 @@ local M = {
     -- indent-blakline.nvim
     {
         "lukas-reineke/indent-blankline.nvim",
-        -- enabled = false,
         main = "ibl",
         lazy = false,
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+        },
         config = function()
             require("plugin.config.indent-blankline")
         end,
@@ -313,6 +315,7 @@ local M = {
         dependencies = {
             "mfussenegger/nvim-dap-python",
             "jay-babu/mason-nvim-dap.nvim",
+            "Joakker/lua-json5",
         },
         event = "VeryLazy",
         config = function()
@@ -384,6 +387,7 @@ local M = {
     -- lsp_lines.nvim
     {
         "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        enabled = false,
         event = "LspAttach",
         lazy = false,
         config = function()
@@ -507,6 +511,7 @@ local M = {
     -- diffview
     {
         "sindrets/diffview.nvim",
+        enabled = false,
         lazy = false,
         event = "VeryLazy",
         config = function()

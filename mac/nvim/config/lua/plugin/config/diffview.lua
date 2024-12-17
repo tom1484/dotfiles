@@ -7,7 +7,6 @@ diffview.setup({
     },
 })
 
-local opts = utils.opts_with_desc({})
 local silent_opts = utils.opts_with_desc({
     silent = true,
 })
