@@ -1,0 +1,1 @@
+complete --command ntuee-mailer --no-files --arguments "(env _NTUEE_MAILER_COMPLETE=complete_fish _TYPER_COMPLETE_FISH_ACTION=get-args _TYPER_COMPLETE_ARGS=(commandline -cp) ntuee-mailer)" --condition "env _NTUEE_MAILER_COMPLETE=complete_fish _TYPER_COMPLETE_FISH_ACTION=is-args _TYPER_COMPLETE_ARGS=(commandline -cp) ntuee-mailer"

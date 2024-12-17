@@ -7,6 +7,7 @@ if status is-interactive
 
     source ~/.config/fish/config/commands.fish
     source ~/.config/fish/config/keymap.fish
+    source ~/.config/fish/config/plugins.fish
 
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
@@ -31,4 +32,13 @@ set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 
 # fzf
-# fzf_configure_bindings --git_log=\cg --processes=\cp --directory=\cf --git_log=\cl
+fzf_configure_bindings --git_status=\cs --processes=\cp --directory=\cf --git_log=\cl
+
+test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+
+# usdview
+set -gx PYTHONPATH /opt/local/USD/lib/python
+set --export PATH /opt/local/USD/bin $PATH
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/tom1484/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/tom1484/Downloads/google-cloud-sdk/path.fish.inc'; end

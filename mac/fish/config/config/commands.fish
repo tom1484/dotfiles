@@ -8,6 +8,7 @@ alias gc="git commit"
 alias gp="git push"
 alias gf="git fetch"
 alias gr="git rebase"
+alias gl="git log --oneline --graph --decorate --all"
 
 alias gfz="git fuzzy"
 
@@ -17,9 +18,9 @@ end
 if type -q nvim
     alias vim="nvim"
 end
-# if type -q rip
-#     alias rm="rip"
-# end
+if type -q rip
+    alias rm="rip"
+end
 
 # esp-idf
 alias get_idf=". $HOME/esp/esp-idf/export.fish"

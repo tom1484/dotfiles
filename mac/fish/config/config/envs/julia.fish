@@ -1,3 +1,3 @@
 # julia
-# fish_add_path /usr/local/julia/bin
+fish_add_path /usr/local/julia/bin
 
