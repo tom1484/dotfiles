@@ -73,7 +73,7 @@ return {
     config = function(_, opts)
         require("jabs").setup(opts)
 
-        local utils = require("utils")
+        -- local utils = require("utils")
         -- utils.set_keymaps({
         --     {
         --         "n",

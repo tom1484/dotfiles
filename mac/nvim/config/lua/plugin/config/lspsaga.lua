@@ -194,7 +194,7 @@ lspsaga.setup({
             -- vsplit = "<C-c>v",
         },
     },
-    -- diagnostic = {
+    diagnostic = {
     --     border_follow = true,
     --     diagnostic_only_current = false,
     --     extend_relatedInformation = false,
@@ -209,11 +209,11 @@ lspsaga.setup({
     --     max_show_height = 0.6,
     --     max_show_width = 0.9,
     --     max_width = 0.8,
-    --     show_code_action = true,
+        show_code_action = false,
     --     show_layout = "float",
     --     show_normal_height = 10,
     --     text_hl_follow = true,
-    -- },
+    },
     finder = {
         default = "def+ref+imp",
         -- filter = {},

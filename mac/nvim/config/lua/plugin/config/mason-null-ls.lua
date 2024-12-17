@@ -34,7 +34,6 @@ require("mason-null-ls").setup({
             "prettierd",
             "cmakelang",
             "jsonlint",
-            "revive",
             "ruff",
             "xmlformatter"
         },
