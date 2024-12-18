@@ -78,6 +78,8 @@ return {
                         -- ["<C-q>"] = actions.close,
 
                         ["<Esc>"] = actions.close,
+
+                        ["<CR>"] = actions.select_tab_drop,
                     },
                     n = {
                         -- ["<Tab>"] = actions.move_selection_next,
@@ -101,6 +103,8 @@ return {
 
                         ["q"] = actions.close,
                         ["<Esc>"] = actions.close,
+
+                        ["<CR>"] = actions.select_tab_drop,
                     },
                 },
                 sorting_strategy = "ascending",
