@@ -40,7 +40,7 @@ local mappings = {
 
     {
         "n",
-        "<leader>ve",
+        "<leader>vd",
         function()
             vim.diagnostic.open_float()
         end,
@@ -48,7 +48,7 @@ local mappings = {
     },
     {
         "n",
-        "<leader>vne",
+        "<leader>vnd",
         function()
             vim.diagnostic.goto_next()
         end,
@@ -56,7 +56,7 @@ local mappings = {
     },
     {
         "n",
-        "<leader>vpe",
+        "<leader>vpd",
         function()
             vim.diagnostic.goto_prev()
         end,
@@ -124,7 +124,7 @@ local mappings = {
     },
     {
         "n",
-        "<leader>vld",
+        "<leader>ld",
         function()
             telescope_builtin.diagnostics()
         end,
@@ -132,22 +132,21 @@ local mappings = {
     },
     {
         "n",
-        -- "<leader>vlsd",
-        "<leader>vls",
+        "<leader>ls",
         function()
             telescope_builtin.lsp_document_symbols()
         end,
         opts("List document symbols"),
     },
-    -- {
-    --     "n",
-    --     "<leader>vlsw",
-    --     function()
-    --         vim.cmd("Lspsaga peek_definition")
-    --         telescope_builtin.lsp_workspace_symbols()
-    --     end,
-    --     opts("List workspace symbols"),
-    -- },
+    {
+        "n",
+        "<leader>lw",
+        function()
+            vim.cmd("Lspsaga peek_definition")
+            telescope_builtin.lsp_workspace_symbols()
+        end,
+        opts("List workspace symbols"),
+    },
 }
 utils.set_keymaps(mappings)
 

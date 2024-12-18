@@ -5,11 +5,11 @@ M.enabled = {
     lua = true,
     c = true,
     python = true,
-    dart = true,
-    go = true,
+    dart = false,
+    go = false,
     rust = true,
     web = true,
-    julia = true,
+    julia = false,
     misc = true,
 }
 

@@ -9,7 +9,7 @@ require("Comment").setup({
     ignore = "^$",
     -- LHS of toggle mappings in NORMAL mode
     toggler = {
-        -- Line-comment toggle keymap
+        -- line-comment toggle keymap
         line = "gcc",
         -- Block-comment toggle keymap
         block = "gbc",
@@ -24,11 +24,11 @@ require("Comment").setup({
     -- LHS of extra mappings
     extra = {
         -- Add comment on the line above
-        above = "gcO",
+        above = "gca",
         -- Add comment on the line below
-        below = "gco",
+        below = "gcb",
         -- Add comment at the end of line
-        eol = "gcA",
+        eol = "gce",
     },
     -- Enable keybindings
     -- NOTE: If given `false` then the plugin won't create any mappings
@@ -46,7 +46,9 @@ require("Comment").setup({
 
 local opts = utils.opts_with_desc({
     remap = true,
+    silent = true
 })
+
 utils.set_keymaps({
     {
         "n",
@@ -56,8 +58,14 @@ utils.set_keymaps({
     },
     {
         "v",
+        "<leader>b",
+        "gbc<Esc>",
+        opts("Comment block selection"),
+    },
+    {
+        "v",
         "<leader>c",
-        "gc",
+        "gcc<Esc>",
         opts("Comment selection"),
     },
 })

@@ -7,17 +7,20 @@ vim.o.timeout = true
 vim.o.timeoutlen = 500
 
 wk.setup({
+    delay = 500,
     win = {
+        padding = { 1, 1 },
         border = style.border,
     },
 })
 wk.add({
     { "<leader>f", group = "File" },
     { "<leader>k", group = "Dap" },
+    { "<leader>d", group = "DapUI" },
     { "<leader>p", group = "Project" },
     { "<leader>s", group = "Session" },
     { "<leader>v", group = "Lsp" },
-    { "<leader>vl", group = "Telescope lists" },
+    { "<leader>l", group = "Telescope lists" },
     { "<leader>vn", group = "Next" },
     { "<leader>vp", group = "Previous" },
     { "<leader>w", group = "Window" },
