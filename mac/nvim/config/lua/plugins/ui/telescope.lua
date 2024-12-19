@@ -6,9 +6,11 @@ return {
     },
     lazy = false,
     config = function()
-        local utils = require("utils")
         local telescope = require("telescope")
         local actions = require("telescope.actions")
+
+        local utils = require("utils")
+        local tweak = require("utils.telescope")
 
         local hidden_folder_pattern = function(pattern)
             -- "^%.[^/]*/",
@@ -70,41 +72,20 @@ return {
                         end,
                         ["<C-x>"] = actions.drop_all,
 
-                        ["<C-t>"] = actions.select_tab,
                         ["<C-h>"] = actions.select_vertical,
                         ["<C-v>"] = actions.select_horizontal,
 
                         ["<C-s>"] = actions.smart_send_to_qflist,
-                        -- ["<C-q>"] = actions.close,
 
                         ["<Esc>"] = actions.close,
+                        ["<C-d>"] = actions.delete_buffer,
 
                         ["<CR>"] = actions.select_tab_drop,
+                        ["<C-CR>"] = actions.select_default,
                     },
                     n = {
-                        -- ["<Tab>"] = actions.move_selection_next,
-                        -- ["<S-Tab>"] = actions.move_selection_previous,
-
-                        -- ["<C-y>"] = function(prompt_bufnr)
-                        --     actions.toggle_selection(prompt_bufnr)
-                        --     actions.move_selection_next(prompt_bufnr)
-                        -- end,
-                        -- ["<C-n>"] = function(prompt_bufnr)
-                        --     actions.toggle_selection(prompt_bufnr)
-                        --     actions.move_selection_previous(prompt_bufnr)
-                        -- end,
-                        -- ["<C-x>"] = actions.drop_all,
-
-                        -- ["t"] = actions.select_tab,
-                        -- ["h"] = actions.select_vertical,
-                        -- ["v"] = actions.select_horizontal,
-
-                        -- ["<C-s>"] = actions.smart_send_to_qflist,
-
                         ["q"] = actions.close,
                         ["<Esc>"] = actions.close,
-
-                        ["<CR>"] = actions.select_tab_drop,
                     },
                 },
                 sorting_strategy = "ascending",
@@ -141,9 +122,14 @@ return {
             },
             {
                 "n",
-                -- "<leader>pb",
                 "<leader>b",
-                builtin.buffers,
+                function(opt)
+                    if opt == nil then
+                        opt = {}
+                    end
+                    opt = vim.tbl_extend("force", opt, { sort_mru = true, ignore_current_buffer = true })
+                    builtin.buffers(opt)
+                end,
                 opts("Find buffers"),
             },
             {

@@ -68,7 +68,6 @@ return {
                     { "n", "<C-v>", api.node.open.vertical, opts("Open vertical split") },
                     { "n", "<C-x>", api.node.open.horizontal, opts("Open horizontal split") },
                     { "n", "<BS>", api.node.navigate.parent_close, opts("Close directory") },
-                    { "n", "<CR>", api.node.open.edit, opts("Open") },
                     { "n", "<Tab>", api.node.open.preview, opts("Open preview") },
                     { "n", ">", api.node.navigate.sibling.next, opts("Next sibling") },
                     { "n", "<", api.node.navigate.sibling.prev, opts("Previous sibling") },
@@ -118,7 +117,8 @@ return {
                     { "n", "u", api.tree.change_root_to_parent, opts("Up") },
                     { "n", "h", api.node.open.vertical, opts("Open vertical split") },
                     { "n", "v", api.node.open.horizontal, opts("Open horizontal split") },
-                    { "n", "t", api.node.open.tab, opts("Open new tab") },
+                    { "n", "<CR>", api.node.open.tab_drop, opts("Open") },
+                    { "n", "<C-CR>", api.node.open.edit, opts("Open") },
                 }
                 utils.set_keymaps(mappings)
             end,
