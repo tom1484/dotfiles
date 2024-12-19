@@ -145,19 +145,6 @@ local M = {
             require("plugin.config.illuminate")
         end,
     },
-    -- dropbar
-    {
-        "Bekaboo/dropbar.nvim",
-        -- enabled = false,
-        -- optional, but required for fuzzy finder support
-        event = "VeryLazy",
-        dependencies = {
-            "nvim-telescope/telescope-fzf-native.nvim",
-        },
-        config = function()
-            require("plugin.config.dropbar")
-        end,
-    },
     {
         "j-hui/fidget.nvim",
         enabled = false,

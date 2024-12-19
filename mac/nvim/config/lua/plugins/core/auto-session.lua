@@ -3,11 +3,13 @@ return {
     lazy = false,
     opts = {
         log_level = "error",
-        auto_restore_enabled = true,
-        auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+        suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+        use_git_branch = false,
     },
     config = function(_, opts)
         require("auto-session").setup(opts)
+
+        vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
         local utils = require("utils")
         local function keymap_opts(desc)

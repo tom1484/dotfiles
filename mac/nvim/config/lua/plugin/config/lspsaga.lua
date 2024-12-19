@@ -33,7 +33,8 @@ local mappings = {
         "n",
         "<leader>vh",
         function()
-            vim.cmd("Lspsaga hover_doc")
+            -- vim.cmd("Lspsaga hover_doc")
+            vim.lsp.buf.hover()
         end,
         opts("Hover doc"),
     },

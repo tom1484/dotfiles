@@ -43,10 +43,6 @@ for _, lsp_config in ipairs(lsp_configs) do
     require("plugin.config.lspconfig.config." .. lsp_config)
 end
 
--- require("plugin.config.lspconfig.config.arduino_language_server")
--- vim.notify("Config LSP")
--- require("plugin.config.Arduino")
-
 -- LspAttach
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -63,7 +59,4 @@ vim.diagnostic.config({
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = style.border,
 })
--- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
---     border = style.border,
--- })
 require("lspconfig.ui.windows").default_options.border = style.border
