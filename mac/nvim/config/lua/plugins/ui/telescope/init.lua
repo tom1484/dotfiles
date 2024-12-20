@@ -10,7 +10,7 @@ return {
         local actions = require("telescope.actions")
 
         local utils = require("utils")
-        local tweak = require("utils.telescope")
+        local tweak = require("plugins.ui.telescope.tweak")
 
         local hidden_folder_pattern = function(pattern)
             -- "^%.[^/]*/",
@@ -80,7 +80,8 @@ return {
                         ["<Esc>"] = actions.close,
                         ["<C-d>"] = actions.delete_buffer,
 
-                        ["<CR>"] = actions.select_tab_drop,
+                        -- ["<CR>"] = actions.select_tab_drop,
+                        ["<CR>"] = tweak.tab_drop,
                         ["<C-CR>"] = actions.select_default,
                     },
                     n = {

@@ -72,13 +72,14 @@ local tab_drop = function(prompt_bufnr)
         if not vim.api.nvim_buf_get_option(entry_bufnr, "buflisted") then
             vim.api.nvim_buf_set_option(entry_bufnr, "buflisted", true)
         end
-        vim.cmd(string.format("%s %s", "tab drop", vim.fn.fnameescape(vim.api.nvim_buf_get_name(entry_bufnr))))
+        filename = vim.api.nvim_buf_get_name(entry_bufnr)
+        vim.cmd("drop " .. vim.fn.fnameescape(filename))
     else
         -- check if we didn't pick a different buffer
         -- prevents restarting lsp server
         if vim.api.nvim_buf_get_name(0) ~= filename or command ~= "edit" then
             filename = Path:new(filename):normalize(vim.loop.cwd())
-            pcall(vim.cmd, string.format("%s %s", command, vim.fn.fnameescape(filename)))
+            pcall(vim.cmd, "tab drop " .. vim.fn.fnameescape(filename))
         end
     end
 

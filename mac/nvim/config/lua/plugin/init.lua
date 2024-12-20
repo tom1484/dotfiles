@@ -6,236 +6,91 @@ local M = {
     -- UI Plugins
     -- #############################
 
-    -- ChatGPT.nvim
-    -- {
-    --     "jackMort/ChatGPT.nvim",
-    --     -- enabled = false,
-    --     dependencies = {
-    --         "MunifTanjim/nui.nvim",
-    --         "nvim-lua/plenary.nvim",
-    --         "nvim-telescope/telescope.nvim",
-    --     },
-    --     event = "VeryLazy",
-    --     config = function()
-    --         require("plugin.config.chatgpt")
-    --     end,
-    -- },
-    -- nvim-notify
-    -- {
-    --     "rcarriga/nvim-notify",
-    --     -- enabled = false,
-    --     lazy = false,
-    --     event = "VeryLazy",
-    --     config = function()
-    --         require("plugin.config.notify")
-    --     end,
-    -- },
-    -- noice.nvim
-    -- {
-    --     "folke/noice.nvim",
-    --     lazy = false,
-    --     event = "VeryLazy",
-    --     dependencies = {
-    --         "MunifTanjim/nui.nvim",
-    --         "rcarriga/nvim-notify",
-    --     },
-    --     config = function()
-    --         require("plugin.config.noice")
-    --     end,
-    -- },
-    -- JABS.nvim
-    -- {
-    --     "matbme/JABS.nvim",
-    --     -- enabled = false,
-    --     event = "VeryLazy",
-    --     config = function()
-    --         require("plugin.config.JABS")
-    --     end,
-    -- },
-    -- undoTree
-    -- {
-    --     "mbbill/undotree",
-    --     event = "VeryLazy",
-    --     config = function()
-    --         require("plugin.config.undotree")
-    --     end,
-    -- },
-    -- nvterm
-    -- {
-    --     "NvChad/nvterm",
-    --     event = "VeryLazy",
-    --     config = function()
-    --         require("plugin.config.nvterm")
-    --     end,
-    -- },
-    -- auto-session
-    -- {
-    --     "rmagatti/auto-session",
-    --     lazy = false,
-    --     config = function()
-    --         require("plugin.config.auto-session")
-    --     end,
-    -- },
-    -- indent-blakline.nvim
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        main = "ibl",
-        lazy = false,
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-        },
-        config = function()
-            require("plugin.config.indent-blankline")
-        end,
-    },
     -- nvim-ufo
-    {
-        "kevinhwang91/nvim-ufo",
-        lazy = false,
-        dependencies = { "kevinhwang91/promise-async" },
-        config = function()
-            require("plugin.config.ufo")
-        end,
-    },
-    {
-        "folke/which-key.nvim",
-        event = "VeryLazy",
-        init = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 300
-        end,
-        config = function()
-            require("plugin.config.which-key")
-        end,
-    },
-    {
-        "declancm/cinnamon.nvim",
-        enabled = false,
-        lazy = false,
-        event = "VeryLazy",
-        config = function()
-            require("plugin.config.cinnamon")
-        end,
-    },
+    -- {
+    --     "kevinhwang91/nvim-ufo",
+    --     lazy = false,
+    --     dependencies = { "kevinhwang91/promise-async" },
+    --     config = function()
+    --         require("plugin.config.ufo")
+    --     end,
+    -- },
+    -- {
+    --     "declancm/cinnamon.nvim",
+    --     enabled = false,
+    --     lazy = false,
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require("plugin.config.cinnamon")
+    --     end,
+    -- },
     -- Preview
-    {
-        "henriklovhaug/Preview.nvim",
-        enabled = false,
-        cmd = { "Preview" },
-        event = "VeryLazy",
-        config = function()
-            require("plugin.config.Preview")
-        end,
-    },
+    -- {
+    --     "henriklovhaug/Preview.nvim",
+    --     enabled = false,
+    --     cmd = { "Preview" },
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require("plugin.config.Preview")
+    --     end,
+    -- },
     -- Outline
-    {
-        "hedyhli/outline.nvim",
-        enabled = false,
-        event = "VeryLazy",
-        config = function()
-            require("plugin.config.outline")
-        end,
-    },
+    -- {
+    --     "hedyhli/outline.nvim",
+    --     enabled = false,
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require("plugin.config.outline")
+    --     end,
+    -- },
     -- vim-illuminate
-    {
-        "RRethy/vim-illuminate",
-        enabled = false,
-        event = "VeryLazy",
-        config = function()
-            require("plugin.config.illuminate")
-        end,
-    },
-    {
-        "j-hui/fidget.nvim",
-        enabled = false,
-        opts = {
-            -- options
-        },
-        config = function()
-            require("fidget").setup()
-        end,
-    },
-    {
-        "rasulomaroff/reactive.nvim",
-        enabled = false,
-        event = "VeryLazy",
-        lazy = false,
-        config = function()
-            require("plugin.config.reactive")
-        end,
-    },
-    {
-        "b0o/incline.nvim",
-        config = function()
-            require("plugin.config.incline")
-        end,
-    },
+    -- {
+    --     "RRethy/vim-illuminate",
+    --     enabled = false,
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require("plugin.config.illuminate")
+    --     end,
+    -- },
+    -- {
+    --     "j-hui/fidget.nvim",
+    --     enabled = false,
+    --     opts = {
+    --         -- options
+    --     },
+    --     config = function()
+    --         require("fidget").setup()
+    --     end,
+    -- },
+    -- {
+    --     "rasulomaroff/reactive.nvim",
+    --     enabled = false,
+    --     event = "VeryLazy",
+    --     lazy = false,
+    --     config = function()
+    --         require("plugin.config.reactive")
+    --     end,
+    -- },
 
     -- #############################
     -- Editting Plugins
     -- #############################
 
-    -- Comment.nvim
-    {
-        "numToStr/Comment.nvim",
-        lazy = true,
-        event = "VeryLazy",
-        config = function()
-            require("plugin.config.Comment")
-        end,
-    },
-    -- nvim-autopairs
-    {
-        "windwp/nvim-autopairs",
-        event = "VeryLazy",
-        config = function()
-            require("plugin.config.autopairs")
-        end,
-    },
-    -- vim-expand-region
-    {
-        "terryma/vim-expand-region",
-        event = "VeryLazy",
-        config = function()
-            require("plugin.config.vim-expand-region")
-        end,
-    },
-    -- nvim-recorder
-    {
-        "chrisgrieser/nvim-recorder",
-        dependencies = {
-            -- "rcarriga/nvim-notify", -- optional
-            "nvim-lualine/lualine.nvim",
-        },
-        opts = {}, -- required even with default settings, since it calls `setup()`
-        event = "VeryLazy",
-        config = function()
-            require("plugin.config.nvim-recorder")
-        end,
-    },
     -- conform
-    {
-        "stevearc/conform.nvim",
-        enabled = false,
-        opts = {},
-        event = "VeryLazy",
-        config = function()
-            require("plugin.config.conform")
-        end,
-    },
+    -- {
+    --     "stevearc/conform.nvim",
+    --     enabled = false,
+    --     opts = {},
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require("plugin.config.conform")
+    --     end,
+    -- },
 
     -- #############################
     -- Navigation Plugins
     -- #############################
 
-    -- flash.nvim
-    {
-        "folke/flash.nvim",
-        event = "VeryLazy",
-        config = function()
-            require("plugin.config.flash")
-        end,
-    },
     -- Kitty Navigation
     -- {
     --     "knubie/vim-kitty-navigator",
@@ -253,15 +108,6 @@ local M = {
     --         require("plugin.config.iterm2-navigator")
     --     end,
     -- },
-    -- marks.nvim
-    {
-        "chentoast/marks.nvim",
-        -- enabled = false,
-        event = "VeryLazy",
-        config = function()
-            require("plugin.config.marks")
-        end,
-    },
 
     -- #############################
     -- LSP Plugins
@@ -316,23 +162,6 @@ local M = {
         lazy = false,
         config = function()
             require("plugin.config.persistent-breakpoints")
-        end,
-    },
-    -- cmp
-    {
-        "hrsh7th/nvim-cmp",
-        dependencies = {
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-path",
-            "hrsh7th/cmp-cmdline",
-            "saadparwaiz1/cmp_luasnip",
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-nvim-lua",
-            "rcarriga/cmp-dap",
-        },
-        event = "VeryLazy",
-        config = function()
-            require("plugin.config.cmp")
         end,
     },
     -- null-ls.nvim

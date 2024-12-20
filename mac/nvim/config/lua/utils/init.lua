@@ -1,4 +1,33 @@
 return {
+    get_plugin_configs = function(config_path)
+        local plugin_config_path = config_path .. "/lua/plugins"
+
+        local plugin_configs = require("plugin")
+        local match_lists = {
+            vim.fn.globpath(plugin_config_path, "*/*.lua", true, true),
+            vim.fn.globpath(plugin_config_path, "*/*/init.lua", true, true),
+        }
+        local matches = {}
+        for _, match_list in ipairs(match_lists) do
+            for _, match in ipairs(match_list) do
+                table.insert(matches, match)
+            end
+        end
+
+        for _, full_path in ipairs(matches) do
+            local _, index = string.find(full_path, "lua/")
+            local module_path = string.sub(full_path, index + 1, -5)
+            -- If start with _, skip
+            if string.find(module_path, "/_") == nil then
+                local config = require(module_path)
+                table.insert(plugin_configs, config)
+            else
+                -- print("Skip " .. module_path)
+            end
+        end
+
+        return plugin_configs
+    end,
     set_keymaps = function(keymaps)
         for _, mapping in ipairs(keymaps) do
             vim.keymap.set(mapping[1], mapping[2], mapping[3], mapping[4])
@@ -79,5 +108,8 @@ return {
             i = i + 1
         end
         return result
+    end,
+    pinspect = function(obj)
+        print(vim.inspect(obj))
     end,
 }

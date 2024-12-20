@@ -2,9 +2,10 @@ return {
     "nvim-tree/nvim-tree.lua",
     event = "VeryLazy",
     lazy = false,
-    opts = function()
+    init = function ()
         vim.opt.termguicolors = true
-
+    end,
+    opts = function()
         local style = require("def.style")
         local HEIGHT_RATIO = 0.8
         local WIDTH_RATIO = 0.5
