@@ -3,8 +3,8 @@ return {
     -- enabled = false,
     event = "VeryLazy",
     opts = {},
-    config = function(opts)
-        require("marks").setup({})
+    config = function(_, opts)
+        require("marks").setup(opts)
 
         local utils = require("utils")
         utils.set_keymaps({

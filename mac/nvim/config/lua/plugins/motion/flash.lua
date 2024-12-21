@@ -8,7 +8,7 @@ return {
             },
         },
     },
-    config = function(opts)
+    config = function(_, opts)
         local flash = require("flash")
         flash.setup(opts)
 

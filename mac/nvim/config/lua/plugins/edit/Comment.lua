@@ -45,7 +45,7 @@ return {
         -- Function to call after (un)comment
         post_hook = nil,
     },
-    config = function(opts)
+    config = function(_, opts)
         local Comment = require("Comment")
         Comment.setup(opts)
 
