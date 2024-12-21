@@ -1,1 +1,0 @@
-local lazygit = require("lazygit")

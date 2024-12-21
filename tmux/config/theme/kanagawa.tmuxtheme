@@ -1,0 +1,9 @@
+set -g @kanagawa-show-powerline true
+
+# for left
+set -g @kanagawa-show-left-sep 
+
+# for right symbol (can set any symbol you like as separator)
+set -g @kanagawa-show-right-sep 
+
+set -g @kanagawa-show-flags true

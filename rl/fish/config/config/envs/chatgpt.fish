@@ -1,3 +1,0 @@
-# CharGPT key
-set -x OPENAI_API_KEY "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"
-
