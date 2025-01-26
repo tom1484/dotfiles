@@ -1,5 +1,7 @@
 # CharGPT key
-set -x OPENAI_API_KEY
+set -gx OPENAI_API_KEY ""
 # Claude key
-set -x ANTHROPIC_API_KEY
+set -gx ANTHROPIC_API_KEY ""
+# Gemini key
+set -gx GEMINI_API_KEY ""
 
