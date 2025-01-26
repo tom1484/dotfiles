@@ -67,6 +67,8 @@ return {
         }, { fg = "#777777" })
         update_highlights_pattern(".*Border", { bg = "none" })
 
+        update_highlights("TelescopeSelection", { bg = "#284b71" })
+
         set_highlights("LspInlayHint", { fg = "#757575" })
         set_highlights("Visual", { bg = "#30496e" })
 

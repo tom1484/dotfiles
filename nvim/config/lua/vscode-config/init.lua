@@ -1,13 +1,10 @@
-local style = require("def.style")
-
 -- ordinary Neovim
 vim.g.mapleader = " "
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-local config = require("vscode-config.config")
-config.setup()
+local style = require("def.style")
 
 local notify = vim.notify
 vim.notify = function(msg, ...)
@@ -29,10 +26,14 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("vscode-config.plugin", {
+-- Load plugin configs
+local utils = require("utils")
+local plugin_config_path = vim.fn.stdpath("config") .. "/lua/vscode-config/plugin"
+local plugin_configs = utils.get_plugin_configs(plugin_config_path, false)
+
+require("lazy").setup(plugin_configs, {
     ui = { border = style.border },
     defaults = { lazy = true },
-    -- install = { colorscheme = { "vscode" } },
     checker = { enabled = false },
     change_detection = { enabled = true },
     performance = {
@@ -53,3 +54,6 @@ require("lazy").setup("vscode-config.plugin", {
     root = plugin_path,
     -- debug = true,
 })
+
+local config = require("vscode-config.config")
+config.setup()

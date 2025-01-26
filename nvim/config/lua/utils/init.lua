@@ -1,8 +1,10 @@
 return {
-    get_plugin_configs = function(config_path)
-        local plugin_config_path = config_path .. "/lua/plugins"
+    get_plugin_configs = function(plugin_config_path, merge_old_configs)
+        local plugin_configs = {}
+        if merge_old_configs then
+            plugin_configs = require("plugin")
+        end
 
-        local plugin_configs = require("plugin")
         local match_lists = {
             vim.fn.globpath(plugin_config_path, "*/*.lua", true, true),
             vim.fn.globpath(plugin_config_path, "*/*/init.lua", true, true),
@@ -111,5 +113,42 @@ return {
     end,
     pinspect = function(obj)
         print(vim.inspect(obj))
+    end,
+    buffer_infos = function()
+        local results = {}
+        local ls_output = vim.api.nvim_exec2("ls", { output = true }).output
+
+        for line in string.gmatch(ls_output, "[^\n]+") do
+            local bufnr = tonumber(string.gmatch(line, "(%d+)")())
+            if bufnr ~= nil then
+                line = string.gmatch(line, "%d+%s*(.*)")()
+                local options = {}
+
+                for i = 1, 5 do
+                    local option = string.sub(line, i, i)
+                    table.insert(options, i, option)
+                end
+
+                results[bufnr] = {
+                    bufnr = bufnr,
+                    info = {
+                        unlisted = options[1] == "u",
+                        current_win = options[2] == "%",
+                        alternate = options[2] == "#",
+                        active = options[3] == "a",
+                        hidden = options[3] == "h",
+                        modifiable_off = options[4] == "-",
+                        read_only = options[4] == "=",
+                        running_term = options[4] == "R",
+                        finished_term = options[4] == "F",
+                        none_term = options[4] == "?",
+                        modifiable = options[5] == "+",
+                        read_error = options[5] == "x",
+                    },
+                }
+            end
+        end
+
+        return results
     end,
 }

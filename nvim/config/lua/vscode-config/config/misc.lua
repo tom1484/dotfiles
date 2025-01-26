@@ -21,7 +21,7 @@ return {
 
         vim.opt.termguicolors = true
 
-        vim.opt.scrolloff = 8
+        vim.opt.scrolloff = 0
         vim.opt.signcolumn = "yes"
         vim.opt.isfname:append("@-@")
 
@@ -34,6 +34,11 @@ return {
 
         vim.opt.tagbsearch = false
 
+        vim.opt.showtabline = 0
+
+        vim.opt.list = true
+
         vim.notify = vscode.notify
+        vim.opt.laststatus = 0
     end,
 }

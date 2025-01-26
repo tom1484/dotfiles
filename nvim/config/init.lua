@@ -20,13 +20,12 @@ else
 
     -- Load plugin configs
     local utils = require("utils")
-    local nvim_config_path = vim.fn.stdpath("config")
-    local plugin_configs = utils.get_plugin_configs(nvim_config_path)
+    local plugin_config_path = vim.fn.stdpath("config") .. "/lua/plugin"
+    local plugin_configs = utils.get_plugin_configs(plugin_config_path, false)
 
     require("lazy").setup(plugin_configs, {
         ui = { border = style.border },
         defaults = { lazy = true },
-        -- install = { colorscheme = { "vscode" } },
         checker = { enabled = false },
         change_detection = { enabled = true },
         performance = {
