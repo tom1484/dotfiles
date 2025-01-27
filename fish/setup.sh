@@ -24,6 +24,9 @@ wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforg
 sh tmp/mamba.sh
 mamba init fish
 
+# conda hook
+~/miniforge3/bin/conda "shell.fish" "hook" > ~/.config/fish/config/hooks/conda.fish
+
 ### Configurations
 cp -r config/* ~/.config/fish/
 
