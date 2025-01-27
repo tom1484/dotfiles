@@ -47,30 +47,30 @@ return {
             { "n", "W", ":w<CR>", silent_opts("Save") },
             { "n", "Q", ":q<CR>", silent_opts("Quit") },
             -- window navigation
-            {
-                "n",
-                "<C-H>",
-                "<C-W>h",
-                silent_opts("Go to left window"),
-            },
-            {
-                "n",
-                "<C-J>",
-                "<C-W>j",
-                silent_opts("Go to down window"),
-            },
-            {
-                "n",
-                "<C-K>",
-                "<C-W>k",
-                silent_opts("Go to up window"),
-            },
-            {
-                "n",
-                "<C-L>",
-                "<C-W>l",
-                silent_opts("Go to right window"),
-            },
+            -- {
+            --     "n",
+            --     "<C-H>",
+            --     "<C-W>h",
+            --     silent_opts("Go to left window"),
+            -- },
+            -- {
+            --     "n",
+            --     "<C-J>",
+            --     "<C-W>j",
+            --     silent_opts("Go to down window"),
+            -- },
+            -- {
+            --     "n",
+            --     "<C-K>",
+            --     "<C-W>k",
+            --     silent_opts("Go to up window"),
+            -- },
+            -- {
+            --     "n",
+            --     "<C-L>",
+            --     "<C-W>l",
+            --     silent_opts("Go to right window"),
+            -- },
             -- next greatest remap ever : asbjornHaland
             -- {{ "n", "v" }, "<leader>y", [["+y]]},
             -- {"n", "<leader>Y", [["+Y]]},

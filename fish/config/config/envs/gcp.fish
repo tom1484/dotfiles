@@ -1,1 +1,1 @@
-if [ -f '/Users/tom1484/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/tom1484/Downloads/google-cloud-sdk/path.fish.inc'; end
+if [ -f '$HOME/Downloads/google-cloud-sdk/path.fish.inc' ]; . '$HOME/Downloads/google-cloud-sdk/path.fish.inc'; end
