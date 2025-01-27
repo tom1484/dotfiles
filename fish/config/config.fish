@@ -1,3 +1,13 @@
+# Check if the shell is interactive
+if status --is-interactive
+    # Ensure we're not already inside a tmux session
+    and not set -q TMUX
+    # Check if the session is initiated via SSH
+    and set -q SSH_CONNECTION
+        # Attempt to attach to the 'default' session; create it if it doesn't exist
+        tmux new-session -A -s default
+end
+
 set -gx LANG "en_US.UTF-8"
 set -gx LC_ALL "en_US.UTF-8"
 
