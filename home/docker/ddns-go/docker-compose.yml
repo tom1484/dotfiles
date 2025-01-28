@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  ddns-go:
+    image: jeessy/ddns-go
+    container_name: ddns-go
+    restart: always
+    volumes:
+      - /opt/ddns-go:/root
+    command: ["-f", "60"]
+
+networks:
+  default:
+    external: true
+    name: nginx
