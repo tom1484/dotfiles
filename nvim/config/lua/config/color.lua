@@ -43,6 +43,7 @@ return {
         end
 
         vim.cmd.colorscheme("kanagawa")
+        -- vim.cmd.colorscheme("ash")
 
         update_highlights({
             "FloatBorder",

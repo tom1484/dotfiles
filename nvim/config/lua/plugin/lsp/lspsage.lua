@@ -77,7 +77,7 @@ return {
                 keys = {
                     close = "<C-c>k",
                     quit = "<ESC>",
-                    shuttle = "[w",
+                    shuttle = "<Tab>",
                     split = "v",
                     tabe = "t",
                     tabnew = "r",

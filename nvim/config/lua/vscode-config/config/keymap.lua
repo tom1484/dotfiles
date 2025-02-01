@@ -80,6 +80,40 @@ return {
                 end,
                 opts("Format document"),
             },
+            -- Navigation
+            {
+                "n",
+                "<C-H>",
+                function()
+                    vscode.call("workbench.action.navigateLeft")
+                end,
+                opts("Move left"),
+            },
+            {
+                "n",
+                "<C-L>",
+                function()
+                    vscode.call("workbench.action.navigateRight")
+                end,
+                opts("Move right"),
+            },
+            {
+                "n",
+                "<C-J>",
+                function()
+                    vscode.call("workbench.action.navigateDownt")
+                end,
+                opts("Move down"),
+            },
+            {
+                "n",
+                "<C-K>",
+                function()
+                    vscode.call("workbench.action.navigateUp")
+                end,
+                opts("Move up"),
+            },
+
         }
         utils.set_keymaps(mappings)
     end,

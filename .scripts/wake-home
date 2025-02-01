@@ -1,0 +1,7 @@
+#!/bin/bash
+
+MAC=00:d8:61:2d:9e:74
+IP=$(dig +short churong.cc)
+PORT=107
+
+wakeonlan $MAC -i $IP -p $PORT
