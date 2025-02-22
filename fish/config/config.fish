@@ -14,6 +14,7 @@ set -gx LC_ALL "en_US.UTF-8"
 source ~/.config/fish/config/functions.fish
 
 source_directory ~/.config/fish/config/envs
+source_directory ~/.config/fish/config/commands
 
 # Commands to run in interactive sessions can go here
 if status is-interactive
@@ -21,7 +22,6 @@ if status is-interactive
     set -g fish_greeting
 
     source ~/.config/fish/config/keymaps.fish
-    source_directory ~/.config/fish/config/commands
     source_directory ~/.config/fish/config/plugins
     source_directory ~/.config/fish/config/envs/interactive
 
