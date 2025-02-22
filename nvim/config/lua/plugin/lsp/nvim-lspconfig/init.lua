@@ -7,7 +7,7 @@ return {
         "ray-x/lsp_signature.nvim",
         "onsails/lspkind.nvim",
         "L3MON4D3/LuaSnip",
-        "nvim-telescope/telescope.nvim",
+        -- "nvim-telescope/telescope.nvim",
     },
     event = { "BufReadPost", "VeryLazy" },
     opts = function()
@@ -97,7 +97,7 @@ return {
                 function()
                     vim.diagnostic.open_float()
                 end,
-                keymap_opts("List diagnostics"),
+                keymap_opts("Show diagnostics"),
             },
             {
                 "n",

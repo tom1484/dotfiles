@@ -1,6 +1,5 @@
 return {
     "alvarosevilla95/luatab.nvim",
-    enabled = false,
     requires = "nvim-tree/nvim-web-devicons",
     lazy = false,
     opts = function()

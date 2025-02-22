@@ -4,9 +4,6 @@ return {
     event = "VeryLazy",
     lazy = false,
     version = false, -- set this if you want to always pull the latest change
-    opts = {
-        -- add any opts here
-    },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
     -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1" -- for windows
@@ -116,7 +113,9 @@ return {
             list_opener = "copen",
         },
         file_selector = {
-            provider = "telescope",
+            -- provider = "telescope",
+            -- WARNING: This is experimental and may not work as expected
+            provider = "snacks",
             -- Options override for custom providers
             provider_opts = {},
         },

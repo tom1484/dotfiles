@@ -76,12 +76,12 @@ return {
             vim.api.nvim_set_hl(0, group, res)
         end
     end,
-    find_files = function(opt)
-        require("telescope.builtin").find_files({
-            hidden = true,
-            no_ignore = true,
-        })
-    end,
+    -- find_files = function(opt)
+    --     require("telescope.builtin").find_files({
+    --         hidden = true,
+    --         no_ignore = true,
+    --     })
+    -- end,
     match_words = function(list, pattern)
         local matchedEntries = {}
 

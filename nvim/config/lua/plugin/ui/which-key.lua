@@ -17,15 +17,15 @@ return {
             },
         })
         wk.add({
-            { "<leader>f", group = "File" },
+            { "<leader>f", group = "Find" },
             { "<leader>k", group = "Dap" },
             { "<leader>d", group = "DapUI" },
-            { "<leader>p", group = "Project" },
-            { "<leader>s", group = "Session" },
+            { "<leader>s", group = "Search" },
+            { "<leader>S", group = "Session" },
             { "<leader>v", group = "Lsp" },
-            { "<leader>l", group = "Telescope lists" },
-            { "<leader>vn", group = "Next" },
-            { "<leader>vp", group = "Previous" },
+            -- { "<leader>l", group = "Telescope lists" },
+            -- { "<leader>vn", group = "Next" },
+            -- { "<leader>vp", group = "Previous" },
             { "<leader>w", group = "Window" },
         })
 
