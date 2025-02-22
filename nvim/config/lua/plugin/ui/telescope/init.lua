@@ -128,6 +128,9 @@ return {
                 },
                 file_ignore_patterns = hidden_folder_patterns,
                 buffer_previewer_maker = new_maker,
+                preview = {
+                    treesitter = false, -- Disable Tree-sitter in file previews
+                },
             },
         })
 

@@ -31,7 +31,7 @@ return {
                 formatting.clang_format.with({
                     extra_args = {
                         "--style",
-                        "{BasedOnStyle: Google, IndentWidth: 4}",
+                        "{BasedOnStyle: Google, IndentWidth: 4, UseTab: Never}",
                     },
                 }),
                 -- Lua
