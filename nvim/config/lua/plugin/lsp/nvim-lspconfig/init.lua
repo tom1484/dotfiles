@@ -24,13 +24,7 @@ return {
                 },
                 python = {
                     "pyright",
-                    -- "pylsp",
-                    -- "ruff",
-                    -- "pylyzer",
                 },
-                -- dart = {
-                --     "dartls",
-                -- },
                 go = {
                     "gopls",
                 },
@@ -42,9 +36,6 @@ return {
                     "tailwindcss",
                     "html",
                 },
-                -- julia = {
-                --     "julials",
-                -- },
                 misc = {
                     "taplo",
                     "jsonls",
@@ -78,5 +69,143 @@ return {
             border = style.border,
         })
         require("lspconfig.ui.windows").default_options.border = style.border
+
+        -- Keymaps
+        local utils = require("utils")
+        local keymap_opts = utils.opts_with_desc({ remap = false })
+
+        local mappings = {
+            {
+                "n",
+                "gr",
+                function()
+                    vim.lsp.buf.rename()
+                end,
+                keymap_opts("Rename"),
+            },
+            {
+                "n",
+                "gh",
+                function()
+                    vim.lsp.buf.hover()
+                end,
+                keymap_opts("Hover doc"),
+            },
+            {
+                "n",
+                "gW",
+                function()
+                    vim.diagnostic.open_float()
+                end,
+                keymap_opts("List diagnostics"),
+            },
+            {
+                "n",
+                "gwn",
+                function()
+                    vim.diagnostic.goto_next()
+                end,
+                keymap_opts("Next diagnostic"),
+            },
+            -- {
+            --     "n",
+            --     "gwp",
+            --     function()
+            --         vim.diagnostic.goto_prev()
+            --     end,
+            --     keymap_opts("Previous diagnostic"),
+            -- },
+            -- {
+            --     "n",
+            --     "ga",
+            --     function()
+            --         vim.cmd("Lspsaga code_action")
+            --     end,
+            --     keymap_opts("Code actions"),
+            -- },
+            -- {
+            --     "n",
+            --     "gr",
+            --     function()
+            --         vim.cmd("Lspsaga rename")
+            --     end,
+            --     keymap_opts("Rename"),
+            -- },
+            -- {
+            --     "n",
+            --     "go",
+            --     function()
+            --         vim.cmd("Lspsaga outline")
+            --     end,
+            --     keymap_opts("Open outline"),
+            -- },
+            -- {
+            --     "n",
+            --     "gF",
+            --     function()
+            --         vim.cmd("Lspsaga finder ++inexist")
+            --     end,
+            --     keymap_opts("Open finder"),
+            -- },
+            -- {
+            --     "n",
+            --     "gR",
+            --     function()
+            --         vim.cmd("Lspsaga finder ++inexist ref")
+            --     end,
+            --     keymap_opts("List references"),
+            -- },
+            -- {
+            --     "n",
+            --     "gD",
+            --     function()
+            --         vim.cmd("Lspsaga finder ++inexist def")
+            --     end,
+            --     keymap_opts("List definitions"),
+            -- },
+            -- {
+            --     "n",
+            --     "gI",
+            --     function()
+            --         vim.cmd("Lspsaga finder ++inexist imp")
+            --     end,
+            --     keymap_opts("List implementations"),
+            -- },
+            -- {
+            --     "n",
+            --     "<leader>vlw",
+            --     function()
+            --         telescope_builtin.diagnostics({ bufnr = 0 })
+            --     end,
+            --     keymap_opts("List file diagnostics"),
+            -- },
+            -- {
+            --     "n",
+            --     "<leader>vlW",
+            --     function()
+            --         telescope_builtin.diagnostics()
+            --     end,
+            --     keymap_opts("List workspace diagnostics"),
+            -- },
+            -- {
+            --     "n",
+            --     "<leader>vls",
+            --     function()
+            --         telescope_builtin.lsp_document_symbols()
+            --     end,
+            --     keymap_opts("List document symbols"),
+            -- },
+            -- {
+            --     "n",
+            --     "<leader>vlS",
+            --     function()
+            --         -- vim.cmd("Lspsaga peek_definition")
+            --         telescope_builtin.lsp_workspace_symbols()
+            --     end,
+            --     keymap_opts("List workspace symbols"),
+            -- },
+        }
+
+        utils.set_keymaps(mappings)
     end,
 }

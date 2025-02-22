@@ -16,6 +16,7 @@ return {
                 },
                 c = {
                     "codelldb",
+                    -- "cpptools",
                 },
                 go = {
                     -- "delve",
@@ -68,7 +69,7 @@ return {
         end
 
         local actions = {
-            ToggleBreakpoin = make_action("Toggle breakpoint", "PBToggleBreakpoint"),
+            ToggleBreakpoint = make_action("Toggle breakpoint", "PBToggleBreakpoint"),
             Continue = make_action("Continue", "DapContinue"),
             StepOver = make_action("Step over", "DapStepOver"),
             StepInto = make_action("Step into", "DapStepInto"),
@@ -98,7 +99,13 @@ return {
             t = actions.Terminate,
         }
         for key, action in pairs(shortcuts) do
-            table.insert(mappings, { "n", "<leader>k" .. key, action.action, make_opts(action.desc) })
+            local map = {
+                "n",
+                "<leader>k" .. key,
+                action.action,
+                make_opts(action.desc),
+            }
+            table.insert(mappings, map)
         end
 
         table.insert(mappings, {

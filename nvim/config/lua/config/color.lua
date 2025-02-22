@@ -92,5 +92,7 @@ return {
         }, { bg = "none" })
 
         update_highlights_pattern("DapUI.*NC", { bg = "none" })
+
+        update_highlights("FloatTitle", { bg = "none" })
     end,
 }
