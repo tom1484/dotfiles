@@ -5,7 +5,7 @@ if status --is-interactive
     # Check if the session is initiated via SSH
     and set -q SSH_CONNECTION
         # Attempt to attach to the 'default' session; create it if it doesn't exist
-        tmux new-session -A -s default
+        exec tmux new-session -A -s default
 end
 
 set -gx LANG "en_US.UTF-8"
