@@ -1,6 +1,6 @@
 return {
     jump = { close = true },
-    layout = { preset = "default", preview = false },
+    layout = { preset = "default", preview = true },
     win = {
         list = {
             keys = {
@@ -33,8 +33,8 @@ return {
                 ["]e"] = "explorer_error_next",
                 ["[e"] = "explorer_error_prev",
                 -- Addtional
-                ["h"] = "edit_vsplit", -- close directory
-                ["v"] = "edit_split", -- close directory
+                ["h"] = "vsplit", -- close directory
+                ["v"] = "split", -- close directory
                 ["<BS>"] = "explorer_close", -- close directory
                 ["U"] = "explorer_up",
                 ["<c-CR>"] = "explorer_focus",

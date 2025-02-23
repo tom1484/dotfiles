@@ -47,6 +47,7 @@ return {
 
         update_highlights({
             "FloatBorder",
+            "NormalFloat",
             "LspInfoBorder",
             "TelescopeBorder",
             "DapUIFloatBorder",
@@ -94,5 +95,8 @@ return {
         update_highlights_pattern("DapUI.*NC", { bg = "none" })
 
         update_highlights("FloatTitle", { bg = "none" })
+
+        update_highlights("NonText", { fg = "#999999" })
+        update_highlights("Comment", { fg = "#999999" })
     end,
 }
