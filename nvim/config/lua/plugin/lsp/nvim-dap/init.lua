@@ -16,7 +16,7 @@ return {
                 },
                 c = {
                     "codelldb",
-                    -- "cpptools",
+                    "cpptools",
                 },
                 go = {
                     -- "delve",
@@ -128,6 +128,16 @@ return {
                 end)
             end,
             make_opts("Actions"),
+        })
+
+        table.insert(mappings, {
+            "n",
+            "<leader>kn",
+            function()
+                local dap_utils = require("plugin.lsp.nvim-dap.utils")
+                dap_utils.create_launch(dap)
+            end,
+            make_opts("New configuration"),
         })
 
         utils.set_keymaps(mappings)
