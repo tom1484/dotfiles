@@ -5,17 +5,17 @@ lsp.pylsp.setup({
         pylsp = {
             plugins = {
                 -- formatter options
-                -- black = { enabled = true },
-                -- autopep8 = { enabled = false },
-                -- yapf = { enabled = false },
+                black = { enabled = false },
+                autopep8 = { enabled = false },
+                yapf = { enabled = true },
                 -- linter options
-                -- pylint = { enabled = true, executable = "pylint" },
-                -- pyflakes = { enabled = false },
-                pycodestyle = { enabled = true },
+                pylint = { enabled = true, executable = "pylint" },
+                pyflakes = { enabled = false },
+                -- pycodestyle = { enabled = true },
                 -- type checker
                 pylsp_mypy = { enabled = true },
                 -- auto-completion options
-                jedi_completion = { fuzzy = true },
+                -- jedi_completion = { fuzzy = true },
                 -- import sorting
                 pyls_isort = { enabled = true },
             },
