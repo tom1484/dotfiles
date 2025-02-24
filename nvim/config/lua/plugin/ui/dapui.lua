@@ -45,12 +45,12 @@ return {
                     elements = {
                         {
                             id = "repl",
-                            size = 0.5,
+                            size = 1.0,
                         },
-                        {
-                            id = "console",
-                            size = 0.5,
-                        },
+                        -- {
+                        --     id = "console",
+                        --     size = 0.5,
+                        -- },
                     },
                     position = "bottom",
                     size = 15,

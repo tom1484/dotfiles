@@ -92,10 +92,12 @@ return {
         local mappings = {}
 
         local shortcuts = {
-            l = actions.LoadJSON,
             b = actions.ToggleBreakpoint,
             c = actions.Continue,
             s = actions.StepInto,
+            S = actions.StepOut,
+            o = actions.StepOver,
+            l = actions.LoadJSON,
             t = actions.Terminate,
         }
         for key, action in pairs(shortcuts) do

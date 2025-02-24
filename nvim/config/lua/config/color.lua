@@ -66,7 +66,7 @@ return {
             "ChatGPTTotalTokensBorder",
             "CompeDocumentationBorder",
             "LspSagaSignatureHelpBorder",
-        }, { fg = "#777777" })
+        }, { fg = "#999999" })
         update_highlights_pattern(".*Border", { bg = "none" })
 
         update_highlights("TelescopeSelection", { bg = "#284b71" })
