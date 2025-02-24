@@ -11,6 +11,7 @@ return {
         "stevearc/dressing.nvim",
         "nvim-lua/plenary.nvim",
         "MunifTanjim/nui.nvim",
+        "snacks/snacks.nvim",
         --- The below dependencies are optional,
         "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
         "zbirenbaum/copilot.lua", -- for providers='copilot'
@@ -34,16 +35,20 @@ return {
         {
             -- Make sure to set this up properly if you have lazy=true
             "MeanderingProgrammer/render-markdown.nvim",
+            -- opts = {
+            --     file_types = { "markdown", "Avante" },
+            -- },
+            -- ft = { "markdown", "Avante" },
             opts = {
-                file_types = { "markdown", "Avante" },
+                file_types = { "Avante" },
             },
-            ft = { "markdown", "Avante" },
+            ft = { "Avante" },
         },
     },
     opts = {
         ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
-        provider = "gemini", -- Recommend using Claude
-        auto_suggestions_provider = "gemini",
+        provider = "copilot", -- Recommend using Claude
+        auto_suggestions_provider = "copilot",
         claude = {
             endpoint = "https://api.anthropic.com",
             model = "claude-3-5-sonnet-20240620",
@@ -58,11 +63,11 @@ return {
             max_tokens = 100000,
         },
         behaviour = {
-            auto_suggestions = false, -- Experimental stage
+            auto_suggestions = true, -- Experimental stage
             auto_set_highlight_group = true,
             auto_set_keymaps = true,
             auto_apply_diff_after_generation = true,
-            support_paste_from_clipboard = false,
+            support_paste_from_clipboard = true,
         },
         mappings = {
             --- @class AvanteConflictMappings
@@ -72,14 +77,14 @@ return {
                 all_theirs = "ca",
                 both = "cb",
                 cursor = "cc",
-                next = "]x",
-                prev = "[x",
+                next = "gan",
+                prev = "gap",
             },
             suggestion = {
-                accept = "<M-l>",
+                accept = "<C-Space>",
                 next = "<M-]>",
                 prev = "<M-[>",
-                dismiss = "<C-]>",
+                dismiss = "<C-BS>",
             },
             jump = {
                 next = "]]",
@@ -87,7 +92,7 @@ return {
             },
             submit = {
                 normal = "<CR>",
-                insert = "<C-s>",
+                insert = "<C-CR>",
             },
         },
         hints = { enabled = false },
@@ -113,9 +118,8 @@ return {
             list_opener = "copen",
         },
         file_selector = {
-            -- provider = "telescope",
-            -- WARNING: This is experimental and may not work as expected
             provider = "snacks",
+            -- WARNING: This is experimental and may not work as expected
             -- Options override for custom providers
             provider_opts = {},
         },
