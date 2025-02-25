@@ -84,9 +84,8 @@ return {
                     utils.set_keymaps({
                         {
                             "n",
-                            "<leader>vf",
+                            "<leader>f",
                             function()
-                                -- require("conform").format()
                                 vim.lsp.buf.format({
                                     -- async = true,
                                     -- filter = function(client)

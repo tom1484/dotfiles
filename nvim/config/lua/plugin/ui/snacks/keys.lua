@@ -23,13 +23,13 @@ return {
     --     end,
     --     desc = "Buffers",
     -- },
-    {
-        "<leader>/",
-        function()
-            Snacks.picker.grep()
-        end,
-        desc = "Grep",
-    },
+    -- {
+    --     "<leader>/",
+    --     function()
+    --         Snacks.picker.grep()
+    --     end,
+    --     desc = "Grep",
+    -- },
     {
         "<leader>:",
         function()
@@ -53,39 +53,39 @@ return {
     },
     -- find
     {
-        "<leader>fc",
+        "<leader>pc",
         function()
             Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
         end,
-        desc = "Find Config File",
+        desc = "Pick Config File",
     },
     {
-        "<leader>ff",
+        "<leader>pf",
         function()
             Snacks.picker.files()
         end,
-        desc = "Find Files",
+        desc = "Pick Files",
     },
     {
-        "<leader>fg",
-        function()
-            Snacks.picker.git_files()
-        end,
-        desc = "Find Git Files",
-    },
-    {
-        "<leader>fp",
+        "<leader>pp",
         function()
             Snacks.picker.projects()
         end,
         desc = "Projects",
     },
     {
-        "<leader>fr",
+        "<leader>pr",
         function()
             Snacks.picker.recent()
         end,
         desc = "Recent",
+    },
+    {
+        "<leader>gf",
+        function()
+            Snacks.picker.git_files()
+        end,
+        desc = "Pick Git Files",
     },
     -- git
     {
@@ -139,28 +139,28 @@ return {
     },
     -- Grep
     {
-        "<leader>sb",
+        "<leader>pb",
         function()
             Snacks.picker.lines()
         end,
         desc = "Buffer Lines",
     },
     {
-        "<leader>sB",
+        "<leader>pB",
         function()
             Snacks.picker.grep_buffers()
         end,
         desc = "Grep Open Buffers",
     },
     {
-        "<leader>sg",
+        "<leader>pg",
         function()
             Snacks.picker.grep()
         end,
         desc = "Grep",
     },
     {
-        "<leader>sw",
+        "<leader>pw",
         function()
             Snacks.picker.grep_word()
         end,
@@ -169,140 +169,140 @@ return {
     },
     -- search
     {
-        '<leader>s"',
+        '<leader>p"',
         function()
             Snacks.picker.registers()
         end,
         desc = "Registers",
     },
     {
-        "<leader>s/",
+        "<leader>p/",
         function()
             Snacks.picker.search_history()
         end,
         desc = "Search History",
     },
     {
-        "<leader>sa",
+        "<leader>pa",
         function()
             Snacks.picker.autocmds()
         end,
         desc = "Autocmds",
     },
     {
-        "<leader>sb",
+        "<leader>pb",
         function()
             Snacks.picker.lines()
         end,
         desc = "Buffer Lines",
     },
     {
-        "<leader>sc",
+        "<leader>pc",
         function()
             Snacks.picker.command_history()
         end,
         desc = "Command History",
     },
     {
-        "<leader>sC",
+        "<leader>pC",
         function()
             Snacks.picker.commands()
         end,
         desc = "Commands",
     },
     {
-        "<leader>sd",
+        "<leader>pd",
         function()
             Snacks.picker.diagnostics()
         end,
         desc = "Diagnostics",
     },
     {
-        "<leader>sD",
+        "<leader>pD",
         function()
             Snacks.picker.diagnostics_buffer()
         end,
         desc = "Buffer Diagnostics",
     },
     {
-        "<leader>sh",
+        "<leader>ph",
         function()
             Snacks.picker.help()
         end,
         desc = "Help Pages",
     },
     {
-        "<leader>sH",
+        "<leader>pH",
         function()
             Snacks.picker.highlights()
         end,
         desc = "Highlights",
     },
     {
-        "<leader>si",
+        "<leader>pi",
         function()
             Snacks.picker.icons()
         end,
         desc = "Icons",
     },
     {
-        "<leader>sj",
+        "<leader>pj",
         function()
             Snacks.picker.jumps()
         end,
         desc = "Jumps",
     },
     {
-        "<leader>sk",
+        "<leader>pk",
         function()
             Snacks.picker.keymaps()
         end,
         desc = "Keymaps",
     },
     {
-        "<leader>sl",
+        "<leader>pl",
         function()
             Snacks.picker.loclist()
         end,
         desc = "Location List",
     },
     {
-        "<leader>sm",
+        "<leader>pm",
         function()
             Snacks.picker.marks()
         end,
         desc = "Marks",
     },
     {
-        "<leader>sM",
+        "<leader>pM",
         function()
             Snacks.picker.man()
         end,
         desc = "Man Pages",
     },
     {
-        "<leader>sp",
+        "<leader>pP",
         function()
             Snacks.picker.lazy()
         end,
         desc = "Search for Plugin Spec",
     },
     {
-        "<leader>sq",
+        "<leader>pq",
         function()
             Snacks.picker.qflist()
         end,
         desc = "Quickfix List",
     },
     {
-        "<leader>sR",
+        "<leader>pR",
         function()
             Snacks.picker.resume()
         end,
         desc = "Resume",
     },
     {
-        "<leader>su",
+        "<leader>pu",
         function()
             Snacks.picker.undo()
         end,
@@ -360,14 +360,14 @@ return {
         desc = "Hover",
     },
     {
-        "<leader>ss",
+        "<leader>ps",
         function()
             Snacks.picker.lsp_symbols()
         end,
         desc = "LSP Symbols",
     },
     {
-        "<leader>sS",
+        "<leader>pS",
         function()
             Snacks.picker.lsp_workspace_symbols()
         end,
@@ -487,7 +487,7 @@ return {
                     spell = false,
                     wrap = false,
                     signcolumn = "yes",
-                    statuscolumn = " ",
+                    Grepstatuscolumn = " ",
                     conceallevel = 3,
                 },
             })

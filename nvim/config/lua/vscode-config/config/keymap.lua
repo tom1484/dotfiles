@@ -66,7 +66,7 @@ return {
             -- VSCode mapping
             {
                 "n",
-                "<leader>vh",
+                "gh",
                 function()
                     vscode.call("editor.action.showHover")
                 end,
@@ -74,7 +74,7 @@ return {
             },
             {
                 "n",
-                "<leader>vf",
+                "<leader>f",
                 function()
                     vscode.call("editor.action.formatDocument")
                 end,
