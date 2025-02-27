@@ -98,5 +98,9 @@ return {
 
         update_highlights("NonText", { fg = "#999999" })
         update_highlights("Comment", { fg = "#999999" })
+
+        update_highlights("Pmenu", { bg = "none" })
+        update_highlights("PmenuSbar", { bg = "#cccccc" })
+        update_highlights("PmenuThumb", { bg = "#6c6c6c" })
     end,
 }

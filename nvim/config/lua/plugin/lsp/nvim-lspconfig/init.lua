@@ -7,6 +7,7 @@ return {
         "ray-x/lsp_signature.nvim",
         "onsails/lspkind.nvim",
         "L3MON4D3/LuaSnip",
+        "saghen/blink.cmp",
     },
     event = { "BufReadPost", "VeryLazy" },
     opts = function()
@@ -43,12 +44,19 @@ return {
         }
     end,
     config = function(_, opts)
+        local lspconfig = require("lspconfig")
+        local blink = require("blink.cmp")
+
         require("mason-lspconfig").setup({
             ensure_installed = opts.configs,
         })
 
-        for _, lsp_config in ipairs(opts.configs) do
-            require("plugin.lsp.nvim-lspconfig.config." .. lsp_config)
+        for _, entry in ipairs(opts.configs) do
+            local content = require("plugin.lsp.nvim-lspconfig.config." .. entry)
+            local server = content.server
+            local config = content.config
+            -- config.capabilities = blink.get_lsp_capabilities()
+            lspconfig[server].setup(config)
         end
 
         vim.api.nvim_create_autocmd("LspAttach", {

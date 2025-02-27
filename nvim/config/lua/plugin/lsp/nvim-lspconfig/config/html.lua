@@ -1,4 +1,4 @@
-local lsp = require("lspconfig")
-
-lsp.html.setup({})
-
+return {
+    server = "html",
+    config = {},
+}

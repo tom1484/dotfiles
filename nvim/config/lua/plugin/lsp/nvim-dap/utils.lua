@@ -47,7 +47,7 @@ return {
                 content.configurations[#content.configurations + 1] = templates[i]
             end
 
-            local handle = io.popen("echo '" .. lunajson.encode(content) .. "' | jq .")
+            local handle = io.popen("echo '" .. lunajson.encode(content) .. "' | jq -S --tab | sed \"s/\t/    /g\"")
             if handle == nil then
                 print("Failed to open launch.json")
                 return
@@ -90,7 +90,7 @@ return {
                 prompt = "Create launch.json?",
             }, function(_, idx)
                 if idx == 1 then
-                    vim.fn.mkdir(vim.fn.expand("%:p:h") .. "/.vscode", "p")
+                    vim.fn.mkdir(vim.fn.getcwd() .. "/.vscode", "p")
                     vim.fn.writefile({ '{"version": "0.2.0", "configurations": []}' }, launch_file)
 
                     vim.notify("Created launch.json")

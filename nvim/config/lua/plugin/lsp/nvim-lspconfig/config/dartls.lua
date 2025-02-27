@@ -1,3 +1,4 @@
-local lsp = require("lspconfig")
-
-lsp.dartls.setup({})
+return {
+    server = "dartls",
+    config = {}
+}

@@ -1,3 +1,4 @@
-local lsp = require("lspconfig")
-
-lsp.ruff.setup({})
+return {
+    server = "ruff",
+    config = {},
+}

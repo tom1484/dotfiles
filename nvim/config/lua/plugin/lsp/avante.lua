@@ -49,6 +49,7 @@ return {
         ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
         provider = "copilot", -- Recommend using Claude
         auto_suggestions_provider = "copilot",
+        cursor_applying_provider = nil, -- The provider used in the applying phase of Cursor Planning Mode, defaults to nil, when nil uses Config.provider as the provider for the applying phase
         claude = {
             endpoint = "https://api.anthropic.com",
             model = "claude-3-5-sonnet-20240620",
@@ -68,7 +69,11 @@ return {
             auto_set_keymaps = true,
             auto_apply_diff_after_generation = true,
             support_paste_from_clipboard = true,
+            minimize_diff = true, -- Whether to remove unchanged lines when applying a code block
+            enable_token_counting = true, -- Whether to enable token counting. Default to true.
+            enable_cursor_planning_mode = false, -- Whether to enable Cursor Planning Mode. Default to false.
         },
+        history = { max_tokens = 65536 },
         mappings = {
             --- @class AvanteConflictMappings
             diff = {
@@ -92,7 +97,13 @@ return {
             },
             submit = {
                 normal = "<CR>",
-                insert = "<C-CR>",
+                insert = "<C-s>",
+            },
+            sidebar = {
+                apply_all = "A",
+                apply_cursor = "a",
+                switch_windows = "<Tab>",
+                reverse_switch_windows = "<S-Tab>",
             },
         },
         hints = { enabled = false },
@@ -102,8 +113,24 @@ return {
             wrap = true, -- similar to vim.o.wrap
             width = 30, -- default % based on available width
             sidebar_header = {
+                enabled = true, -- true, false to enable/disable the header
                 align = "center", -- left, center, right for title
                 rounded = true,
+            },
+            input = {
+                prefix = "> ",
+                height = 8, -- Height of the input window in vertical layout
+            },
+            edit = {
+                border = "rounded",
+                start_insert = true, -- Start insert mode when opening the edit window
+            },
+            ask = {
+                floating = true, -- Open the 'AvanteAsk' prompt in a floating window
+                start_insert = true, -- Start insert mode when opening the ask window
+                border = "rounded",
+                ---@type "ours" | "theirs"
+                focus_on_apply = "ours", -- which diff to focus after applying
             },
         },
         highlights = {
@@ -116,12 +143,17 @@ return {
             autojump = true,
             ---@type string | fun(): any
             list_opener = "copen",
+            override_timeoutlen = 500,
         },
         file_selector = {
             provider = "snacks",
             -- WARNING: This is experimental and may not work as expected
             -- Options override for custom providers
             provider_opts = {},
+        },
+        suggestion = {
+            debounce = 100,
+            throttle = 100,
         },
     },
     config = function(_, opts)

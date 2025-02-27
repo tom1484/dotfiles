@@ -1,13 +1,16 @@
-local lsp = require("lspconfig")
+local lspconfig = require("lspconfig")
 
-lsp.pylyzer.setup({
-    settings = {
-        python = {
-            checkOnType = false,
-            diagnostics = false,
-            inlayHints = true,
-            smartCompletion = true,
+return {
+    server = "pylyzer",
+    config = {
+        settings = {
+            python = {
+                checkOnType = false,
+                diagnostics = false,
+                inlayHints = true,
+                smartCompletion = true,
+            },
         },
+        root_dir = lspconfig.util.root_pattern("*.py"),
     },
-    root_dir = lsp.util.root_pattern("*.py"),
-})
+}

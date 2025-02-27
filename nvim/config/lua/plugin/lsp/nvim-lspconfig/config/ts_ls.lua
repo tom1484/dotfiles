@@ -1,4 +1,4 @@
-local lsp = require("lspconfig")
-
-lsp.ts_ls.setup({})
-
+return {
+    server = "ts_ls",
+    config = {},
+}

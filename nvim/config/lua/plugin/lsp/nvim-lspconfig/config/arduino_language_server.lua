@@ -1,3 +1,4 @@
-local lsp = require("lspconfig")
-
-lsp.arduino_language_server.setup({})
+return {
+    server = "arduino_language_server",
+    config = {},
+}

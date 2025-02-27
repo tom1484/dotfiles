@@ -1,3 +1,4 @@
-local lsp = require("lspconfig")
-
-lsp.cmake.setup({})
+return {
+    server = "cmake",
+    config = {},
+}

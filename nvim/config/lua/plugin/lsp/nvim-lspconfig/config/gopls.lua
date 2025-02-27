@@ -1,4 +1,4 @@
-local lsp = require("lspconfig")
-
-lsp.gopls.setup({})
-
+return {
+    server = "gopls",
+    config = {}
+}

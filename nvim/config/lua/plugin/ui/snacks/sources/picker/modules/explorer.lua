@@ -35,6 +35,7 @@ return {
                 -- Addtional
                 ["h"] = "vsplit", -- close directory
                 ["v"] = "split", -- close directory
+                ["t"] = "tab", -- close directory
                 ["<BS>"] = "explorer_close", -- close directory
                 ["U"] = "explorer_up",
                 ["<c-CR>"] = "explorer_focus",

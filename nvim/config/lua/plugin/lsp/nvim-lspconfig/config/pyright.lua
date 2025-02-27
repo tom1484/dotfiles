@@ -1,4 +1,4 @@
-local lsp = require("lspconfig")
-
-lsp.pyright.setup({})
-
+return {
+    server = "pyright",
+    config = {},
+}

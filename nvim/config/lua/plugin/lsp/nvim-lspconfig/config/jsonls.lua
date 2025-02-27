@@ -1,4 +1,4 @@
-local lsp = require("lspconfig")
-
-lsp.jsonls.setup({})
-
+return {
+    server = "jsonls",
+    config = {},
+}

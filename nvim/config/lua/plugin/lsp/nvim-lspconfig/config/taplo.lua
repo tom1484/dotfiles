@@ -1,4 +1,4 @@
-local lsp = require("lspconfig")
-
-lsp.taplo.setup({})
-
+return {
+    server = "taplo",
+    config = {},
+}
