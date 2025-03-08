@@ -39,6 +39,7 @@ return {
                 ["<BS>"] = "explorer_close", -- close directory
                 ["U"] = "explorer_up",
                 ["<c-CR>"] = "explorer_focus",
+                ["<C-c>"] = { "close", mode = { "n", "i" } },
             },
         },
     },

@@ -85,12 +85,12 @@ return {
                 next = "gan",
                 prev = "gap",
             },
-            suggestion = {
-                accept = "<C-Space>",
-                next = "<M-]>",
-                prev = "<M-[>",
-                dismiss = "<C-BS>",
-            },
+            -- suggestion = {
+            --     accept = "<C-Space>",
+            --     next = "<M-]>",
+            --     prev = "<M-[>",
+            --     dismiss = "<C-BS>",
+            -- },
             jump = {
                 next = "]]",
                 prev = "[[",
