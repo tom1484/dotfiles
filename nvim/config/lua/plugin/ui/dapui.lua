@@ -23,20 +23,20 @@ return {
                     elements = {
                         {
                             id = "scopes",
-                            size = 0.70,
+                            size = 0.40,
                         },
-                        -- {
-                        --     id = "breakpoints",
-                        --     size = 0.25,
-                        -- },
+                        {
+                            id = "breakpoints",
+                            size = 0.20,
+                        },
                         {
                             id = "stacks",
-                            size = 0.30,
+                            size = 0.20,
                         },
-                        -- {
-                        --     id = "watches",
-                        --     size = 0.25,
-                        -- },
+                        {
+                            id = "watches",
+                            size = 0.20,
+                        },
                     },
                     position = "left",
                     size = 40,
@@ -146,7 +146,7 @@ return {
                 "n",
                 "<leader>de",
                 function()
-                    dapui.eval()
+                    dapui.eval(nil, { enter = true })
                 end,
                 { noremap = true, silent = true, desc = "Run eval under cursor" },
             },
@@ -156,7 +156,7 @@ return {
                 "n",
                 "<leader>dE",
                 function()
-                    dapui.eval(vim.fn.input("Expression: "))
+                    dapui.eval(vim.fn.input("Expression: "), { enter = true })
                 end,
                 { noremap = true, silent = true, desc = "Run eval" },
             },
