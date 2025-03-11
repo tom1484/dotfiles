@@ -17,7 +17,7 @@ return {
                 ["y"] = { "explorer_yank", mode = { "n", "x" } },
                 ["p"] = "explorer_paste",
                 ["u"] = "explorer_update",
-                ["<c-c>"] = "tcd",
+                -- ["<c-c>"] = "tcd",
                 ["<leader>/"] = "picker_grep",
                 ["<c-t>"] = "terminal",
                 -- ["."] = "explorer_focus",

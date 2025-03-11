@@ -1,7 +1,7 @@
-set -gx CONDA_EXE "~/miniforge3/bin/conda"
-set _CONDA_ROOT "~/miniforge3"
-set _CONDA_EXE "~/miniforge3/bin/conda"
-set -gx CONDA_PYTHON_EXE "~/miniforge3/bin/python"
+set -gx CONDA_EXE "/Users/tom1484/miniforge3/bin/conda"
+set _CONDA_ROOT "/Users/tom1484/miniforge3"
+set _CONDA_EXE "/Users/tom1484/miniforge3/bin/conda"
+set -gx CONDA_PYTHON_EXE "/Users/tom1484/miniforge3/bin/python"
 # Copyright (C) 2012 Anaconda, Inc
 # SPDX-License-Identifier: BSD-3-Clause
 #

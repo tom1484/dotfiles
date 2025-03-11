@@ -25,3 +25,12 @@ function fish_remove_path
     end)
 end
 
+function load_env --description 'Load environment variables from a .env file'
+    for line in (cat $argv[1] | sed '/^\s*#/d;/^\s*$/d')
+        # Split the line on the first '=' character
+        set -l key (echo $line | cut -d '=' -f 1)
+        set -l value (echo $line | cut -d '=' -f 2-)
+        # Export the variable to the environment
+        set -gx $key $value
+    end
+end
