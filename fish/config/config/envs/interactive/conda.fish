@@ -1,5 +1,5 @@
 if test -f ~/miniforge3/bin/conda
-    source ~/.config/fish/config/hooks/conda.fish
+    source ~/.config/fish/hooks/conda.fish
 end
 
 if not set -q VIRTUAL_ENV
