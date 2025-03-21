@@ -1,4 +1,0 @@
-return {
-    server = "taplo",
-    config = {},
-}

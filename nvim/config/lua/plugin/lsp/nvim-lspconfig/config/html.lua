@@ -1,4 +1,0 @@
-return {
-    server = "html",
-    config = {},
-}
