@@ -1,7 +1,8 @@
 function find_disable_files
     set dir (realpath $argv[1])
+    set config_dir (realpath ~/.config)
     set disable_files
-    while test (basename $dir) != ".config"
+    while test $dir != / -a $dir != $config_dir
         if test -f "$dir/.disable"
             set disable_files $disable_files $dir/.disable
         end
