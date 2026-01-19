@@ -1,0 +1,17 @@
+#!/bin/bash
+# Alacritty dropdown terminal using tdrop
+# This script creates a toggle-able dropdown terminal at the top of the screen
+
+HEIGHT=80
+WIDTH=80
+
+X=$(( (100 - WIDTH)/2 ))
+Y=$(( (100 - HEIGHT)/2 ))
+
+WINDOW_CLASS="dropdown,dropdown"  # Window class for WM rules
+
+WAYLAND_DISPLAY= WINIT_UNIX_BACKEND=x11 tdrop -mta -A -n dropdown-term \
+    -w "${WIDTH}%" -h "${HEIGHT}%" -x "${X}%" -y "${Y}%" \
+    alacritty --class dropdown-term,dropdown-term \
+    --option '' \
+    -e tmux new-session -A -s default

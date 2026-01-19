@@ -1,0 +1,74 @@
+# =========================
+# General
+# =========================
+[general]
+# Theme import from alacritty-theme collection
+import = [
+  "~/.config/alacritty/themes/themes/kanagawa_wave.toml" # change theme here
+]
+
+# =========================
+# Window
+# =========================
+[window]
+# Add a bit of padding like iTerm
+padding.x = 12
+padding.y = 12
+
+# Border + titlebar settings
+decorations = "Full"
+
+# Optional background translucency
+opacity = 0.95
+
+# =========================
+# Font
+# =========================
+[font]
+# iTerm often uses a clean, monospace font with ligatures
+normal.family = "FiraCode Nerd Font Mono"
+size = 11.0
+
+bold.family = "FiraCode Nerd Font Mono"
+italic.family = "FiraCode Nerd Font Mono"
+
+# Optional offsets
+glyph_offset.x = 0
+glyph_offset.y = 0
+
+# =========================
+# Scrolling
+# =========================
+[scrolling]
+history = 5000
+
+# =========================
+# Shell
+# =========================
+[terminal.shell]
+program = "/usr/bin/fish"
+
+# =========================
+# Keybindings (optional iTerm-like)
+# =========================
+[keyboard]
+# Paste with Ctrl+Shift+V
+[[keyboard.bindings]]
+key = "V"
+mods = "Control|Shift"
+action = "Paste"
+
+# Copy with Ctrl+Shift+C
+[[keyboard.bindings]]
+key = "C"
+mods = "Control|Shift"
+action = "Copy"
+
+# =========================
+# Mouse
+# =========================
+[mouse]
+# Enable text selection with mouse
+hide_when_typing = false
+
+[terminal]
