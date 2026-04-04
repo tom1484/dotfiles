@@ -1,8 +1,0 @@
-completions/
-conf.d/
-functions/
-
-fish_plugins
-fish_variables
-
-**/.disable
