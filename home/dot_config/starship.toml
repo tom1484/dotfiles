@@ -12,5 +12,8 @@ success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set
 [package]
 disabled = true
 
+[container]
+disabled = true
+
 [gcloud]
 disabled = true

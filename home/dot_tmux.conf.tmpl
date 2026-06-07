@@ -20,6 +20,8 @@ set-option -g status-position top
 
 ## CLIPBOARD
 {{ $clip := ternary "pbcopy" "xclip -selection clipboard -i" (eq .chezmoi.os "darwin") -}}
+set -s set-clipboard on
+set -g allow-passthrough on
 setw -g mode-keys vi
 
 bind-key -T copy-mode-vi 'v' send -X begin-selection
