@@ -1,0 +1,34 @@
+# Claude Code skills manifest
+#
+# The skill *folders* under ~/.claude/skills/ are intentionally NOT tracked by
+# chezmoi (~130 MB, fetched from upstream). This file is the reproducible list:
+# the source repos every installed skill came from. On a new machine run
+#
+#     install-claude-skills
+#
+# (deployed to ~/.local/bin) to clone each repo and populate ~/.claude/skills/.
+#
+# Format, one repo per line:
+#     <github-owner/repo> [root-skill-name]
+#   - The repo is shallow-cloned and every SKILL.md directory inside it is
+#     copied into ~/.claude/skills/, keeping its folder name.
+#   - If a repo's SKILL.md sits at the repo root, the whole repo is copied and
+#     named <owner>_<repo>, unless an explicit [root-skill-name] is given.
+#   - Lines starting with # and blank lines are ignored.
+
+# --- Collections (many skills each) ---
+anthropics/skills
+K-Dense-AI/claude-scientific-skills
+trailofbits/skills
+expo/skills
+obra/superpowers
+obra/superpowers-lab
+
+# --- Individual skills ---
+conorluddy/ios-simulator-skill
+lackeyjb/playwright-skill
+alonw0/web-asset-generator
+chrisvoncsefalvay/claude-d3js-skill
+zarazhangrui/frontend-slides
+asklokesh/claudeskill-loki-mode
+jthack/ffuf_claude_skill ffuf-skill

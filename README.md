@@ -14,12 +14,17 @@ machine (macOS or Ubuntu) with a single `chezmoi apply`, templating per-machine 
 | Starship | `~/.config/starship.toml` | `home/dot_config/starship.toml` |
 | tmux | `~/.tmux.conf` | `home/dot_tmux.conf` |
 | Claude Code | `~/.claude` | `home/private_dot_claude/` |
+| Claude Code skill **list** | `~/.claude/skills.txt` | `home/private_dot_claude/skills.txt` |
+| Claude Code skill installer | `~/.local/bin/install-claude-skills` | `home/dot_local/bin/` |
 | Alacritty dropdown launcher | `~/.local/bin/alacritty-dropdown` | `home/dot_local/bin/` |
 
 ### Intentionally **not** managed
-- **Claude Code skills** (`~/.claude/skills/`) — these are marketplace-installed (~130 MB); only the
-  plugin **manifests** (`plugins/config.json`, `plugins/known_marketplaces.json`) are tracked so the
-  skill set is reproducible. Re-install skills via the marketplace on a new machine.
+- **Claude Code skill folders** (`~/.claude/skills/`) — the skill contents (~130 MB, fetched from
+  upstream GitHub repos) are not committed. Instead, `~/.claude/skills.txt` tracks the **list of
+  source repos** every skill came from, and `install-claude-skills` clones them into
+  `~/.claude/skills/` on a new machine. Add/remove a repo in `skills.txt`, then re-run the installer.
+  The plugin **manifests** (`plugins/config.json`, `plugins/known_marketplaces.json`) are tracked
+  separately for the marketplace plugin set.
 - **Secrets** — never committed. Fish loads them from `~/.secrets/*` at runtime via the `load_env`
   helper (e.g. `home/dot_config/private_fish/config/envs/llm.fish` → `~/.secrets/llm`). Create those
   files by hand on each machine.
@@ -35,11 +40,12 @@ home/                        ← chezmoi source state
 ├── .chezmoiignore           machine-generated / runtime paths to skip
 ├── dot_config/              → ~/.config/
 │   ├── nvim/  private_fish/  kitty/  alacritty/  starship.toml
-├── dot_local/bin/           → ~/.local/bin/
+├── dot_local/bin/           → ~/.local/bin/   (incl. install-claude-skills)
 ├── dot_tmux.conf            → ~/.tmux.conf
 └── private_dot_claude/      → ~/.claude/   (0700)
     ├── settings.json.tmpl            statusline path templated; full permission allowlist
     ├── keybindings.json
+    ├── skills.txt                    source-repo list for ~/.claude/skills/ (see installer)
     ├── executable_statusline-command.sh
     └── plugins/{config.json, known_marketplaces.json.tmpl}
 README.md                    (this file — repo root, not applied)
@@ -64,6 +70,9 @@ Afterwards:
 4. **tmux** — install `tpm` (`git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`),
    then `prefix + I` inside tmux to fetch plugins.
 5. **Alacritty themes** (optional) — `git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes`.
+6. **Claude Code skills** — run `install-claude-skills` to clone the repos listed in
+   `~/.claude/skills.txt` into `~/.claude/skills/` (~130 MB; needs `git`). Idempotent — existing skill
+   folders are skipped; pass `--force` to refresh them all from fresh clones.
 
 ## Daily usage & maintenance
 
