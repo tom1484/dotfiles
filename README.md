@@ -98,8 +98,16 @@ Rename the source file with a `.tmpl` suffix and branch on chezmoi variables:
 Useful variables: `.chezmoi.os`, `.chezmoi.arch`, `.chezmoi.hostname`, `.chezmoi.homeDir`.
 Render-check with `chezmoi cat ~/.path/to/file`.
 
-**Known templating candidate:** `dot_tmux.conf` carries Linux/`xclip` clipboard bindings that are inert
-on macOS — convert to a template if/when you want OS-specific clipboard handling.
+**Worked example — `dot_tmux.conf.tmpl`:** the clipboard copy command is OS-specific, so it's set once
+via a variable and reused:
+
+```
+{{ $clip := ternary "pbcopy" "xclip -selection clipboard -i" (eq .chezmoi.os "darwin") }}
+...
+bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "{{ $clip }}"
+```
+
+→ `pbcopy` on macOS, `xclip` on Linux. Same pattern works for any per-OS command.
 
 ## Rollback
 
