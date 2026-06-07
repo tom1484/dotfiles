@@ -16,9 +16,9 @@
 #     named <owner>_<repo>, unless an explicit [root-skill-name] is given.
 #   - Lines starting with # and blank lines are ignored.
 #
-# Archived skills: folder names listed in ARCHIVED.md (deployed to
-# ~/.claude/ARCHIVED.md) are skipped by install-claude-skills, so the mixed
-# collections below only repopulate the skills actually in use.
+# Note: the collections below are mixed bags. Repos whose skills are ALL
+# unused have been dropped from this list; collections that still contain
+# in-use skills are kept whole (they also pull in some unused skills).
 
 # --- Collections (many skills each) ---
 anthropics/skills
