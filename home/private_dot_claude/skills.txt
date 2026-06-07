@@ -9,27 +9,28 @@
 # (deployed to ~/.local/bin) to clone each repo and populate ~/.claude/skills/.
 #
 # Format, one repo per line:
-#     <github-owner/repo> [root-skill-name]
+#     <github-owner/repo>                     install every skill in the repo
+#     <github-owner/repo> [root-skill-name]   repo whose SKILL.md is at the root
+#     <github-owner/repo> : skill1 skill2 …   install ONLY the named skill folders
 #   - The repo is shallow-cloned and every SKILL.md directory inside it is
-#     copied into ~/.claude/skills/, keeping its folder name.
+#     copied into ~/.claude/skills/, keeping its folder name. With a `:` allowlist
+#     only the listed folders are copied (the rest are left in the clone cache).
 #   - If a repo's SKILL.md sits at the repo root, the whole repo is copied and
 #     named <owner>_<repo>, unless an explicit [root-skill-name] is given.
+#   - A `: ` allowlisted skill missing from the clone prints a warning (renamed
+#     or removed upstream), so it is never silently dropped.
 #   - Lines starting with # and blank lines are ignored.
-#
-# Note: the collections below are mixed bags. Repos whose skills are ALL
-# unused have been dropped from this list; collections that still contain
-# in-use skills are kept whole (they also pull in some unused skills).
 
-# --- Collections (many skills each) ---
-anthropics/skills
-K-Dense-AI/claude-scientific-skills
-trailofbits/skills
-obra/superpowers
-obra/superpowers-lab
-# expo/skills            # removed: every Expo skill was archived
+# --- Collections (allowlisted to the skills actually in use) ---
+anthropics/skills : claude-api docx frontend-design mcp-builder pdf pptx skill-creator web-artifacts-builder xlsx
+
+K-Dense-AI/claude-scientific-skills : citation-management generate-image latex-posters literature-review matplotlib networkx optimize-for-gpu paper-lookup peer-review polars pufferlib pytorch-lightning pyzotero research-lookup scientific-slides scientific-visualization scientific-writing scikit-learn seaborn shap stable-baselines3 statistical-analysis sympy torch-geometric transformers
+
+trailofbits/skills : c-review codeql constant-time-analysis gh-cli modern-python semgrep
+
+obra/superpowers : brainstorming executing-plans receiving-code-review requesting-code-review systematic-debugging test-driven-development using-git-worktrees verification-before-completion writing-plans
+
+obra/superpowers-lab : using-tmux-for-interactive-commands
 
 # --- Individual skills ---
 lackeyjb/playwright-skill
-# Removed (archived): conorluddy/ios-simulator-skill, alonw0/web-asset-generator,
-# chrisvoncsefalvay/claude-d3js-skill, zarazhangrui/frontend-slides,
-# asklokesh/claudeskill-loki-mode, jthack/ffuf_claude_skill

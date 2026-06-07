@@ -36,14 +36,14 @@ install_skill_dir() {  # <source-skill-dir> <target-name>
   echo "  + $name"
 }
 
-process_repo() {  # <owner/repo> [root-name]
-  local repo="$1" root_name="${2:-}"
-  local owner reponame clone f skill_dir name
+process_repo() {  # <owner/repo> [root-name] [allowlist]
+  local repo="$1" root_name="${2:-}" allow="${3:-}"
+  local owner reponame clone f skill_dir name installed want
   owner="${repo%%/*}"
   reponame="${repo##*/}"
   clone="$CACHE_DIR/${owner}_${reponame}"
 
-  echo "==> $repo"
+  echo "==> $repo${allow:+  (only: $allow)}"
   if [ -d "$clone/.git" ]; then
     git -C "$clone" fetch --depth 1 --quiet origin 2>/dev/null || true
     git -C "$clone" reset --hard --quiet "@{upstream}" 2>/dev/null || true
@@ -53,6 +53,9 @@ process_repo() {  # <owner/repo> [root-name]
   fi
 
   # Each SKILL.md marks a skill. Root-level SKILL.md => whole repo is the skill.
+  # With an allowlist, only the named skill folders are installed.
+  # (find|while runs in a subshell, so record installed names to a temp file.)
+  installed="$(mktemp)"
   find "$clone" -name SKILL.md -not -path '*/.git/*' -print | while IFS= read -r f; do
     skill_dir="$(dirname "$f")"
     if [ "$skill_dir" -ef "$clone" ]; then
@@ -60,8 +63,21 @@ process_repo() {  # <owner/repo> [root-name]
     else
       name="$(basename "$skill_dir")"
     fi
+    if [ -n "$allow" ]; then
+      case " $allow " in *" $name "*) ;; *) continue ;; esac
+    fi
     install_skill_dir "$skill_dir" "$name"
+    echo "$name" >> "$installed"
   done
+
+  # Flag allowlisted skills missing from the clone (typo or renamed upstream),
+  # so a silently-skipped skill is never mistaken for an installed one.
+  if [ -n "$allow" ]; then
+    for want in $allow; do
+      grep -qxF "$want" "$installed" 2>/dev/null || echo "  ! '$want' not found in $repo" >&2
+    done
+  fi
+  rm -f "$installed"
 }
 
 # `find | while` runs in a subshell, so counters there are lost; recompute after.
@@ -71,8 +87,14 @@ while IFS= read -r line; do
   line="${line%%#*}"                     # strip comments
   line="$(echo "$line" | xargs)"         # trim whitespace
   [ -z "$line" ] && continue
-  # shellcheck disable=SC2086
-  process_repo $line
+  if [[ "$line" == *:* ]]; then          # owner/repo : skill1 skill2 ...
+    repo="$(echo "${line%%:*}" | xargs)"
+    allow="$(echo "${line#*:}" | xargs)"
+    process_repo "$repo" "" "$allow"
+  else                                   # owner/repo [root-name]
+    # shellcheck disable=SC2086
+    process_repo $line
+  fi
 done < "$MANIFEST"
 
 after=$(find "$SKILLS_DIR" -maxdepth 1 -mindepth 1 -type d | wc -l | tr -d ' ')
