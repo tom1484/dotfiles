@@ -109,6 +109,21 @@ bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "{{ $clip }}"
 
 → `pbcopy` on macOS, `xclip` on Linux. Same pattern works for any per-OS command.
 
+### Including a file on only some OSes
+
+`.chezmoiignore` is itself a template, so an OS-only file is dropped by guarding it there.
+The macOS-only fish env files are handled this way in `home/.chezmoiignore`:
+
+```
+{{ if ne .chezmoi.os "darwin" }}
+.config/fish/config/envs/iterm2.fish
+.config/fish/config/envs/xcode.fish
+.config/fish/config/envs/interactive/orbstack.fish
+{{ end }}
+```
+
+On non-macOS those files simply aren't created, so fish's `source_directory` never loads them.
+
 ## Rollback
 
 - chezmoi never deletes unmanaged files. To undo a single file, restore it and `chezmoi forget` it.

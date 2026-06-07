@@ -6,3 +6,10 @@
 .config/fish/fish_plugins
 .config/fish/fish_variables
 .config/fish/**/.disable
+
+{{- if ne .chezmoi.os "darwin" }}
+# macOS-only fish env files — omitted on other OSes
+.config/fish/config/envs/iterm2.fish
+.config/fish/config/envs/xcode.fish
+.config/fish/config/envs/interactive/orbstack.fish
+{{- end }}
