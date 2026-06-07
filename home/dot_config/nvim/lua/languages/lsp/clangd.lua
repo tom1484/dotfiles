@@ -1,0 +1,10 @@
+return {
+    server = "clangd",
+    opts = {
+        cmd = {
+            vim.fn.expand("$HOME/.local/share/nvim/mason/bin/clangd"),
+            "--background-index",
+        },
+        -- root_dir = utils.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
+    },
+}
