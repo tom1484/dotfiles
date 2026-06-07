@@ -15,20 +15,21 @@
 #   - If a repo's SKILL.md sits at the repo root, the whole repo is copied and
 #     named <owner>_<repo>, unless an explicit [root-skill-name] is given.
 #   - Lines starting with # and blank lines are ignored.
+#
+# Archived skills: folder names listed in ARCHIVED.md (deployed to
+# ~/.claude/ARCHIVED.md) are skipped by install-claude-skills, so the mixed
+# collections below only repopulate the skills actually in use.
 
 # --- Collections (many skills each) ---
 anthropics/skills
 K-Dense-AI/claude-scientific-skills
 trailofbits/skills
-expo/skills
 obra/superpowers
 obra/superpowers-lab
+# expo/skills            # removed: every Expo skill was archived
 
 # --- Individual skills ---
-conorluddy/ios-simulator-skill
 lackeyjb/playwright-skill
-alonw0/web-asset-generator
-chrisvoncsefalvay/claude-d3js-skill
-zarazhangrui/frontend-slides
-asklokesh/claudeskill-loki-mode
-jthack/ffuf_claude_skill ffuf-skill
+# Removed (archived): conorluddy/ios-simulator-skill, alonw0/web-asset-generator,
+# chrisvoncsefalvay/claude-d3js-skill, zarazhangrui/frontend-slides,
+# asklokesh/claudeskill-loki-mode, jthack/ffuf_claude_skill

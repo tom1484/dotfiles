@@ -10,10 +10,19 @@ set -euo pipefail
 CLAUDE_DIR="${HOME}/.claude"
 SKILLS_DIR="${CLAUDE_DIR}/skills"
 MANIFEST="${CLAUDE_DIR}/skills.txt"
+ARCHIVED="${CLAUDE_DIR}/ARCHIVED.md"
 CACHE_DIR="${HOME}/.cache/claude-skills"
 
 # Skill folders to never install (upstream placeholders, not real skills).
 SKIP_SKILLS=" template "
+
+# Append intentionally-archived skill folders (one `- <name>` per line in
+# ARCHIVED.md) so mixed collections don't repopulate them.
+if [ -f "$ARCHIVED" ]; then
+  while IFS= read -r name; do
+    [ -n "$name" ] && SKIP_SKILLS="${SKIP_SKILLS}${name} "
+  done < <(sed -n 's/^- *\([^ ]*\).*/\1/p' "$ARCHIVED")
+fi
 
 FORCE=0
 [ "${1:-}" = "--force" ] && FORCE=1
