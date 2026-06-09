@@ -14,6 +14,8 @@ machine (macOS or Ubuntu) with a single `chezmoi apply`, templating per-machine 
 | Starship | `~/.config/starship.toml` | `home/dot_config/starship.toml` |
 | tmux | `~/.tmux.conf` | `home/dot_tmux.conf` |
 | Claude Code | `~/.claude` | `home/private_dot_claude/` |
+| Claude Code global instructions | `~/.claude/CLAUDE.md` | `home/private_dot_claude/CLAUDE.md` |
+| Claude Code commands / agents | `~/.claude/{commands,agents}/` | `home/private_dot_claude/{commands,agents}/` |
 | Claude Code skill **list** | `~/.claude/skills.txt` | `home/private_dot_claude/skills.txt` |
 | Claude Code skill installer | `~/.local/bin/install-claude-skills` | `home/dot_local/bin/` |
 | Alacritty dropdown launcher | `~/.local/bin/alacritty-dropdown` | `home/dot_local/bin/` |
@@ -44,7 +46,9 @@ home/                        ← chezmoi source state
 ├── dot_tmux.conf            → ~/.tmux.conf
 └── private_dot_claude/      → ~/.claude/   (0700)
     ├── settings.json.tmpl            statusline path templated; full permission allowlist
+    ├── CLAUDE.md                     global working principles (applies to all projects)
     ├── keybindings.json
+    ├── commands/  agents/            empty (.gitkeep placeholder); drop *.md files in to track them
     ├── skills.txt                    source-repo list for ~/.claude/skills/ (see installer)
     ├── executable_statusline-command.sh
     └── plugins/{config.json, known_marketplaces.json.tmpl}
