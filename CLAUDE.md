@@ -47,6 +47,13 @@ installed by `home/dot_local/bin/executable_install-claude-skills` → `~/.local
 To change the skill set, edit `skills.txt` then re-run `install-claude-skills` (idempotent; `--force` refetches).
 Don't try to `chezmoi add` skill folders.
 
+**Custom (authored-by-me) skills** don't live here either — they're in a separate **private** repo,
+`tom1484/claude-skills`, listed in `skills.txt` like any upstream repo (split by *authorship*:
+upstream repos and my own repo are both just manifest entries). The installer clones private repos
+via authenticated `gh repo clone`, falling back from anonymous HTTPS — so a machine needs `gh auth login`
+(or an SSH key) before those pull. Edit a custom skill in that repo, push, then `install-claude-skills --force`
+(or delete its folder and re-run) to refresh the deployed copy.
+
 ## Verify, don't assume (matches the global working principles)
 - `chezmoi diff [target...]` — preview pending changes
 - `chezmoi status` — empty output = source and home are in sync

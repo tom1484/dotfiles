@@ -8,6 +8,10 @@
 #
 # (deployed to ~/.local/bin) to clone each repo and populate ~/.claude/skills/.
 #
+# My own custom skills live in a private repo (tom1484/claude-skills) listed here
+# alongside the open-source ones — same mechanism, just authored by me. The
+# installer clones private repos via authenticated `gh` (needs `gh auth login`).
+#
 # Format, one repo per line:
 #     <github-owner/repo>                     install every skill in the repo
 #     <github-owner/repo> [root-skill-name]   repo whose SKILL.md is at the root
@@ -34,3 +38,6 @@ obra/superpowers-lab : using-tmux-for-interactive-commands
 
 # --- Individual skills ---
 lackeyjb/playwright-skill
+
+# --- My own skills (private repo; installer auths via gh — see install-claude-skills) ---
+tom1484/claude-skills

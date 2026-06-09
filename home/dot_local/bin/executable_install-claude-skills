@@ -5,6 +5,10 @@
 # Idempotent: a skill folder that already exists is left untouched. To refresh
 # one, delete its folder (or the whole clone cache) and re-run. Pass --force to
 # overwrite every skill folder from a fresh clone.
+#
+# Public repos clone anonymously; private ones (e.g. my own claude-skills) need
+# `gh` installed and authenticated (`gh auth login`) — the installer falls back
+# to `gh repo clone` when an anonymous HTTPS clone fails.
 set -euo pipefail
 
 CLAUDE_DIR="${HOME}/.claude"
@@ -49,7 +53,18 @@ process_repo() {  # <owner/repo> [root-name] [allowlist]
     git -C "$clone" reset --hard --quiet "@{upstream}" 2>/dev/null || true
   else
     rm -rf "$clone"
-    git clone --depth 1 --quiet "https://github.com/${repo}" "$clone"
+    # Public repos clone anonymously over HTTPS (works on any machine, no auth).
+    # A private repo (e.g. my own claude-skills) fails that, so fall back to gh,
+    # which authenticates with its token. Needs `gh auth login` on the machine.
+    if ! git clone --depth 1 --quiet "https://github.com/${repo}" "$clone" 2>/dev/null; then
+      if command -v gh >/dev/null 2>&1; then
+        gh repo clone "$repo" "$clone" -- --depth 1 --quiet \
+          || { echo "  ! could not clone $repo (check access / gh auth)" >&2; return 0; }
+      else
+        echo "  ! could not clone $repo (private?) and gh is not installed" >&2
+        return 0
+      fi
+    fi
   fi
 
   # Each SKILL.md marks a skill. Root-level SKILL.md => whole repo is the skill.

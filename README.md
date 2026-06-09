@@ -22,9 +22,14 @@ machine (macOS or Ubuntu) with a single `chezmoi apply`, templating per-machine 
 
 ### Intentionally **not** managed
 - **Claude Code skill folders** (`~/.claude/skills/`) — the skill contents (~130 MB, fetched from
-  upstream GitHub repos) are not committed. Instead, `~/.claude/skills.txt` tracks the **list of
+  GitHub repos) are not committed. Instead, `~/.claude/skills.txt` tracks the **list of
   source repos** every skill came from, and `install-claude-skills` clones them into
   `~/.claude/skills/` on a new machine. Add/remove a repo in `skills.txt`, then re-run the installer.
+  My **own** custom skills are authored in a separate private repo
+  ([`tom1484/claude-skills`](https://github.com/tom1484/claude-skills)) listed in `skills.txt`
+  alongside the open-source ones — same mechanism, just mine. Private repos are cloned via
+  authenticated `gh` (the installer falls back from anonymous HTTPS), so a machine needs
+  `gh auth login` before pulling them.
   The plugin **manifests** (`plugins/config.json`, `plugins/known_marketplaces.json`) are tracked
   separately for the marketplace plugin set.
 - **Secrets** — never committed. Fish loads them from `~/.secrets/*` at runtime via the `load_env`
@@ -76,7 +81,9 @@ Afterwards:
 5. **Alacritty themes** (optional) — `git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes`.
 6. **Claude Code skills** — run `install-claude-skills` to clone the repos listed in
    `~/.claude/skills.txt` into `~/.claude/skills/` (~130 MB; needs `git`). Idempotent — existing skill
-   folders are skipped; pass `--force` to refresh them all from fresh clones.
+   folders are skipped; pass `--force` to refresh them all from fresh clones. For the private
+   `tom1484/claude-skills` repo, `gh auth login` must be done first (or an SSH key set up) so the
+   installer can authenticate the clone.
 
 ## Daily usage & maintenance
 
