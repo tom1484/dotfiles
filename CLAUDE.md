@@ -35,9 +35,11 @@ can clobber it. To change a deployed file, edit its source counterpart, then `ch
 - `CLAUDE.md` — global working principles, deploys to `~/.claude/CLAUDE.md` (applies to ALL
   projects). **Do not confuse it with this repo-root `CLAUDE.md`** (project memory, never deployed).
 - `keybindings.json`, `executable_statusline-command.sh`
-- `commands/` and `agents/` — tracked but empty; each holds an `empty_dot_gitkeep` so the dir
-  survives. Real entries are `*.md`; **never** put a `.md` placeholder in `commands/` — every
-  `*.md` there becomes a slash command (e.g. `README.md` → `/README`).
+- `commands/` and `agents/` — slash commands and subagents, one `*.md` each
+  (`commands/init-project-state.md` → `/init-project-state`; `agents/repo-explorer.md`).
+  The `empty_dot_gitkeep` in each keeps the dir tracked even if emptied. **Never** put a
+  non-command `.md` in `commands/` — every `*.md` there becomes a slash command
+  (e.g. `README.md` → `/README`).
 - `plugins/{config.json, known_marketplaces.json.tmpl}` — marketplace/plugin manifests.
 
 ### Skills are listed, not committed
