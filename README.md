@@ -18,6 +18,7 @@ machine (macOS or Ubuntu) with a single `chezmoi apply`, templating per-machine 
 | Claude Code commands / agents | `~/.claude/{commands,agents}/` | `home/private_dot_claude/{commands,agents}/` |
 | Claude Code skill **list** | `~/.claude/skills.txt` | `home/private_dot_claude/skills.txt` |
 | Claude Code skill installer | `~/.local/bin/install-claude-skills` | `home/dot_local/bin/` |
+| Claude Code skill publisher | `~/.local/bin/publish-claude-skills` | `home/dot_local/bin/` |
 | Alacritty dropdown launcher | `~/.local/bin/alacritty-dropdown` | `home/dot_local/bin/` |
 
 ### Intentionally **not** managed
@@ -29,7 +30,10 @@ machine (macOS or Ubuntu) with a single `chezmoi apply`, templating per-machine 
   ([`tom1484/claude-skills`](https://github.com/tom1484/claude-skills)) listed in `skills.txt`
   alongside the open-source ones — same mechanism, just mine. Private repos are cloned via
   authenticated `gh` (the installer falls back from anonymous HTTPS), so a machine needs
-  `gh auth login` before pulling them.
+  `gh auth login` before pulling them. To push edits the *other* way — when you've changed a deployed
+  skill in place under `~/.claude/skills/` — run `publish-claude-skills`: it copies each edited skill
+  back into the cached clone of a repo you own and commits (printing the `git push` for you). Do this
+  before `install-claude-skills --force`, which would otherwise overwrite the in-place edits.
   The plugin **manifests** (`plugins/config.json`, `plugins/known_marketplaces.json`) are tracked
   separately for the marketplace plugin set.
 - **Secrets** — never committed. Fish loads them from `~/.secrets/*` at runtime via the `load_env`

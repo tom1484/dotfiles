@@ -56,6 +56,12 @@ via authenticated `gh repo clone`, falling back from anonymous HTTPS — so a ma
 (or an SSH key) before those pull. Edit a custom skill in that repo, push, then `install-claude-skills --force`
 (or delete its folder and re-run) to refresh the deployed copy.
 
+The reverse direction (edit the **deployed** copy in place, then sync it back) is what
+`executable_publish-claude-skills` → `~/.local/bin/publish-claude-skills` is for: it copies each edited
+`~/.claude/skills/<skill>/` into the cached clone of a repo you *own* (owner == your `gh` login, so it can
+never push to upstream), commits, and prints the `git push` (it stops before pushing). Run it **before** any
+`install-claude-skills --force`, which overwrites in-place edits from upstream.
+
 ## Verify, don't assume (matches the global working principles)
 - `chezmoi diff [target...]` — preview pending changes
 - `chezmoi status` — empty output = source and home are in sync
