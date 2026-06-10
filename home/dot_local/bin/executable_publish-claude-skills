@@ -1,0 +1,120 @@
+#!/usr/bin/env bash
+# publish-claude-skills — push locally-edited custom skills back to their source repo.
+#
+# The inverse of install-claude-skills: that deploys  repo -> ~/.claude/skills/;
+# this takes skills you edited in place under ~/.claude/skills/<skill>/ and copies
+# them back into the cached clone of a repo you OWN, commits, and STOPS before
+# pushing (it prints the push command for you to run).
+#
+# "Owned" = the manifest repo's GitHub owner equals your `gh` login, so you can
+# only ever publish to your own repos, never to upstream collections.
+#
+# Workflow:
+#     edit ~/.claude/skills/<skill>/...   # in place
+#     publish-claude-skills [-m "msg"]    # copy back + commit
+#     git -C <clone> push origin <branch> # the command it prints
+#
+# Caveat: `install-claude-skills --force` overwrites deployed copies from upstream,
+# so publish your in-place edits BEFORE you force-reinstall.
+#
+# Needs git + gh (gh to detect your login and to reach private repos).
+set -euo pipefail
+
+CLAUDE_DIR="${HOME}/.claude"
+SKILLS_DIR="${CLAUDE_DIR}/skills"
+MANIFEST="${CLAUDE_DIR}/skills.txt"
+CACHE_DIR="${HOME}/.cache/claude-skills"
+SKIP_SKILLS=" template "   # mirror install-claude-skills
+
+MSG=""
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -m|--message) MSG="${2:-}"; shift 2 ;;
+    -h|--help) sed -n '2,18p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    *) echo "unknown arg: $1 (try --help)" >&2; exit 2 ;;
+  esac
+done
+
+command -v git >/dev/null 2>&1 || { echo "error: git is required" >&2; exit 1; }
+command -v gh  >/dev/null 2>&1 || { echo "error: gh is required (to detect your login / reach private repos)" >&2; exit 1; }
+[ -f "$MANIFEST" ] || { echo "error: manifest not found at $MANIFEST" >&2; exit 1; }
+
+LOGIN="$(gh api user --jq .login 2>/dev/null || true)"
+[ -n "$LOGIN" ] || { echo "error: could not read your GitHub login — run 'gh auth login'" >&2; exit 1; }
+
+PUSH_CMDS="$(mktemp)"   # `find | while` is a subshell; collect push hints to a file
+trap 'rm -f "$PUSH_CMDS"' EXIT
+
+publish_repo() {  # <owner/repo> [root-name] [allowlist]
+  local repo="$1" root_name="${2:-}" allow="${3:-}"
+  local owner reponame clone f skill_dir name dep rel branch skills_changed cmsg
+
+  owner="${repo%%/*}"; reponame="${repo##*/}"
+  [ "$owner" = "$LOGIN" ] || return 0          # only repos you own are pushable
+
+  clone="$CACHE_DIR/${owner}_${reponame}"
+  echo "==> $repo"
+  if [ ! -d "$clone/.git" ]; then
+    echo "  ! no local clone at $clone — run install-claude-skills first" >&2
+    return 0
+  fi
+
+  # Commit on a current base: fetch and fast-forward (never rewrite local work).
+  git -C "$clone" fetch --quiet origin 2>/dev/null || true
+  git -C "$clone" merge --ff-only --quiet '@{upstream}' 2>/dev/null \
+    || echo "  ! clone not fast-forwardable to upstream — resolve $clone manually" >&2
+
+  # For every skill in the clone, copy its deployed counterpart back over it.
+  find "$clone" -name SKILL.md -not -path '*/.git/*' -print | while IFS= read -r f; do
+    skill_dir="$(dirname "$f")"
+    if [ "$skill_dir" -ef "$clone" ]; then
+      echo "  ! root-level skill in $repo — publish manually (would clobber .git)" >&2
+      continue
+    fi
+    name="$(basename "$skill_dir")"
+    case "$SKIP_SKILLS" in *" $name "*) continue ;; esac
+    if [ -n "$allow" ]; then
+      case " $allow " in *" $name "*) ;; *) continue ;; esac
+    fi
+    dep="$SKILLS_DIR/$name"
+    [ -d "$dep" ] || { echo "  · $name: no deployed copy, skipping"; continue; }
+    rel="${skill_dir#"$clone"/}"
+    rm -rf "${clone:?}/$rel"
+    cp -R "$dep" "$clone/$rel"
+    rm -rf "$clone/$rel/.git"
+  done
+
+  # Stage and report. No changes => nothing to publish for this repo.
+  git -C "$clone" add -A
+  if git -C "$clone" diff --cached --quiet; then
+    echo "  (in sync — nothing to publish)"
+    return 0
+  fi
+
+  skills_changed="$(git -C "$clone" diff --cached --name-only | awk -F/ 'NF{print $1}' | sort -u | tr '\n' ' ' | xargs)"
+  cmsg="${MSG:-skills: update ${skills_changed}}"
+  git -C "$clone" commit -q -m "$cmsg"
+  branch="$(git -C "$clone" branch --show-current)"
+  echo "  committed: $cmsg"
+  printf '  git -C %q push origin %q\n' "$clone" "$branch" >> "$PUSH_CMDS"
+}
+
+while IFS= read -r line; do
+  line="${line%%#*}"                 # strip comments
+  line="$(echo "$line" | xargs)"     # trim
+  [ -z "$line" ] && continue
+  if [[ "$line" == *:* ]]; then      # owner/repo : skill1 skill2 ...
+    publish_repo "$(echo "${line%%:*}" | xargs)" "" "$(echo "${line#*:}" | xargs)"
+  else                               # owner/repo [root-name]
+    # shellcheck disable=SC2086
+    publish_repo $line
+  fi
+done < "$MANIFEST"
+
+echo
+if [ -s "$PUSH_CMDS" ]; then
+  echo "Committed locally. Review, then push:"
+  cat "$PUSH_CMDS"
+else
+  echo "Nothing to publish — your owned skills already match their source repos."
+fi
