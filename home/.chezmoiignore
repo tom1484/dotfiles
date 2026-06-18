@@ -5,7 +5,8 @@
 .config/fish/completions
 .config/fish/conf.d
 .config/fish/functions
-.config/fish/fish_plugins
+# fish_plugins (the fisher manifest) IS tracked — see private_fish/fish_plugins.
+# Only fisher's *generated* state above and fish's runtime vars below stay ignored.
 .config/fish/fish_variables
 .config/fish/**/.disable
 

@@ -39,8 +39,10 @@ machine (macOS or Ubuntu) with a single `chezmoi apply`, templating per-machine 
 - **Secrets** — never committed. Fish loads them from `~/.secrets/*` at runtime via the `load_env`
   helper (e.g. `home/dot_config/private_fish/config/envs/llm.fish` → `~/.secrets/llm`). Create those
   files by hand on each machine.
-- **Fish plugin-generated state** — `completions/`, `conf.d/`, `functions/`, `fish_plugins`,
-  `fish_variables` are excluded via `home/.chezmoiignore` (regenerated locally by the plugin manager).
+- **Fish plugin-generated state** — `completions/`, `conf.d/`, `functions/`, and `fish_variables`
+  are excluded via `home/.chezmoiignore` (regenerated locally by the plugin manager). The
+  `fish_plugins` *manifest* itself **is** tracked, so the plugin set is reproducible — run
+  `fisher update` on a new machine to install everything it lists.
 - **`.scripts/`** at the repo root — a loose helper script, not part of the chezmoi tree.
 
 ## Layout
@@ -78,8 +80,9 @@ Afterwards:
 
 1. **Secrets** — create the files referenced by `load_env` (e.g. `~/.secrets/llm`).
 2. **Neovim** — launch `nvim`; lazy.nvim self-bootstraps and installs plugins from `lazy-lock.json`.
-3. **Fish plugins** — the configs for `fifc`, `fzf`, `sponge` load automatically; install the plugin
-   binaries with your plugin manager if missing.
+3. **Fish plugins** — the tracked `~/.config/fish/fish_plugins` lists the plugin set; run
+   `fisher update` to install them all. (`fish-ai` also needs `FISH_AI_ANTHROPIC_API_KEY` in
+   `~/.secrets/llm` — see step 1.)
 4. **tmux** — install `tpm` (`git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`),
    then `prefix + I` inside tmux to fetch plugins.
 5. **Alacritty themes** (optional) — `git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes`.
