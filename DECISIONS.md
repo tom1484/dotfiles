@@ -5,6 +5,25 @@
 
 ---
 
+## 2026-06-18 — Repo-management workflows are project-local skills, not slash commands or manifest entries
+
+**Decision:** Encoded this repo's own chezmoi workflows as project-local skills under the **repo-root**
+`.claude/skills/` (`apply-to-machine`, `update-sources`, `sync-skills`) — git-tracked but never deployed
+(they live outside `.chezmoiroot=home`).
+
+**Why:** They're specific to maintaining *this* repo, so they should surface only when an agent works
+here, which project scope does automatically. **Rejected:** (a) adding them to the global `skills.txt`
+manifest — pollutes every project's skill set with repo-specific workflows (this was actually tried
+mid-session and reverted, commit `d6b6a50` dropped); (b) slash commands under
+`home/private_dot_claude/commands/` — those deploy to `~/.claude` and apply *everywhere*, same pollution,
+plus every `*.md` there becomes a global slash command; (c) CLAUDE.md prose only — not invocable. Repo-root
+`.claude/` is outside `home/`, so chezmoi never touches it; it's plain project config.
+
+**Affects:** repo-root `.claude/skills/{apply-to-machine,update-sources,sync-skills}/SKILL.md`; pointer added
+to repo-root `CLAUDE.md`.
+
+---
+
 ## 2026-06-18 — settings.json is now a `modify_` script; marketplace file is ignored
 
 **Decision:** Replaced the static `settings.json.tmpl` with `modify_settings.json` (a jq script
