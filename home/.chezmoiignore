@@ -1,4 +1,6 @@
 .DS_Store
+# Claude rewrites this with a churning `lastUpdated` timestamp — let it own the file.
+.claude/plugins/known_marketplaces.json
 .config/nvim/lua/.disable.lua
 .config/fish/completions
 .config/fish/conf.d

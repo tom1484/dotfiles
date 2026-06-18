@@ -30,8 +30,12 @@ can clobber it. To change a deployed file, edit its source counterpart, then `ch
 `chezmoi cat <target>` before applying — a template error is invisible until apply.
 
 ## Claude Code config (the most-touched area) — `home/private_dot_claude/` → `~/.claude/` (0700)
-- `settings.json.tmpl` — statusline path (`{{ .chezmoi.homeDir }}`) + a large **read-only**
-  `permissions.allow` allowlist. Adding a permission here is the right place to do it.
+- `modify_settings.json` — **a `modify_` script, not a static file.** Claude rewrites `settings.json`'s
+  key order on every run, so instead of overwriting it this script deep-merges (jq `*`) only the keys we
+  manage onto the live file — `chezmoi status` then stays quiet unless a managed *value* changed. Add a
+  permission / change `effortLevel` / etc. by editing the jq overlay here (NOT by `chezmoi add`-ing the live
+  file). `permissions.allow` is wholesale-replaced (source-authoritative; runtime "always allow" approvals
+  don't survive `apply`); statusline path comes from `$CHEZMOI_HOME_DIR`. Needs `jq` (fails loud if missing).
 - `CLAUDE.md` — global working principles, deploys to `~/.claude/CLAUDE.md` (applies to ALL
   projects). **Do not confuse it with this repo-root `CLAUDE.md`** (project memory, never deployed).
 - `keybindings.json`, `executable_statusline-command.sh`
@@ -40,7 +44,8 @@ can clobber it. To change a deployed file, edit its source counterpart, then `ch
   The `empty_dot_gitkeep` in each keeps the dir tracked even if emptied. **Never** put a
   non-command `.md` in `commands/` — every `*.md` there becomes a slash command
   (e.g. `README.md` → `/README`).
-- `plugins/{config.json, known_marketplaces.json.tmpl}` — marketplace/plugin manifests.
+- `plugins/config.json` — plugin manifest. (`known_marketplaces.json` is **`.chezmoiignore`d** — Claude
+  churns its `lastUpdated` timestamp and there's nothing worth pinning, so it's left unmanaged.)
 
 ### Skills are listed, not committed
 `~/.claude/skills/` (~130 MB) is intentionally **untracked**. The reproducible record is
@@ -71,8 +76,10 @@ never push to upstream), commits, and prints the `git push` (it stops before pus
   when other paths show expected drift you don't want to touch.
 
 ## Known traps
-- **`plugins/known_marketplaces.json` drifts forever** — Claude rewrites its `lastUpdated`
-  timestamp itself, so `chezmoi diff` always shows it. Re-`chezmoi add` only when you actually care.
+- **App-rewritten configs don't fit chezmoi's one-way model** — files Claude rewrites itself churn forever
+  under plain tracking. The two that bit us are handled: `settings.json` is a `modify_` script (merges managed
+  keys onto the live file) and `known_marketplaces.json` is `.chezmoiignore`d. If you add another Claude config
+  that re-drifts on every run, reach for the same two tools, not a static `.tmpl`.
 - **Secrets are never committed.** Fish loads them from `~/.secrets/*` at runtime; `~/.claude/.credentials.json`
   lives only in the live dir. Don't add secret files to the source tree.
 - Empty directories need a placeholder file; empty files need the `empty_` attribute — git and

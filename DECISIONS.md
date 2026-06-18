@@ -5,6 +5,33 @@
 
 ---
 
+## 2026-06-18 — settings.json is now a `modify_` script; marketplace file is ignored
+
+**Decision:** Replaced the static `settings.json.tmpl` with `modify_settings.json` (a jq script
+that deep-merges only the keys we manage onto the live file), and moved
+`.claude/plugins/known_marketplaces.json` into `.chezmoiignore`. `effortLevel` is now pinned to
+`"high"` for all machines — resolving the fork left open on 2026-06-10.
+
+**Why:** chezmoi is one-directional (source → target), so files an *application* rewrites churn
+forever: Claude reorders `settings.json`'s top-level keys and rewrites `known_marketplaces.json`'s
+`lastUpdated` on every run. A `modify_` script receives the live file on stdin and emits the merged
+result, so output mirrors the live key order and `chezmoi status` only reports a diff when a value we
+actually manage changed. The marketplace file is pure timestamp noise with nothing worth pinning, so
+it's unmanaged. Net: `chezmoi status` is now clean instead of permanently dirty on two files.
+
+**Merge semantics (jq `*`):** objects (`env`, `enabledPlugins`, `permissions`) keep keys we don't
+manage; arrays and scalars are replaced. So `permissions.allow` is the source-curated authoritative
+list — runtime "always allow" approvals are NOT preserved across `apply`. Statusline path comes from
+`$CHEZMOI_HOME_DIR` (no `.tmpl` needed). Requires `jq` at apply time; the script fails loud if absent.
+
+**Affects:** `home/private_dot_claude/modify_settings.json` (new), `settings.json.tmpl` (removed),
+`plugins/known_marketplaces.json.tmpl` (removed), `home/.chezmoiignore`.
+**Rejected:** per-hostname `effortLevel` templating (chose to enforce one shared `high`); union-merging
+`permissions.allow` to keep runtime approvals (kept it source-authoritative, matching the "read-only
+allowlist, edit in source" model in CLAUDE.md).
+
+---
+
 ## 2026-06-10 — effortLevel resolved to a single "high" on cross-machine merge
 
 **Decision:** When merging the Ubuntu sync, `settings.json.tmpl` had two `effortLevel` values (this Mac
