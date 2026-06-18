@@ -11,6 +11,15 @@ or `~/.config/nvim/init.lua` directly is wrong — it's untracked and the next `
 can clobber it. To change a deployed file, edit its source counterpart, then `chezmoi apply`.
 (`chezmoi edit <target>` opens the source for you.)
 
+## Repo-management skills (project-local, in `.claude/skills/`)
+Common chezmoi workflows for *this* repo are encoded as project skills under the repo-root
+`.claude/` (tracked in git, never deployed — they sit outside `home/`). Reach for them:
+- **`apply-to-machine`** — render-check + scoped `chezmoi apply` + verify; deploy `home/` edits.
+- **`update-sources`** — re-import live changes back into the source tree (`chezmoi add`/`re-add`),
+  with the do-NOT list for templated / `modify_` targets.
+- **`sync-skills`** — edit `skills.txt` → `chezmoi apply ~/.claude/skills.txt` → `install-claude-skills`
+  (the deploy-the-manifest-first ordering), plus `publish-claude-skills` round-tripping.
+
 ## Layout & where things live
 - `.chezmoiroot` = `home` → **the source state is `home/`**, not the repo root.
   Root-level files (`README.md`, this `CLAUDE.md`, `.scripts/`) are *not* applied anywhere.
